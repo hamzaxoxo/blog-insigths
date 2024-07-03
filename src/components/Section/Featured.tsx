@@ -98,13 +98,12 @@ export default function Featured() {
             </div>
           </div>
           <div className="mt-14 text-center">
-            <a
+            <button
               type="button"
-              className="pb-20w-full items-center justify-center rounded-xl border-2 border-black bg-black px-6 py-1 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
-              href="/blogs"
+              className="w-full items-center justify-center rounded-xl border-2 border-black bg-black px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
             >
               View All Posts
-            </a>
+            </button>
           </div>
         </div>
       </div>

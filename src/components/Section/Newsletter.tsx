@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Newsletter() {
   return (
-    <div className="mx-auto mt-32 px-6 sm:mt-56 lg:px-8">
+    <div className="mx-auto !my-24 px-6 sm:mt-56 lg:px-8">
       <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl rounded-2xl sm:rounded-3xl sm:px-24 xl:py-32">
         <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
           Keep Updated
