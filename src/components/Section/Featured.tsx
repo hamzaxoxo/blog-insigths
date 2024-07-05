@@ -1,106 +1,62 @@
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
 import blog1 from "../../../public/blog1.jpg";
-import blog2 from "../../../public/blog2.png";
-import blog3 from "../../../public/blog3.png";
-import blog4 from "../../../public/blog4.png";
-import { Timer, TimerIcon } from "lucide-react";
+
+import Author from "../Author";
+import ThumbRight from "../PostThumnail/ThumbRight";
 
 export default function Featured() {
   return (
     <section className="mx-auto relative overflow-hidden">
       <div className="relative">
         <div className="mx-auto">
-          <div className="mx-auto mb-14 max-w-2xl text-center">
-            <span className="mb-4 inline-block rounded-full bg-gray-300 px-3 py-1 text-xs font-semibold text-black">
+          <div className="mx-auto mb-14 max-w-4xl text-center">
+            <span className="mb-4 inline-block rounded-full bg-gray-300 px-3 py-1 text-xs font-semibold text-primary">
               OUR BLOG
             </span>
-            <h1 className="text-5xl font-bold">
-              Learn Something New with Our Blog Posts
+            <h1 className="leading-loose font-display text-3xl font-extrabold text-primary lg:text-5xl xl:text-6xl">
+              Discover Fresh Insights with Our Featured Blog Posts
             </h1>
             <p className="mt-4 text-lg tracking-tight text-gray-500">
-              Discover useful tips and best practices for using Tailwind in our
-              informative blog posts. Get inspired to create stunning landing
-              pages and dashboards.
+              Discover valuable blogging insights on our blog page, where we
+              share expert tips, strategies, and trends to help you succeed in
+              the world of blogging
             </p>
           </div>
-          <div className="my-18 -mx-4 flex flex-wrap px-4">
+          <div className="my-18 -mx-4 flex flex-wrap">
             <div className="mb-12 w-full px-4 lg:mb-0 lg:w-1/2">
-              <a className="group block w-full" href="#">
+              <div className="group block w-full">
                 <Image
-                  className="mb-5 block w-full rounded-lg object-cover"
+                  className="block w-full rounded-lg object-cover"
                   src={blog1}
-                  alt=""
+                  alt="blog1"
                 />
-                <span className="mb-5 block text-gray-500">Jul 20, 2023</span>
-                <h4 className="mb-5 text-3xl font-semibold text-gray-900">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </h4>
-                <p className="max-w-xl text-lg text-gray-500">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                  amet sint. Velit officia consequat duis enim velit mollit
-                  xercitation veniam consequat sunt nostrud amet.
-                </p>
-              </a>
+                <div className="flex flex-col gap-2 mt-2">
+                  <Link
+                    href="/"
+                    className="w-fit bg-primary hover:bg-gray-900 text-xs rounded text-gray-50 font-medium px-2 py-0.5 inline-block"
+                  >
+                    #playwright
+                  </Link>
+                  <h4 className="sm:text-3xl text-xl font-semibold text-gray-900">
+                    Unlocking Success: Essential Blogging Insights for Aspiring
+                    Bloggers
+                  </h4>
+                  <Author />
+                </div>
+              </div>
             </div>
             <div className="w-full px-4 lg:w-1/2">
-              <a
-                className="group mb-8 md:flex flex-row flex gap-5 items-center"
-                href="#"
-              >
-                <Image
-                  className="h-40 w-48 rounded-lg object-cover"
-                  src={blog2}
-                  alt=""
-                />
-                <div className="my-4 pt-2 md:ml-6 md:mt-0 flex flex-col justify-center">
-                  <span className="mb-2 block text-gray-500">Jul 20, 2022</span>
-                  <h4 className="text-xl font-semibold text-gray-900">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  </h4>
-                  <span className="mt-2 block text-gray-500">4 min read</span>
-                </div>
-              </a>
-              <a
-                className="group mb-8 md:flex flex-row flex gap-5 items-center"
-                href="#"
-              >
-                <Image
-                  className="h-40 w-48 rounded-lg object-cover"
-                  src={blog3}
-                  alt=""
-                />
-                <div className="my-4 pt-2 md:ml-6 md:mt-0 flex flex-col justify-center">
-                  <span className="mb-2 block text-gray-500">Jul 20, 2022</span>
-                  <h4 className="text-xl font-semibold text-gray-900">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  </h4>
-                  <span className="mt-2 block text-gray-500">4 min read</span>
-                </div>
-              </a>
-              <a
-                className="group mb-8 md:flex flex-row flex gap-5 items-center"
-                href="#"
-              >
-                <Image
-                  className="h-40 w-48 rounded-lg object-cover"
-                  src={blog4}
-                  alt=""
-                />
-                <div className="my-4 pt-2 md:ml-6 md:mt-0 flex flex-col justify-center">
-                  <span className="mb-2 block text-gray-500">Jul 20, 2022</span>
-                  <h4 className="text-xl font-semibold text-gray-900">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  </h4>
-                  <span className="mt-2 block text-gray-500">6 min read</span>
-                </div>
-              </a>
+              <ThumbRight />
+              <ThumbRight />
+              <ThumbRight />
+              <ThumbRight />
             </div>
           </div>
           <div className="mt-14 text-center">
             <button
               type="button"
-              className="w-full items-center justify-center rounded-xl border-2 border-black bg-black px-6 py-3 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
+              className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-3 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
             >
               View All Posts
             </button>

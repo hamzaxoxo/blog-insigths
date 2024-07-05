@@ -7,12 +7,20 @@ import Link from "next/link";
 import { GanttChart, XIcon } from "lucide-react";
 import TopBanner from "../Section/TopBanner";
 
+const links = [
+  { href: "/blogs", label: "Blogs" },
+  { href: "/profile", label: "Updates" },
+  { href: "/contact", label: "Contact" },
+  { href: "/profile", label: "Profile" },
+];
+
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
     setOpen((prev) => !prev);
   };
+
   const closeNavbarOnSmallDevices = () => {
     if (window.innerWidth <= 768) {
       setOpen(false);
@@ -21,14 +29,17 @@ export default function Navbar() {
 
   React.useEffect(() => {
     window.addEventListener("resize", closeNavbarOnSmallDevices);
+    return () => {
+      window.removeEventListener("resize", closeNavbarOnSmallDevices);
+    };
   }, []);
 
   return (
     <div className="border-b">
       <TopBanner />
-      <div className=" relative flex h-16 items-center justify-between px-8 sm:px-36">
+      <div className="relative flex h-16 items-center justify-between px-4 md:px-36">
         <Link
-          className="inline-flex items-center gap-3 text-black lg:pr-8 active"
+          className="inline-flex items-center gap-3 text-primary lg:pr-8 active"
           href="/"
           aria-current="page"
         >
@@ -40,40 +51,34 @@ export default function Navbar() {
         </Link>
         <div className="flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <nav
-            className={`${
+            className={`fixed top-16 w-4/5 h-full bg-white transform transition-transform duration-500 flex flex-col ${
               open
-                ? "flex flex-col absolute w-full border top-16 -right-0 shadow-md bg-white"
-                : "mx-5 hidden flex-col items-center md:flex md:flex-row"
+                ? "z-10 right-0 shadow-md translate-x-0 pt-14 text-right gap-4 px-5"
+                : "-right-0 translate-x-full md:static md:translate-x-0 md:flex-row md:items-center md:w-auto"
             }`}
           >
-            <Link
-              className="py-2 px-5 poppins-font font-medium text-sm sm:rounded hover:bg-gray-400 w-full"
-              href="/blogs"
-            >
-              Blogs
-            </Link>
-            <Link
-              className="py-2 px-5 poppins-font font-medium text-sm sm:rounded hover:bg-gray-400 w-full"
-              href="/profile"
-            >
-              Updates
-            </Link>
-            <Link
-              className="py-2 px-5 poppins-font font-medium text-sm sm:rounded hover:bg-gray-400 w-full"
-              href="/contact"
-            >
-              Contact
-            </Link>
-            <Link
-              className="py-2 px-5 poppins-font font-medium text-sm sm:rounded hover:bg-gray-400 w-full"
-              href="/profile"
-            >
-              Profile
-            </Link>
+            {open && (
+              <div className="w-fit bg-primary hover:bg-gray-900 text-md rounded text-gray-50 font-medium px-2 py-0.5">
+                MENU
+              </div>
+            )}
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                className={`poppins-font sm:rounded hover:bg-gray-400 w-full ${
+                  open
+                    ? "border-b-[3px] border-primary text-lg font-semibold"
+                    : "py-2 font-medium px-5 text-sm"
+                }`}
+                href={link.href}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
           <Link
             title="Login to Create Amazing Blogs"
-            className="w-full items-center justify-center rounded-xl border-2 border-gray-700 bg-gray-600 px-6 py-1 text-center font-medium text-white duration-200 hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-2 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
             href="/login"
           >
             Subscribe
@@ -81,7 +86,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={handleOpen}
-            className="inline-flex items-center justify-center pl-5 text-gray-800 hover:text-black focus:text-black focus:outline-none md:hidden"
+            className="inline-flex items-center justify-center pl-5 text-gray-800 hover:text-primary focus:text-primary focus:outline-none md:hidden z-10"
           >
             {open ? <XIcon /> : <GanttChart />}
           </button>
