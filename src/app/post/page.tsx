@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Page = () => {
@@ -12,7 +13,7 @@ const Page = () => {
             className="text-xl font-bold"
             href="https://testomat.io/blog/typescript-best-practices-tools-for-qa-engineer/"
           >
-            <img
+            <Image
               width={360}
               height={192}
               src="https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png"
@@ -50,7 +51,7 @@ const Page = () => {
                 <div className="mr-3 flex">
                   <div className="min-w-[3rem] ">
                     <a href="https://testomat.io/author/editor/">
-                      <img
+                      <Image
                         alt="Olga Sheremeta"
                         src="https://testomat.io/wp-content/uploads/2022/10/a9e43008df5b542483fcc412c4bb0753.png"
                         className="avatar photo rounded-full border-2 border-white"
@@ -71,7 +72,7 @@ const Page = () => {
               <time
                 dateTime="2024-07-02T19:57:02+02:00"
                 itemProp="datePublished"
-                className="text-xs text-grayscale-500 text-xs"
+                className="text-grayscale-500 text-xs"
               >
                 Jul 02, 24
               </time>

@@ -12,14 +12,14 @@ export default function TopBanner() {
     <header className="bg-primary text-white py-4 px-4 md:px-36">
       <div className="mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="hidden md:flex space-x-4">
-          <Link href="#" className="hover:underline">
+          <Link href="/privacy-policy" className="hover:underline">
             Privacy Policy
           </Link>
-          <Link href="#" className="hover:underline">
+          <Link href="/dmca" className="hover:underline">
             DMCA
           </Link>
-          <Link href="#" className="hover:underline">
-            Terms of use
+          <Link href="/terms-of-use" className="hover:underline">
+            Terms of Services
           </Link>
         </div>
         <div className="flex w-full md:w-auto justify-between items-center md:justify-end space-x-6">

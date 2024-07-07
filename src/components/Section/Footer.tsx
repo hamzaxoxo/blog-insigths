@@ -1,9 +1,32 @@
 import React from "react";
 import logo from "../../../public/logo.svg";
 import Image from "next/image";
+import Link from "next/link";
 export default function Footer() {
+  const footerLinks = [
+    {
+      name: "Privacy Policy",
+      link: "privacy-policy",
+    },
+    {
+      name: "Terms of Service",
+      link: "terms-of-use",
+    },
+    {
+      name: "DMCA",
+      link: "dmca",
+    },
+    {
+      name: "About",
+      link: "about",
+    },
+    {
+      name: "Contact Us",
+      link: "contact",
+    },
+  ]
   return (
-    <section className="z-0 overflow-hidden bg-white py-8 relative bottom-0 w-full">
+    <section className="z-0 overflow-hidden bg-gray-200 py-8 relative bottom-0 w-full">
       <div className="container relative z-10 mx-auto px-4">
         <div className="-m-8 flex flex-wrap items-center sm:justify-between justify-center">
           <div className="w-auto p-8">
@@ -16,38 +39,18 @@ export default function Footer() {
           </div>
           <div className="w-auto p-8">
             <ul className="-m-5 flex flex-wrap items-center justify-center">
-              <li className="p-5">
-                <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
-                  href="#"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li className="p-5">
-                <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
-                  href="#"
-                >
-                  Terms of Service
-                </a>
-              </li>
-              <li className="p-5">
-                <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
-                  href="#"
-                >
-                  Return Policy
-                </a>
-              </li>
-              <li className="p-5">
-                <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
-                  href="#"
-                >
-                  Contact Us
-                </a>
-              </li>
+              {
+                footerLinks.map((link, index) => (
+                  <li key={index} className="p-5">
+                    <Link
+                      className="font-medium text-gray-600 hover:underline"
+                      href={link.link}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div className="w-auto p-8">

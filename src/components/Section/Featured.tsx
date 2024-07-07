@@ -14,7 +14,7 @@ export default function Featured() {
             <span className="mb-4 inline-block rounded-full bg-gray-300 px-3 py-1 text-xs font-semibold text-primary">
               OUR BLOG
             </span>
-            <h1 className="leading-loose font-display text-3xl font-extrabold text-primary lg:text-5xl xl:text-6xl">
+            <h1 className="leading-10 font-display text-3xl font-extrabold text-primary lg:text-5xl xl:text-6xl">
               Discover Fresh Insights with Our Featured Blog Posts
             </h1>
             <p className="mt-4 text-lg tracking-tight text-gray-500">

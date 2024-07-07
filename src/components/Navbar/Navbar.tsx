@@ -65,10 +65,11 @@ export default function Navbar() {
             {links.map((link) => (
               <Link
                 key={link.href}
-                className={`poppins-font sm:rounded hover:bg-gray-400 w-full ${
+                onClick={()=> setOpen(false)}
+                className={`poppins-font sm:rounded  w-full ${
                   open
                     ? "border-b-[3px] border-primary text-lg font-semibold"
-                    : "py-2 font-medium px-5 text-sm"
+                    : "py-2 font-medium px-5 text-sm hover:bg-gray-400"
                 }`}
                 href={link.href}
               >

@@ -1,5 +1,10 @@
+import Banner from "@/components/Section/Banner";
 import React from "react";
 
 export default function page() {
-  return <div>page</div>;
+  return (
+    <>
+     <Banner title="About Us" />
+    </>
+  )
 }
