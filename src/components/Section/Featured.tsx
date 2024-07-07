@@ -7,7 +7,7 @@ import ThumbRight from "../PostThumnail/ThumbRight";
 
 export default function Featured() {
   return (
-    <section className="mx-auto relative overflow-hidden">
+    <section className="max-w-6xl mx-auto relative overflow-hidden">
       <div className="relative">
         <div className="mx-auto">
           <div className="mx-auto mb-14 max-w-4xl text-center">
@@ -47,7 +47,6 @@ export default function Featured() {
               </div>
             </div>
             <div className="w-full px-4 lg:w-1/2">
-              <ThumbRight />
               <ThumbRight />
               <ThumbRight />
               <ThumbRight />

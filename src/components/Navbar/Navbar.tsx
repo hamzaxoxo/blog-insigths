@@ -44,10 +44,9 @@ export default function Navbar() {
           aria-current="page"
         >
           <Image src={logo} alt="AstroSaas" className="h-8 w-8" />
-          <div className="font-display text-lg font-extrabold tracking-wide flex gap-2">
-            <span>Thug</span>
-            <span className="hidden sm:block"> of Blogs</span>
-          </div>
+          <p className="font-display text-xl font-extrabold tracking-wide">
+            Blog Insigths
+          </p>
         </Link>
         <div className="flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <nav

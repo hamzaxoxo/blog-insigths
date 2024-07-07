@@ -33,7 +33,9 @@ export default function Footer() {
             <a href="#">
               <div className="inline-flex items-center">
                 <Image width={40} height={46} src={logo} alt="logo" />
-                <span className="ml-4 text-lg font-bold">Blogs</span>
+                <p className="ml-2 font-display text-xl font-extrabold tracking-wide">
+                  Blog Insigths
+                </p>
               </div>
             </a>
           </div>

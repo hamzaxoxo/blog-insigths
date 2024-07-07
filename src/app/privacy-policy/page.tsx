@@ -142,9 +142,9 @@ export default function page() {
             Feel free to contact us at{" "}
             <a
               className="underline font-medium text-blue-700 hover:opacity-80"
-              href="mailto:contact@thugofblogs.com"
+              href="mailto:contact@bloginsigths.com"
             >
-              contact@thugofblogs.com
+              contact@bloginsigths.com
             </a>{" "}
             and we&apos;ll help you out.
           </div>

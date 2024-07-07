@@ -4,7 +4,7 @@ import hero from "../../../public/hero.webp";
 
 export default function Hero() {
   return (
-    <div className="mx-auto w-full max-w-[1600px]">
+    <div className="max-w-6xl mx-auto w-full">
       <div className="flex flex-col items-center gap-6 md:flex-row">
         <div className="max-w-2xl pt-12 md:w-1/2 lg:py-4 lg:pt-32">
           <div className="text-center md:text-left">
@@ -28,7 +28,7 @@ export default function Hero() {
         </div>
         <div className="max-w-4xl pt-12 md:mx-0 md:w-1/2 lg:pt-24">
           <Image
-            alt="hero"
+            alt="hero" loading="lazy"
             className="mx-auto sm:w-full w-[26rem]"
             src={hero}
           />

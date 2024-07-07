@@ -6,7 +6,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: 'DMCA',
   description: 'Read our DMCA Policy detailing how we handle copyright infringement complaints. Learn about your rights and how to report issues.',
-  keywords: ['DMCA Policy', 'Copyright Infringement', 'Digital Millennium Copyright Act', 'Legal Notice', 'Thug of Blogs'],
+  keywords: ['DMCA Policy', 'Copyright Infringement', 'Digital Millennium Copyright Act', 'Legal Notice', 'Blog Insigths'],
 }
 
 export default function page() {
@@ -19,8 +19,8 @@ export default function page() {
             Last updated on November 2, 2021,
           </p>
           This Digital Millennium Copyright Act policy (“Policy”) applies to the{' '}
-          <Link href="https://www.thugofblogs.com" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
-            thugofblogs.com
+          <Link href="https://www.bloginsigths.com" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+            bloginsigths.com
           </Link> website (“Website” or “Service”) and any of its related products and services (collectively, “Services”) and outlines how this Website operator (“Operator”, “we”, “us” or “our”) addresses copyright infringement notifications and how you (“you” or “your”) may submit a copyright infringement complaint.
         </p>
 
@@ -124,11 +124,11 @@ export default function page() {
             If you would like to notify us of the infringing material or activity, we encourage you to contact us using the details below:
           </p>
           <p className="text-slate-600 text-justify">
-            <Link href="http://www.thugofblogs.com/contact" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
-              http://www.thugofblogs.com/contact
+            <Link href="http://www.bloginsigths.com/contact" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+              http://www.bloginsigths.com/contact
             </Link><br />
-            <Link href="mailto:legal@thugofblogs.com" className="font-medium text-blue-700 hover:opacity-80 underline">
-              legal@thugofblogs.com
+            <Link href="mailto:legal@bloginsigths.com" className="font-medium text-blue-700 hover:opacity-80 underline">
+              legal@bloginsigths.com
             </Link>
           </p>
         </section>

@@ -7,11 +7,11 @@ export default function ThumbRight() {
   return (
     <div className="group mb-5 md:flex sm:flex-row flex flex-col justify-center gap-2 items-center">
       <Image
-        className="sm:w-48 rounded-lg object-cover"
+        className="sm:w-60 rounded-lg object-cover"
         src={blog2}
         alt="blog image"
-        width={400}
-        height={400}
+        width={500}
+        height={500}
       />
       <div className="gap-2 md:ml-6 md:mt-0 flex flex-col justify-center">
         <Link
