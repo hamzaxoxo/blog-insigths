@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
-import logo from "../../../public/logo.svg";
+import logo from "../../../public/logo.png";
 import Link from "next/link";
 import { GanttChart, XIcon } from "lucide-react";
 import TopBanner from "../Section/TopBanner";
@@ -43,7 +43,7 @@ export default function Navbar() {
           href="/"
           aria-current="page"
         >
-          <Image src={logo} alt="AstroSaas" className="h-8 w-8" />
+          <Image src={logo} alt="AstroSaas" className="h-20 w-20" />
           <p className="font-display text-xl font-extrabold tracking-wide">
             Blog Insigths
           </p>

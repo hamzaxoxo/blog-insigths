@@ -22,9 +22,9 @@ export default function ThumbRight() {
         </Link>
         <Link
           href="#"
-          className="sm:text-xl text-xl font-semibold text-gray-900"
+          className="sm:text-lg text-xl font-semibold text-gray-900"
         >
-          Unlocking Success: Essential Blogging Insights for Aspiring Bloggers
+          Unlocking Success: Essential Blogging Insights for ...
         </Link>
         <Author  />
       </div>

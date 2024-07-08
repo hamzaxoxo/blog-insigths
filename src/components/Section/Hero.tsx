@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import hero from "../../../public/hero.webp";
+import hero from "../../../public/hero.png";
 
 export default function Hero() {
   return (
@@ -8,8 +8,8 @@ export default function Hero() {
       <div className="flex flex-col items-center gap-6 md:flex-row">
         <div className="max-w-2xl pt-12 md:w-1/2 lg:py-4 lg:pt-32">
           <div className="text-center md:text-left">
-            <h1 className="font-display text-3xl font-extrabold text-primary lg:text-5xl xl:text-6xl">
-              Create stunning websites with Tailwind CSS
+            <h1 className="leading-loose font-display text-3xl font-extrabold text-primary lg:text-5xl xl:text-6xl">
+              Unlocking Blog Insights: A Journey Through Words
             </h1>
             <p className="mt-4 max-w-2xl text-lg tracking-tight text-gray-500">
               Learn how to create stunning landing pages and dashboards using
@@ -29,7 +29,9 @@ export default function Hero() {
         <div className="max-w-4xl pt-12 md:mx-0 md:w-1/2 lg:pt-24">
           <Image
             alt="hero" loading="lazy"
-            className="mx-auto sm:w-full w-[26rem]"
+            className="mx-auto sm:w-full rounded-3xl"
+            width={500}
+            height={500}
             src={hero}
           />
         </div>

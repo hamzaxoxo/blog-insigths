@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import blog1 from "../../../public/blog1.jpg";
+import blog1 from "../../../public/blog2.png";
 
 import Author from "../Author";
 import ThumbRight from "../PostThumnail/ThumbRight";
@@ -65,3 +65,4 @@ export default function Featured() {
     </section>
   );
 }
+

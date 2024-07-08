@@ -11,7 +11,7 @@ export default function TopBanner() {
   return (
     <header className="bg-primary text-white py-4 px-4 md:px-36">
       <div className="mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-4 text-sm">
           <Link href="/privacy-policy" className="hover:underline">
             Privacy Policy
           </Link>

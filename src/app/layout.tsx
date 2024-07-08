@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import ogImage from '../../public/ogImage.jpg'
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,22 +17,10 @@ export const metadata: Metadata = {
     default: "Blog Insights",
     template: "%s | Blog Insights",
   },
-  description: "Blog Insights is a blog where you can find articles on various topics like programming, web development, and more.",
+  description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
   keywords: [
     "Blog Insights",
-    "programming articles",
-    "web development tips",
-    "technology blog",
-    "coding tutorials",
-    "software development",
-    "tech news",
-    "frontend development",
-    "backend development",
-    "full stack development",
-    "JavaScript tutorials",
-    "Python programming",
-    "HTML and CSS tips",
-    "responsive design",
+    "programming tutorials, web development articles, technology insights, coding tips, software engineering, IT trends, developer resources",
     "SEO strategies",
     "blogging tips 2024",
   ],
@@ -42,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.bloginsights.com/og-image.jpg",
+        url: `${ogImage}`,
         width: 800,
         height: 600,
         alt: "Blog Insights",
@@ -59,6 +48,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-626CD7NXNX"></Script>
         <Script id="google-analytics">
           {`

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../public/logo.svg";
+import logo from "../../../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 export default function Footer() {
@@ -30,14 +30,21 @@ export default function Footer() {
       <div className="container relative z-10 mx-auto px-4">
         <div className="-m-8 flex flex-wrap items-center sm:justify-between justify-center">
           <div className="w-auto p-8">
-            <a href="#">
-              <div className="inline-flex items-center">
-                <Image width={40} height={46} src={logo} alt="logo" />
+            <div className="inline-flex items-center">
+              <Image width={80} height={80} src={logo} alt="logo" />
+              <div>
                 <p className="ml-2 font-display text-xl font-extrabold tracking-wide">
                   Blog Insigths
                 </p>
+                <span className="block text-sm text-gray-700 sm:text-center">
+                  © {new Date().getFullYear()}{" "}
+                  <a href="https://github.com/hamzadevlpr" className="underline" target="_blank">
+                    @hamzadevelpr
+                  </a>
+                  . All Rights Reserved.
+                </span>
               </div>
-            </a>
+            </div>
           </div>
           <div className="w-auto p-8">
             <ul className="-m-5 flex flex-wrap items-center justify-center">
@@ -111,6 +118,7 @@ export default function Footer() {
                   </div>
                 </a>
               </div>
+
             </div>
           </div>
         </div>
