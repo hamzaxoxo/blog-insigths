@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import ogImage from '../../public/ogImage.jpg'
+import ogImage from "../../public/ogImage.jpg";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,10 +15,11 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Blog Insights",
-    template: "%s | Blog Insights",
+    default: "Home | Blog Insights | Expert programming and web tutorials.",
+    template: "%s | Blog Insights | Expert programming and web tutorials",
   },
-  description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
+  description:
+    "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
   keywords: [
     "Blog Insights",
     "programming tutorials, web development articles, technology insights, coding tips, software engineering, IT trends, developer resources",
@@ -26,7 +28,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Blog Insights",
-    description: "Discover articles on programming, web development, and more at Blog Insights.",
+    description:
+      "Discover articles on programming, web development, and more at Blog Insights.",
     url: "https://www.bloginsights.com",
     type: "website",
     images: [
@@ -48,14 +51,31 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-626CD7NXNX"></Script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-626CD7NXNX"
+        ></Script>
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -66,9 +86,11 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={poppins.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <UserProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </UserProvider>
       </body>
     </html>
   );

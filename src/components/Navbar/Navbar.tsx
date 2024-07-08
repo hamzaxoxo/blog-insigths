@@ -6,6 +6,7 @@ import logo from "../../../public/logo.png";
 import Link from "next/link";
 import { GanttChart, XIcon } from "lucide-react";
 import TopBanner from "../Section/TopBanner";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const links = [
   { href: "/blogs", label: "Blogs" },
@@ -16,6 +17,7 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
+  const { user, error, isLoading } = useUser();
 
   const handleOpen = () => {
     setOpen((prev) => !prev);
@@ -64,7 +66,7 @@ export default function Navbar() {
             {links.map((link) => (
               <Link
                 key={link.href}
-                onClick={()=> setOpen(false)}
+                onClick={() => setOpen(false)}
                 className={`poppins-font sm:rounded  w-full ${
                   open
                     ? "border-b-[3px] border-primary text-lg font-semibold"
@@ -76,13 +78,24 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
-          <Link
-            title="Login to Create Amazing Blogs"
-            className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-2 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
-            href="/login"
-          >
-            Subscribe
-          </Link>
+          {user ? (
+            <a
+              title="Login to Create Amazing Blogs"
+              className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-2 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
+              href="/api/auth/logout"
+            >
+              Logout
+            </a>
+          ) : (
+            <a
+              title="Login to Create Amazing Blogs"
+              className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-2 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
+              href="/api/auth/login"
+            >
+              Subscribe
+            </a>
+          )}
+
           <button
             type="button"
             onClick={handleOpen}
