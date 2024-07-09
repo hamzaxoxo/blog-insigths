@@ -30,7 +30,7 @@ export default function page() {
       </div>
       <div className="grid grid-cols-1 md0:grid-cols-3 gap-8">
         {blogData.map((blog) => (
-          <article className="group">
+          <article className="group"  key={blog.id}>
             <a href={blog.postLink}>
               <img
                 alt={blog.imgAlt}
