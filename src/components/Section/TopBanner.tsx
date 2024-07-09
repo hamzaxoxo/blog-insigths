@@ -1,12 +1,8 @@
 import Link from "next/link";
-import React from "react";
 import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaMediumM,
-  FaQuora,
-  FaSearch,
+  FaSearch
 } from "react-icons/fa";
+import { TopBannersocialLinks } from "../defaultData";
 export default function TopBanner() {
   return (
     <header className="bg-primary text-white py-4 px-4 md:px-36">
@@ -24,18 +20,15 @@ export default function TopBanner() {
         </div>
         <div className="flex w-full md:w-auto justify-between items-center md:justify-end space-x-6">
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-gray-400">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="hover:text-gray-400">
-              <FaLinkedinIn />
-            </a>
-            <a href="#" className="hover:text-gray-400">
-              <FaMediumM />
-            </a>
-            <a href="#" className="hover:text-gray-400">
-              <FaQuora />
-            </a>
+            {
+              TopBannersocialLinks.map((link) => {
+                return (
+                  <a key={link.name} href={link.url} className="hover:text-gray-400">
+                    <link.icon />
+                  </a>
+                )
+              })
+            }
           </div>
           <div className="flex items-center space-x-4">
             <div className="border-l border-white h-6"></div>

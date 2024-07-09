@@ -1,4 +1,3 @@
-
 import Banner from "@/components/Section/Banner";
 import { Metadata } from "next";
 export const metadata: Metadata = {
@@ -23,7 +22,7 @@ export default function page() {
                         </h2>
                     </div>
                     <p className="text-slate-600 text-justify">
-                        The information provided on Blog Insights ("we," "us," or "our") is for general informational purposes only. All information on the Site{' '}
+                        The information provided on Blog Insights (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is for general informational purposes only. All information on the Site{' '}
                         <a href="https://www.bloginsigths.com" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
                             bloginsigths.com
                         </a>
@@ -69,9 +68,7 @@ export default function page() {
                     </p>
                 </section>
 
-
-
-            </div >
+            </div>
         </>
     )
 }

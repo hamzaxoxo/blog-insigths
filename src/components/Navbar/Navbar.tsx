@@ -76,13 +76,6 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
-          <Link
-            title="Login to Create Amazing Blogs"
-            className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-2 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
-            href="/login"
-          >
-            Subscribe
-          </Link>
           <button
             type="button"
             onClick={handleOpen}

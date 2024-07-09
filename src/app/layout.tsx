@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import ogImage from '../../public/ogImage.jpg'
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,8 +13,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Blog Insights",
-    template: "%s | Blog Insights",
+    default: "Blog Insights | Expert programming and web tutorials.",
+    template: "%s | Blog Insights | Expert programming and web tutorials.",
   },
   description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
   keywords: [
@@ -24,14 +23,18 @@ export const metadata: Metadata = {
     "SEO strategies",
     "blogging tips 2024",
   ],
+  twitter: {
+    site: "@bloginsights",
+    card: "summary_large_image",
+  },
   openGraph: {
-    title: "Blog Insights",
-    description: "Discover articles on programming, web development, and more at Blog Insights.",
+    title: "Blog Insights | Expert programming and web tutorials.",
+    description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology.",
     url: "https://www.bloginsights.com",
     type: "website",
     images: [
       {
-        url: `${ogImage}`,
+        url: `https://www.bloginsights.com`,
         width: 800,
         height: 600,
         alt: "Blog Insights",
