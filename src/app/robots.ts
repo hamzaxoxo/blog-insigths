@@ -5,17 +5,9 @@ export default function robots(): MetadataRoute.Robots {
         rules: [
             {
                 userAgent: '*',
-                disallow: [],
-                allow: ['/', '/blogs'],
-            },
-            {
-                userAgent: 'Googlebot',
+                disallow:  ["/admin"],
                 allow: '/'
             },
-            {
-                userAgent: 'Bingbot',
-                disallow: ['/no-bing']
-            }
         ],
         sitemap: `${process.env.NEXT_BASE_URL}/sitemap.xml`
     }

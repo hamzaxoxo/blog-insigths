@@ -7,7 +7,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { name: "Terms of Service", path: "terms-of-service" },
         { name: "DMCA", path: "dmca" },
         { name: "Contact", path: "contact" },
-        { name: "About", path: "about" }
+        { name: "About", path: "about" },   
+        { name: "Disclaimer", path: "disclaimer" }
     ];
 
     return pages.map((page) => ({
