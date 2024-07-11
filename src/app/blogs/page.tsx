@@ -1,10 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+
 import { blogData } from "@/components/defaultData/blogData";
 import { tags } from "@/components/defaultData/tags";
-import Image from "next/image";
-import React from "react";
+import { Metadata } from "next";
 
-export default function page() {
+export const metadata: Metadata = {
+  title: 'Discover our New Blogs',
+  description: 'Discover how to start a blog with our comprehensive step-by-step guide. Learn about choosing a niche, setting up your blog, creating content, and driving traffic.',
+  keywords: ['how to start a blog', 'blogging for beginners', 'step-by-step blogging guide', 'start a blog', 'blogging tips'],
+}
+export default function Page() {
   return (
     <div className="max-w-7xl mx-auto my-8 pt-10 px-8">
       <h1 className="text-3xl lg:text-5xl font-bold mb-4 text-center lg:max-w-screen-md lg:mx-auto lg:leading-[3.5rem] capitalize">
@@ -30,7 +35,7 @@ export default function page() {
       </div>
       <div className="grid grid-cols-1 md0:grid-cols-3 gap-8">
         {blogData.map((blog) => (
-          <article className="group"  key={blog.id}>
+          <article className="group" key={blog.id}>
             <a href={blog.postLink}>
               <img
                 alt={blog.imgAlt}

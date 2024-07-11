@@ -19,6 +19,7 @@ export default function EditorTinny() {
                 onInit={(_evt, editor) => editorRef.current = editor}
                 initialValue="<p>This is the initial content of the editor.</p>"
                 init={{
+                    branding: false,
                     height: 500,
                     menubar: 'file edit view insert format tools table help',
                     plugins: [
@@ -29,7 +30,7 @@ export default function EditorTinny() {
                     ],
                     toolbar: 'undo redo | formatselect | bold italic underline strikethrough | forecolor backcolor | link image media | \
                               alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat | code fullscreen preview',
-                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:20px }',
                     image_advtab: true,
                     template_cdate_format: '[CDATE: %m/%d/%Y : %H:%M:%S]',
                     template_mdate_format: '[MDATE: %m/%d/%Y : %H:%M:%S]',

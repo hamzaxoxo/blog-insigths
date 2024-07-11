@@ -2,7 +2,21 @@ import Banner from "@/components/Section/Banner";
 import Image from "next/image";
 import React from "react";
 import contact from '../../../public/contact.svg'
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bloginsights.com/contact"),  // Update with your base URL
+  title: "Contact Us",
+  description: "Contact Blog Insights for inquiries, feedback, or support. Reach out to us to learn more about our services and solutions.",
+  keywords: [
+    "Contact Us",
+    "get in touch with Blog Insights, support, customer service, feedback, inquiries",
+    "business communication, reach out",
+  ]
+}
+
 export default function page() {
+
   return (
     <>
       <Banner title="Contact Us" />
@@ -10,7 +24,7 @@ export default function page() {
         <div className="flex flex-col justify-between items-center">
           <div>
             <h2 className="text-4xl lg:text-5xl font-bold leading-tight">Lets talk about everything!</h2>
-            <div className="text-gray-700 mt-8">
+            <div className="text-gray-700 my-3">
               Hate forms? Send us an <span className="underline">email</span> instead.
             </div>
           </div>
@@ -19,18 +33,18 @@ export default function page() {
         <div className="">
           <div>
             <span className="uppercase text-sm text-gray-600 font-bold">Full Name</span>
-            <input className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            <input className="form-inputs"
               type="text" placeholder="" />
           </div>
           <div className="mt-8">
             <span className="uppercase text-sm text-gray-600 font-bold">Email</span>
-            <input className="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            <input className="form-inputs"
               type="text" />
           </div>
           <div className="mt-8">
             <span className="uppercase text-sm text-gray-600 font-bold">Message</span>
             <textarea
-              className="w-full h-32 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+              className="form-inputs min-h-32"></textarea>
           </div>
           <div className="mt-8">
             <button className="uppercase text-sm font-bold tracking-wide bg-primary text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">

@@ -12,9 +12,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bloginsights.com"), // Set the base URL for Open Graph and Twitter images
   title: {
-    default: "Blog Insights | Expert programming and web tutorials.",
-    template: "%s | Blog Insights | Expert programming and web tutorials.",
+    default: "Expert programming and web tutorials - Blog Insights",
+    template: "%s - Blog Insights",
   },
   description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
   keywords: [
@@ -23,6 +24,16 @@ export const metadata: Metadata = {
     "SEO strategies",
     "blogging tips 2024",
   ],
+  authors: [
+    { name: 'Hamza' },
+    { name: 'Hamza Malik', url: 'https://github.com/hamzadevlpr/' },
+  ],
+  publisher: 'Hamza Malik',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   twitter: {
     site: "@bloginsights",
     card: "summary_large_image",
@@ -34,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `https://www.bloginsights.com`,
+        url: "/opengraph-image.jpg",
         width: 800,
         height: 600,
         alt: "Blog Insights",
@@ -42,7 +53,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,13 +61,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-626CD7NXNX"></Script>
         <Script id="google-analytics">
           {`

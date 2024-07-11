@@ -24,6 +24,14 @@ export default function Footer() {
       name: "Contact Us",
       link: "contact",
     },
+    {
+      name: "Sign Up",
+      link: "auth/signup",
+    },
+    {
+      name: "Log In",
+      link: "auth/login",
+    },
   ]
   return (
     <section className="z-0 overflow-hidden bg-gray-200 py-8 relative bottom-0 w-full">
