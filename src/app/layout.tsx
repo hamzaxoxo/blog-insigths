@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import React from "react";
+import NextTopLoader from "nextjs-toploader";
+import Head from "next/head";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
     default: "Expert programming and web tutorials - Blog Insights",
     template: "%s - Blog Insights",
   },
-  description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
+  description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology.",
   keywords: [
     "Blog Insights",
     "programming tutorials, web development articles, technology insights, coding tips, software engineering, IT trends, developer resources",
@@ -53,11 +56,13 @@ export const metadata: Metadata = {
     ],
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <head>
@@ -70,8 +75,17 @@ export default function RootLayout({
             gtag('config', 'G-626CD7NXNX');
           `}
         </Script>
+        <Head>
+          <meta name="pinterest:title" content="Blog Insights | Expert programming and web tutorials." />
+          <meta name="pinterest:description" content="Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology." />
+          <meta name="pinterest:image" content="/opengraph-image.jpg" />
+        </Head>
       </head>
       <body className={poppins.className}>
+        <NextTopLoader
+          color="#fff"
+          height={2}
+        />
         <Navbar />
         {children}
         <Footer />

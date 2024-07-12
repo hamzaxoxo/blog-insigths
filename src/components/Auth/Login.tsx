@@ -1,17 +1,17 @@
 'use client'
 import { ArrowRight } from 'lucide-react';
-import { useState } from 'react';
-import toast from 'react-hot-toast';
-import ClipLoader from "react-spinners/ClipLoader";
+import Image from 'next/image';
 import Link from 'next/link';
-import CoverPage from '@/components/Auth/CoverPage';
+import React from 'react';
+import ClipLoader from "react-spinners/ClipLoader";
+import googleIcon from '../../../public/google-logo.png'
 
 export default function Login() {
 
-    const [email, setEmail] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [googleLoading, setGoogleLoading] = useState(false);
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [googleLoading, setGoogleLoading] = React.useState(false);
+    const [password, setPassword] = React.useState('');
 
 
     // const handleGoogleSignIn = () => {
@@ -169,7 +169,7 @@ export default function Login() {
                                         <ClipLoader color='#000' size={23} /> :
                                         <>
                                             <span className="mr-2 inline-block">
-                                                <img src="https://img.icons8.com/color/20/000000/google-logo.png" />
+                                                <Image src={googleIcon} alt='google-icon' />
                                             </span>
                                             Continue with Google
                                         </>

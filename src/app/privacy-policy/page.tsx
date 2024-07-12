@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Read our Privacy Policy to understand how we collect, use, and protect your personal information.',
   keywords: ['Privacy Policy', 'Data Protection', 'Privacy Statement', 'Your Company Name'],
-  robots: 'index, follow',
 }
 
 export default function page() {

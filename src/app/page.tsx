@@ -1,5 +1,4 @@
 import Featured from "@/components/Section/Featured";
-import Footer from "@/components/Section/Footer";
 import Hero from "@/components/Section/Hero";
 import Newsletter from "@/components/Section/Newsletter";
 import React from "react";
