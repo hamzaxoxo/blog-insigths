@@ -1,17 +1,15 @@
 'use client'
 import { ArrowRight } from 'lucide-react';
-import { useState } from 'react';
-import toast from 'react-hot-toast';
-import ClipLoader from "react-spinners/ClipLoader";
 import Link from 'next/link';
-import CoverPage from '@/components/Auth/CoverPage';
+import React from 'react';
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Login() {
 
-    const [email, setEmail] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [googleLoading, setGoogleLoading] = useState(false);
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [googleLoading, setGoogleLoading] = React.useState(false);
+    const [password, setPassword] = React.useState('');
 
 
     // const handleGoogleSignIn = () => {
