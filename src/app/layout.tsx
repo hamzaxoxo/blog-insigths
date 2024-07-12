@@ -4,9 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import React from "react";
-import NextTopLoader from "nextjs-toploader";
-import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,28 +13,17 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bloginsights.com"), // Set the base URL for Open Graph and Twitter images
   title: {
-    default: "Expert programming and web tutorials - Blog Insights",
-    template: "%s - Blog Insights",
+    default: "Blog Insights | Expert programming and web tutorials.",
+    template: "%s | Blog Insights | Expert programming and web tutorials.",
   },
-  description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology.",
+  description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
   keywords: [
     "Blog Insights",
     "programming tutorials, web development articles, technology insights, coding tips, software engineering, IT trends, developer resources",
     "SEO strategies",
     "blogging tips 2024",
   ],
-  authors: [
-    { name: 'Hamza' },
-    { name: 'Hamza Malik', url: 'https://github.com/hamzadevlpr/' },
-  ],
-  publisher: 'Hamza Malik',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   twitter: {
     site: "@bloginsights",
     card: "summary_large_image",
@@ -48,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image.jpg",
+        url: `https://www.bloginsights.com`,
         width: 800,
         height: 600,
         alt: "Blog Insights",
@@ -62,10 +49,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-626CD7NXNX"></Script>
         <Script id="google-analytics">
           {`
@@ -75,19 +68,11 @@ export default function RootLayout({
             gtag('config', 'G-626CD7NXNX');
           `}
         </Script>
-        <Head>
-          <meta name="pinterest:title" content="Blog Insights | Expert programming and web tutorials." />
-          <meta name="pinterest:description" content="Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology." />
-          <meta name="pinterest:image" content="/opengraph-image.jpg" />
-        </Head>
       </head>
       <body className={poppins.className}>
-        <NextTopLoader
-          color="#fff"
-          height={2}
-        />
         <Navbar />
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>
