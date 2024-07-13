@@ -14,7 +14,7 @@ export default function page() {
     <>
       <Banner title="DMCA Policy" />
       <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-12">
-        <p className="text-slate-600 text-justify">
+        <div className="text-slate-600 text-justify">
           <p className="mb-5 text-base font-medium leading-7 text-slate-600">
             Last updated on November 2, 2021,
           </p>
@@ -22,17 +22,19 @@ export default function page() {
           <Link href="https://www.bloginsigths.com" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
             bloginsigths.com
           </Link> website (“Website” or “Service”) and any of its related products and services (collectively, “Services”) and outlines how this Website operator (“Operator”, “we”, “us” or “our”) addresses copyright infringement notifications and how you (“you” or “your”) may submit a copyright infringement complaint.
-        </p>
+        </div>
 
-        <p className="text-slate-600 text-justify">
-          Protection of intellectual property is of utmost importance to us and we ask our users and their authorized agents to do the same. It is our policy to expeditiously respond to clear notifications of alleged copyright infringement that comply with the United States Digital Millennium Copyright Act (“DMCA”) of 1998, the text of which can be found at the U.S. Copyright Office{' '}
-          <Link href="https://www.copyright.gov" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
-            website
-          </Link>. This policy has been created with the help of the{' '}
-          <Link href="https://www.websitepolicies.com/dmca-policy-generator" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
-            DMCA policy generator
-          </Link>.
-        </p>
+        <div className="text-slate-600 text-justify">
+          <p>
+            Protection of intellectual property is of utmost importance to us and we ask our users and their authorized agents to do the same. It is our policy to expeditiously respond to clear notifications of alleged copyright infringement that comply with the United States Digital Millennium Copyright Act (“DMCA”) of 1998, the text of which can be found at the U.S. Copyright Office{' '}
+            <Link href="https://www.copyright.gov" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+              website
+            </Link>. This policy has been created with the help of the{' '}
+            <Link href="https://www.websitepolicies.com/dmca-policy-generator" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+              DMCA policy generator
+            </Link>.
+          </p>
+        </div>
 
         <div className="bg-gray-50 p-6 rounded-lg">
           <h3 className="text-xl sm:text-2xl font-bold leading-8 text-primary">
@@ -124,10 +126,10 @@ export default function page() {
             If you would like to notify us of the infringing material or activity, we encourage you to contact us using the details below:
           </p>
           <p className="text-slate-600 text-justify">
-            <Link href="http://www.bloginsigths.com/contact" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+            <span>Contact: </span><Link href="http://www.bloginsigths.com/contact" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
               http://www.bloginsigths.com/contact
             </Link><br />
-            <Link href="mailto:legal@bloginsigths.com" className="font-medium text-blue-700 hover:opacity-80 underline">
+            <span>Email: </span><Link href="mailto:legal@bloginsigths.com" className="font-medium text-blue-700 hover:opacity-80 underline">
               legal@bloginsigths.com
             </Link>
           </p>

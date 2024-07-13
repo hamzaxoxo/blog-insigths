@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import hero from "../../../public/hero.png";
+import hero from "../../../public/hero.svg";
 
 export default function Hero() {
   return (
@@ -29,9 +29,9 @@ export default function Hero() {
         <div className="max-w-4xl pt-12 md:mx-0 md:w-1/2 lg:pt-24">
           <Image
             alt="hero" loading="lazy"
-            className="mx-auto sm:w-full rounded-3xl"
-            width={500}
-            height={500}
+            className="mx-auto w-full rounded-3xl"
+            // width={700}
+            // height={700}
             src={hero}
           />
         </div>

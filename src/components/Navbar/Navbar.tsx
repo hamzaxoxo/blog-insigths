@@ -9,7 +9,7 @@ import TopBanner from "../Section/TopBanner";
 
 const links = [
   { href: "/blogs", label: "Blogs" },
-  { href: "/profile", label: "Updates" },
+  { href: "/updates", label: "Updates" },
   { href: "/contact", label: "Contact" },
   { href: "/profile", label: "Profile" },
 ];

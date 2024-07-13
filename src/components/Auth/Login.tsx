@@ -1,8 +1,10 @@
 'use client'
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
+import googleIcon from '../../../public/google-logo.png'
 
 export default function Login() {
 
@@ -167,7 +169,7 @@ export default function Login() {
                                         <ClipLoader color='#000' size={23} /> :
                                         <>
                                             <span className="mr-2 inline-block">
-                                                <img src="https://img.icons8.com/color/20/000000/google-logo.png" />
+                                                <Image src={googleIcon} alt='google-icon' />
                                             </span>
                                             Continue with Google
                                         </>

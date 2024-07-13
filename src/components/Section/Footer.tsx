@@ -53,7 +53,10 @@ export default function Footer() {
                 Blog Insigths
               </span>
             </a>
-            <p className="sm:ml-20 ml-0 sm:w-[28rem] w-full">Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology.</p>
+            <div className="mb-10 space-x-10 sm:ml-20 ml-0 sm:w-[28rem] w-full">
+              <p>Discover expert  insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology.</p>
+            </div>
+
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>

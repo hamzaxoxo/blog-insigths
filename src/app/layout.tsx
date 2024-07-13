@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
+import NextTopLoader from "nextjs-toploader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,10 +14,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bloginsights.com"), // Set the base URL for Open Graph and Twitter images
+  metadataBase: new URL("https://www.bloginsights.com"),
   title: {
-    default: "Expert programming and web tutorials - Blog Insights",
-    template: "%s - Blog Insights",
+    default: "Blog Insights | Expert programming and web tutorials.",
+    template: "%s | Blog Insights | Expert programming and web tutorials.",
   },
   description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
   keywords: [
@@ -24,16 +26,6 @@ export const metadata: Metadata = {
     "SEO strategies",
     "blogging tips 2024",
   ],
-  authors: [
-    { name: 'Hamza' },
-    { name: 'Hamza Malik', url: 'https://github.com/hamzadevlpr/' },
-  ],
-  publisher: 'Hamza Malik',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   twitter: {
     site: "@bloginsights",
     card: "summary_large_image",
@@ -45,7 +37,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image.jpg",
+        url: `/opengraph-image.jpg`,
         width: 800,
         height: 600,
         alt: "Blog Insights",
@@ -53,6 +45,7 @@ export const metadata: Metadata = {
     ],
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,10 +63,13 @@ export default function RootLayout({
             gtag('config', 'G-626CD7NXNX');
           `}
         </Script>
+        <meta name="msvalidate.01" content="8D003752D10EFAB1C98FD841D4CA0657" />
       </head>
       <body className={poppins.className}>
         <Navbar />
         {children}
+        <NextTopLoader />
+        <Analytics />
         <Footer />
       </body>
     </html>

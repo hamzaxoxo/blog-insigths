@@ -5,7 +5,7 @@ import contact from '../../../public/contact.svg'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bloginsights.com/contact"),  // Update with your base URL
+  metadataBase: new URL("https://www.bloginsights.com/contact"),
   title: "Contact Us",
   description: "Contact Blog Insights for inquiries, feedback, or support. Reach out to us to learn more about our services and solutions.",
   keywords: [
