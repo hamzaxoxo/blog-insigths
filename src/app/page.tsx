@@ -6,7 +6,7 @@ import React from "react";
 export default function Home() {
   return (
     <>
-      <div className="px-8 sm:px-20 space-y-20 ">
+      <div className="">
         <Hero />
         <Featured />
         <Newsletter />

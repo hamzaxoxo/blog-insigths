@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { blogData } from "@/components/defaultData/blogData";
+import BlogPost from "@/components/Blog/BlogPost";
 import { tags } from "@/components/defaultData/tags";
 import { Metadata } from "next";
 
@@ -34,54 +34,7 @@ export default function Page() {
         ))}
       </div>
       <div className="grid grid-cols-1 md0:grid-cols-3 gap-8">
-        {blogData.map((blog) => (
-          <article className="group" key={blog.id}>
-            <a href={blog.postLink}>
-              <img
-                alt={blog.imgAlt}
-                src={blog.imgSrc}
-                className="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]"
-              />
-            </a>
-            <div className="mt-5 p-4">
-              <a href={blog.postLink}>
-                <h3 className="text-lg font-medium text-gray-900">{blog.title}</h3>
-              </a>
-
-              <p className="mt-2 line-clamp-4 text-sm/relaxed text-gray-500">
-                {blog.summary}
-              </p>
-              <a
-                href={blog.postLink}
-                className="underline font-semibold text-primary-600 text-xs"
-              >
-                Read more
-              </a> . . .
-            </div>
-
-            <div className="flex items-center p-4 border-t border-gray-200">
-              <img
-                src={blog.authorImgSrc}
-                alt={blog.author}
-                className="w-12 h-12 object-cover rounded-full border-2 border-white"
-              />
-              <div className="ml-3">
-                <a
-                  href={blog.authorLink}
-                  className="text-sm font-semibold text-gray-800 hover:text-gray-600"
-                >
-                  {blog.author}
-                </a>
-                <time
-                  dateTime={blog.date}
-                  className="text-xs text-gray-500"
-                >
-                  {new Date(blog.date).toLocaleDateString()}
-                </time>
-              </div>
-            </div>
-          </article>
-        ))}
+        <BlogPost />
       </div>
     </div>
   );
