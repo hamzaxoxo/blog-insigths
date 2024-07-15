@@ -61,6 +61,7 @@ export default function Login() {
     }
     const handleGoogleLogin = async () => {
         setGoogleLoading(true);
+        console.log("Clicked");
         await authService.googleLogin()
             .catch((err) => {
                 console.log(err)

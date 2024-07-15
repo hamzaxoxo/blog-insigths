@@ -1,12 +1,14 @@
 import ClientLayout from "@/components/Auth/ClientLayout";
+import GoTop from "@/components/GoTop";
 import StoreProvider from "@/store/StoreProvider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
-import React, { Suspense } from "react";
-import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
+import "./globals.css";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -66,12 +68,13 @@ export default function RootLayout({
         </Script>
         <meta name="msvalidate.01" content="8D003752D10EFAB1C98FD841D4CA0657" />
       </head>
-      <body className={poppins.className}>
+      <body className={`relative ${poppins.className}`}>
         <StoreProvider>
           <Suspense>
             <ClientLayout>
               {children}
             </ClientLayout>
+            <GoTop />
           </Suspense>
           <Toaster />
           <NextTopLoader />
