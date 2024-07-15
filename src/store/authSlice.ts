@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface authTypes {
+    status: boolean;
+    userData: any;
+
+}
+const initialState: authTypes = {
     status: false,
     userData: null
 }
@@ -12,6 +17,7 @@ const authSlice = createSlice({
         login: (state, action) => {
             state.status = true;
             state.userData = action.payload.userData;
+            console.log(state.userData)
         },
         logout: (state) => {
             state.status = false;

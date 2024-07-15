@@ -1,11 +1,12 @@
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Section/Footer";
+import ClientLayout from "@/components/Auth/ClientLayout";
+import StoreProvider from "@/store/StoreProvider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
+import React, { Suspense } from "react";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,14 +18,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.bloginsights.com"),
   title: {
     default: "Blog Insights | Expert programming and web tutorials.",
-    template: "%s | Blog Insights | Expert programming and web tutorials.",
+    template: "%s | Blog Insights",
   },
   description: "Discover expert insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology",
   keywords: [
     "Blog Insights",
     "programming tutorials, web development articles, technology insights, coding tips, software engineering, IT trends, developer resources",
-    "SEO strategies",
-    "blogging tips 2024",
+    "SEO strategies", "blogging tips 2024",
   ],
   twitter: {
     site: "@bloginsights",
@@ -51,6 +51,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <head>
@@ -66,11 +67,15 @@ export default function RootLayout({
         <meta name="msvalidate.01" content="8D003752D10EFAB1C98FD841D4CA0657" />
       </head>
       <body className={poppins.className}>
-        <Navbar />
-        {children}
-        <NextTopLoader />
-        <Analytics />
-        <Footer />
+        <StoreProvider>
+          <Suspense>
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </Suspense>
+          <Toaster />
+          <NextTopLoader />
+        </StoreProvider>
       </body>
     </html>
   );

@@ -19,7 +19,7 @@ export default function page() {
             Last updated on November 2, 2021,
           </p>
           This Digital Millennium Copyright Act policy (“Policy”) applies to the{' '}
-          <Link href="https://www.bloginsigths.com" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+          <Link href={`${process.env.NEXT_PUBLIC_URL}`} target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
             bloginsigths.com
           </Link> website (“Website” or “Service”) and any of its related products and services (collectively, “Services”) and outlines how this Website operator (“Operator”, “we”, “us” or “our”) addresses copyright infringement notifications and how you (“you” or “your”) may submit a copyright infringement complaint.
         </div>
@@ -126,7 +126,7 @@ export default function page() {
             If you would like to notify us of the infringing material or activity, we encourage you to contact us using the details below:
           </p>
           <p className="text-slate-600 text-justify">
-            <span>Contact: </span><Link href="http://www.bloginsigths.com/contact" target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+            <span>Contact: </span><Link href={`${process.env.NEXT_PUBLIC_URL}/contact`}target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
               http://www.bloginsigths.com/contact
             </Link><br />
             <span>Email: </span><Link href="mailto:legal@bloginsigths.com" className="font-medium text-blue-700 hover:opacity-80 underline">

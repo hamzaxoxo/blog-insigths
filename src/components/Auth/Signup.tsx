@@ -1,57 +1,79 @@
 'use client'
-import { ArrowRight } from 'lucide-react'
+import authService from '@/appwrite/auth';
 import CoverPage from '@/components/Auth/CoverPage';
-import { useState } from 'react';
-import { toast } from 'react-hot-toast';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import { toast } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { ClipLoader } from 'react-spinners';
 
 export default function Signup() {
-    const [fullName, setFullName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [loading, setLoading] = React.useState(false);
+    const [fullName, setFullName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const dispatch = useDispatch();
+    const router = useRouter();
+    const [googleLoading, setGoogleLoading] = React.useState(false);
+    
+    React.useEffect(() => {
+        const checkUser = async () => {
+            const currentUser = await authService.getCurrentUser();
+            if (currentUser) {
+                router.push('/');
+            }
+        };
+        checkUser();
+    }, [router]);
 
-    // const handleRegister = async (e) => {
-    //     e.preventDefault();
+    const handleRegister = async (e: any) => {
+        e.preventDefault();
 
-    //     if (fullName === "" || email === "" || password === "") {
-    //         toast.error("Fields Can't be Empty");
-    //     } else {
-    //         try {
-    //             const response = await axios.post(`${USER_API_URL}/signup`, {
-    //                 fullName: fullName,
-    //                 email: email,
-    //                 password: password
-    //             });
-    //             toast.success(response.data.message);
-    //             navigate('/login');
-    //         } catch (err) {
-    //             if (err.response) {
-    //                 if (err.response.status === 401) {
-    //                     toast.error("Email already exists");
-    //                 } else if (err.response.status === 500) {
-    //                     toast.error("Internal Server Error");
-    //                 } else {
-    //                     toast.error(`Error: ${err.response.data.error}`);
-    //                 }
-    //             } else if (err.request) {
-    //                 toast.error("No response received from the server");
-    //             } else {
-    //                 // Something happened in setting up the request that triggered an Error
-    //                 toast.error(`Error: ${err.message}`);
-    //             }
-    //         }
-    //     }
-    // };
+        if (fullName === "" || email === "" || password === "") {
+            toast.error("Fields Can't be Empty");
+        } else {
+            try {
+                setLoading(true);
+                const userData = await authService.createAccount({
+                    email: email,
+                    password: password,
+                    name: fullName
+                });
+                toast.success("We have sent a verifivcation link to email address");
+                router.push('/auth/login')
+            } catch (err: any) {
+                const errorMessage = err?.code;
+                if (errorMessage === "EMAIL_TAKEN") {
+                    toast.error("Email already exists");
+                    setEmail('');
+                } else {
+                    toast.error(err?.message);
+                }
+            } finally {
+                setLoading(false);
+            }
+        }
+    };
+    const handleGoogleLogin = async () => {
+        setGoogleLoading(true);
+        await authService.googleLogin()
+            .catch((err) => {
+                console.log(err)
+            })
+            .finally(() => {
+                setGoogleLoading(false);
+            })
+    }
 
     return (
-        <>
-
-            <section className='relative'>
-                {/* <div className="grid grid-cols-1 md:grid-cols-2"> */}
+        <section className='relative'>
+            <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* left side */}
-                {/* <CoverPage /> */}
+                <CoverPage />
                 {/* right side */}
-                <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24 h-[35vw]  overflow-hidden">
+                <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24 h-screen overflow-hidden">
                     <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
                         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign Up</h2>
                         <p className="mt-2 text-sm text-gray-600">
@@ -116,9 +138,19 @@ export default function Signup() {
                                     </p>
                                     <button
                                         type="submit"
+                                        onClick={handleRegister}
                                         className="inline-flex w-full items-center justify-center rounded-md bg-primary px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                                        disabled={loading}
                                     >
-                                        Get started <ArrowRight className="ml-2" size={16} />
+                                        {
+                                            loading ?
+                                                <ClipLoader
+                                                    size={23}
+                                                    color="#fff"
+                                                /> :
+                                                <>Get started <ArrowRight className="ml-2" size={16} /></>
+                                        }
+
                                     </button>
 
                                 </div>
@@ -126,9 +158,8 @@ export default function Signup() {
                         </form>
                     </div>
                 </div>
-                {/* </div> */}
+            </div >
 
-            </section>
-        </>
+        </section >
     )
 }
