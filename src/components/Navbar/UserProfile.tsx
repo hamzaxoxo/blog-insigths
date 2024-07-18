@@ -93,7 +93,7 @@ export default function ProfileDropDown({ user }: ProfileDropDownProps) {
                             </Link>
                         )}
                     </Menu.Item>
-                    <Menu.Item>
+                    {/* <Menu.Item>
                         {({ active }) => (
                             <Link
                                 href="/blogs/add"
@@ -134,7 +134,7 @@ export default function ProfileDropDown({ user }: ProfileDropDownProps) {
                                 Settings
                             </Link>
                         )}
-                    </Menu.Item>
+                    </Menu.Item> */}
                     <Menu.Item>
                         {({ active }) => (
                             <button

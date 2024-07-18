@@ -1,7 +1,7 @@
 
 import { Post } from '@/components/Type/Types';
 import axios from 'axios';
-const API_URL = 'https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clymic8x3075t07w7jmdwf7wk/master';
+const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
 
 const GET_ALL_POSTS_QUERY = `
 {
@@ -16,6 +16,9 @@ const GET_ALL_POSTS_QUERY = `
       url
     }
     publishedAt
+    tags{
+      name
+    }
     author {
       name
       picture {
@@ -33,11 +36,16 @@ const GET_SINGLE_POST_QUERY = (slug: string) => `
     slug
     content {
       html
+      text
     }
+    excerpt
     coverImage {
       url
     }
     publishedAt
+    tags{
+      name
+    }
     author {
       name
       picture {
@@ -48,25 +56,25 @@ const GET_SINGLE_POST_QUERY = (slug: string) => `
 }
 `;
 export const fetchPosts = async (): Promise<Post[]> => {
-    try {
-        const response = await axios.post(API_URL, {
-            query: GET_ALL_POSTS_QUERY,
-        });
-        return response?.data?.data?.posts;
-    } catch (error) {
-        console.error('Error fetching posts:', error);
-        throw new Error('Failed to fetch posts');
-    }
+  try {
+    const response = await axios.post(API_URL, {
+      query: GET_ALL_POSTS_QUERY,
+    });
+    return response?.data?.data?.posts;
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    throw new Error('Failed to fetch posts');
+  }
 };
 
 export const fetchSinglePost = async (slug: string): Promise<Post> => {
-    try {
-        const response = await axios.post(API_URL, {
-            query: GET_SINGLE_POST_QUERY(slug),
-        });
-        return response?.data?.data?.post;
-    } catch (error) {
-        console.error('Error fetching post:', error);
-        throw new Error('Failed to fetch post');
-    }
+  try {
+    const response = await axios.post(API_URL, {
+      query: GET_SINGLE_POST_QUERY(slug),
+    });
+    return response?.data?.data?.post;
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    throw new Error('Failed to fetch post');
+  }
 };
