@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import blog2 from "../../../public/blog2.png";
 import Link from "next/link";
-import Author from "../Author";
+import Author from "../Author/Author";
 export default function ThumbRight() {
   return (
     <div className="group mb-5 md:flex sm:flex-row flex flex-col justify-center gap-2 items-center">

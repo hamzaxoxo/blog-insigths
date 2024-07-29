@@ -1,6 +1,7 @@
 import Featured from "@/components/Section/Featured";
 import Hero from "@/components/Section/Hero";
 import Newsletter from "@/components/Section/Newsletter";
+import Testimonials from "@/components/Testimonials/Testimonials";
 import React from "react";
 
 export default function Home() {
@@ -9,7 +10,8 @@ export default function Home() {
       <div className="">
         <Hero />
         <Featured />
-        <Newsletter />
+        {/* <Newsletter /> */}
+        <Testimonials />
       </div>
     </>
   );
