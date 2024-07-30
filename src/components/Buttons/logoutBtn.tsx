@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import authService from '@/appwrite/auth';
+// import authService from '@/appwrite/auth';
 import React from 'react'
 import { logout } from '@/store/authSlice';
 import { ClipLoader } from 'react-spinners';

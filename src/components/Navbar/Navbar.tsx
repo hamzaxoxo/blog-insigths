@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../../public/logo.png';
 import TopBanner from '../Section/TopBanner';
 import { login } from '@/store/authSlice';
-import authService from '@/appwrite/auth';
+// import authService from '@/appwrite/auth';
 import AlertBox from '@/utils/AlertBox';
 import UserProfile from './UserProfile';
+import axios from 'axios';
+import instance from '@/service/axios';
 
 const links = [
   { href: '/blogs', label: 'Blogs' },
@@ -56,7 +58,7 @@ export default function Navbar() {
     const getCurrentUser = async () => {
       try {
         setLoading(true);
-        const userData = await authService.getCurrentUser();
+        const userData: any = await instance.get('/api/auth/user');
         if (userData) {
           setUserData(userData);
           dispatch(login(userData));

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import userDefaultImage from '../../../public/user.jpg';
 import { Fragment } from 'react';
 import Link from 'next/link';
-import authService from '@/appwrite/auth';
+// import authService from '@/appwrite/auth';
 import { logout } from '@/store/authSlice';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';

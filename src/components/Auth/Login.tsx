@@ -1,5 +1,5 @@
 'use client'
-import authService from '@/appwrite/auth';
+// import authService from '@/appwrite/auth';
 import { login } from '@/store/authSlice';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import ClipLoader from "react-spinners/ClipLoader";
 import googleIcon from '../../../public/google-logo.png';
 import CoverPage from './CoverPage';
+import axios from 'axios';
 
 export default function Login() {
 
@@ -21,15 +22,15 @@ export default function Login() {
 
     const dispatch = useDispatch();
     const router = useRouter();
-    React.useEffect(() => {
-        const checkUser = async () => {
-            const currentUser = await authService.getCurrentUser();
-            if (currentUser) {
-                router.push('/');
-            }
-        };
-        checkUser();
-    }, [router]);
+    // React.useEffect(() => {
+    //     const checkUser = async () => {
+    //         const currentUser = await authService.getCurrentUser();
+    //         if (currentUser) {
+    //             router.push('/');
+    //         }
+    //     };
+    //     checkUser();
+    // }, [router]);
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
@@ -38,38 +39,28 @@ export default function Login() {
         } else {
             try {
                 setLoading(true);
-                const session = await authService.login({
-                    email: email,
-                    password: password,
-                });
-                if (session) {
-                    const userData = await authService.getCurrentUser();
-                    if (userData) {
-                        dispatch(login({ userData }))
-                        router.push('/')
-                    }
-                }
-
-                toast.success("Logged In Successfully");
+                const res = await axios.post('/api/auth/login', { email, password });
+                toast.success(res?.data?.message);
+                router.push('/');
             } catch (err: any) {
-                const errorMessage = err?.message;
+                const errorMessage = err?.response?.data?.message;
                 toast.error(errorMessage)
             } finally {
                 setLoading(false);
             }
         }
     }
-    const handleGoogleLogin = async () => {
-        setGoogleLoading(true);
-        console.log("Clicked");
-        await authService.googleLogin()
-            .catch((err) => {
-                console.log(err)
-            })
-            .finally(() => {
-                setGoogleLoading(false);
-            })
-    }
+    // const handleGoogleLogin = async () => {
+    //     setGoogleLoading(true);
+    //     console.log("Clicked");
+    //     await authService.googleLogin()
+    //         .catch((err) => {
+    //             console.log(err)
+    //         })
+    //         .finally(() => {
+    //             setGoogleLoading(false);
+    //         })
+    // }
     return (
         <section>
             <div className="grid grid-cols-1 md:grid-cols-2">
@@ -147,7 +138,7 @@ export default function Login() {
                             <div className="mt-3 space-y-3">
                                 <button
                                     type="button"
-                                    onClick={handleGoogleLogin}
+                                    // onClick={handleGoogleLogin}
                                     className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                                 >
                                     {

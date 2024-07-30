@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import ClipLoader from 'react-spinners/ClipLoader';
 import userDefaultImage from '../../../public/logo.png';
 import ProfileSkeleton from '@/components/Profile/ProfileSkeleton';
-import authService from '@/appwrite/auth';
+// import authService from '@/appwrite/auth';
 
 const Profile = () => {
     const [email, setEmail] = React.useState('');

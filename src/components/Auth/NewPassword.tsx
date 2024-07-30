@@ -1,5 +1,5 @@
 'use client'
-import authService from '@/appwrite/auth';
+// import authService from '@/appwrite/auth';
 import { ArrowRight } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -35,11 +35,7 @@ export default function NewPassword() {
             try {
                 setLoading(true);
                 if (userIdFromUrl && secretFromUrl) {
-                    const res = await authService.updatePassword(
-                        userIdFromUrl,
-                        secretFromUrl,
-                        newPassword
-                    );
+                    
                 }
                 router.push('/')
 

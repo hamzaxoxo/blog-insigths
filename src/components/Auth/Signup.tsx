@@ -1,6 +1,7 @@
 'use client'
-import authService from '@/appwrite/auth';
+// import authService from '@/appwrite/auth';
 import CoverPage from '@/components/Auth/CoverPage';
+import axios from 'axios';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -17,16 +18,7 @@ export default function Signup() {
     const dispatch = useDispatch();
     const router = useRouter();
     const [googleLoading, setGoogleLoading] = React.useState(false);
-    
-    React.useEffect(() => {
-        const checkUser = async () => {
-            const currentUser = await authService.getCurrentUser();
-            if (currentUser) {
-                router.push('/');
-            }
-        };
-        checkUser();
-    }, [router]);
+
 
     const handleRegister = async (e: any) => {
         e.preventDefault();
@@ -36,36 +28,27 @@ export default function Signup() {
         } else {
             try {
                 setLoading(true);
-                const userData = await authService.createAccount({
-                    email: email,
-                    password: password,
-                    name: fullName
-                });
-                toast.success("We have sent a verifivcation link to email address");
-                router.push('/auth/login')
+                const res = await axios.post('/api/auth/signup', { username: fullName, email, password });
+                toast.success(res?.data?.message);
+                router.push('/');
             } catch (err: any) {
-                const errorMessage = err?.code;
-                if (errorMessage === "EMAIL_TAKEN") {
-                    toast.error("Email already exists");
-                    setEmail('');
-                } else {
-                    toast.error(err?.message);
-                }
+                const errorMessage = err?.response?.data?.message;
+                toast.error(errorMessage)
             } finally {
                 setLoading(false);
             }
         }
     };
-    const handleGoogleLogin = async () => {
-        setGoogleLoading(true);
-        await authService.googleLogin()
-            .catch((err) => {
-                console.log(err)
-            })
-            .finally(() => {
-                setGoogleLoading(false);
-            })
-    }
+    // const handleGoogleLogin = async () => {
+    //     setGoogleLoading(true);
+    //     await authService.googleLogin()
+    //         .catch((err) => {
+    //             console.log(err)
+    //         })
+    //         .finally(() => {
+    //             setGoogleLoading(false);
+    //         })
+    // }
 
     return (
         <section className='relative'>
