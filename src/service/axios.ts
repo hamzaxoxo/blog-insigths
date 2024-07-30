@@ -1,5 +1,5 @@
 import axios from "axios";
-import { request } from "http";
+import { NextRequest } from "next/server";
 
 const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_DOMAIN,
@@ -21,7 +21,7 @@ instance.interceptors.response.use(
                     `${process.env.NEXT_PUBLIC_DOMAIN}/auth/token/refresh`
                 );
                 // get token for next response 
-                const token = request?.cookies.get('token')?.value;
+                const token = NextRequest.cookies.get('token')?.value;
                 console.log(token, 'token');
                 // get from next cookies
                 instance.defaults.headers["Authorization"] = `Bearer ${res.data.token}`;
