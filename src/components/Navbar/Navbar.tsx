@@ -6,12 +6,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../../public/logo.png';
 import TopBanner from '../Section/TopBanner';
-import { login } from '@/store/authSlice';
-// import authService from '@/appwrite/auth';
-import AlertBox from '@/utils/AlertBox';
 import UserProfile from './UserProfile';
-import axios from 'axios';
-import instance from '@/service/axios';
+import { RootState, AppDispatch } from '@/store/store';
+import { fetchUsers } from '@/store/usersSlice';
 
 const links = [
   { href: '/blogs', label: 'Blogs' },
@@ -20,22 +17,17 @@ const links = [
   { href: '/profile', label: 'Profile' },
 ];
 
-
-interface User {
-  $id: string;
-  photo?: string;
-  name?: string;
-  email?: string;
-  emailVerification?: boolean;
-}
-
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
-  const dispatch = useDispatch();
-  const authSelector = useSelector((state: any) => state.auth.status);
-  const [loading, setLoading] = React.useState(true);
-  const [emailVerification, setEmailVerification] = React.useState<boolean | null>(false);
-  const [userData, setUserData] = React.useState<User | null>(null);
+  const dispatch: AppDispatch = useDispatch();
+  const authStatus = useSelector((state: RootState) => state.auth.status);
+  const { users, status, error } = useSelector((state: RootState) => state.users);
+
+  React.useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchUsers());
+    }
+  }, [status, dispatch]);
 
   const handleOpen = () => {
     setOpen((prev) => !prev);
@@ -54,30 +46,8 @@ export default function Navbar() {
     };
   }, []);
 
-  React.useEffect(() => {
-    const getCurrentUser = async () => {
-      try {
-        setLoading(true);
-        const userData: any = await instance.get('/api/auth/user');
-        if (userData) {
-          setUserData(userData);
-          dispatch(login(userData));
-          setEmailVerification(userData.emailVerification ?? null);
-        } else {
-          setEmailVerification(null);
-        }
-      } catch (err: any) {
-        console.error('Error getting user data', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getCurrentUser();
-  }, [dispatch]);
-
   return (
     <div className="border-b">
-
       <TopBanner />
       <div className="relative flex h-16 items-center justify-between px-8">
         <Link
@@ -115,15 +85,19 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            {!authSelector ? (
+            {authStatus ? (
+              users.length > 0 ? (
+                <UserProfile user={users[0]} />
+              ) : (
+                <div>Loading...</div>
+              )
+            ) : (
               <Link
                 href="/auth/login"
                 className="w-full items-center justify-center rounded-md border-2 border-primary bg-primary px-6 py-1 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
               >
                 Login
               </Link>
-            ) : (
-              userData && <UserProfile user={userData} />
             )}
           </nav>
           <button

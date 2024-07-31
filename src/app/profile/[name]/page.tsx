@@ -1,4 +1,4 @@
-import AuthLayout from '@/components/Auth/AuthLayout';
+
 import Profile from '@/components/Profile/Profile';
 import { Metadata } from 'next';
 
@@ -32,8 +32,6 @@ export const metadata: Metadata = {
 export default function page() {
 
     return (
-        <AuthLayout>
-            <Profile />
-        </AuthLayout>
+        <Profile />
     )
 }

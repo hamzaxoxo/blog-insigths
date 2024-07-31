@@ -3,9 +3,8 @@ import GoTop from "@/components/GoTop";
 import StoreProvider from "@/store/StoreProvider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
-import React, { Suspense } from "react";
+import React from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
@@ -70,12 +69,10 @@ export default function RootLayout({
       </head> */}
       <body className={`relative ${poppins.className}`}>
         <StoreProvider>
-          <Suspense>
             <ClientLayout>
               {children}
             </ClientLayout>
             <GoTop />
-          </Suspense>
           <Toaster />
           <NextTopLoader />
         </StoreProvider>

@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         const reqBody = await request.json();
         const { email, password } = reqBody;
 
-        const user = await User.findOne({ email }).select('+password');
+        const user = await User.findOne({ email });
         if (!user) {
             return NextResponse.json({ status: "error", message: "User does not exist" }, { status: 400 });
         }
@@ -29,24 +29,23 @@ export async function POST(request: NextRequest) {
             username: user.username,
             email: user.email
         };
-        const token = jwt.sign(tokenData, process.env.NEXT_PUBLIC_JWT_SECRET!, { expiresIn: "5m" });
+        const token = jwt.sign(tokenData, process.env.NEXT_PUBLIC_JWT_SECRET!, { expiresIn: "1h" });
 
         user.refreshToken = token;
         user.updateOne({ last_login: Date.now() });
         user.toJSON();
-
-        // Create token
 
         const response = NextResponse.json({
             message: "Login successful",
             success: true,
             data: user
         });
-        response.cookies.set('token', token, {
+        response.cookies.set(process.env.NEXT_PUBLIC_COOKIE_NAME!, token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
+            secure: process.env.NEXT_PUBLIC_NODE_ENV === 'production',
             sameSite: 'strict'
         });
+
         return response;
 
     } catch (error: any) {

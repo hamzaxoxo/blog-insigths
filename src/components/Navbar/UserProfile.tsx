@@ -1,13 +1,11 @@
 import { Menu, Transition } from '@headlessui/react';
-import { FileText, LogOut, PlusIcon, SettingsIcon, UserIcon } from 'lucide-react';
+import { LogOut, UserIcon } from 'lucide-react';
 import Image from 'next/image';
-import userDefaultImage from '../../../public/user.jpg';
-import { Fragment } from 'react';
 import Link from 'next/link';
-// import authService from '@/appwrite/auth';
-import { logout } from '@/store/authSlice';
-import { useDispatch } from 'react-redux';
+import { Fragment } from 'react';
+import userDefaultImage from '../../../public/user.jpg';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 interface User {
     $id: string;
@@ -17,28 +15,25 @@ interface User {
     emailVerification?: boolean;
 }
 
-interface ProfileDropDownProps {
-    user: User;
+interface UsersState {
+    users: User[];
+    status: 'idle' | 'loading' | 'succeeded' | 'failed';
+    error: string | null;
 }
 
-export default function ProfileDropDown({ user }: ProfileDropDownProps) {
+interface UserProfileProps {
+    user: User;
+}
+const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     const userName = user?.name?.toLowerCase() || 'default-username';
     function classNames(...classes: string[]) {
         return classes.filter(Boolean).join(' ');
     }
     const router = useRouter();
     const dispatch = useDispatch();
-    
+
     const handleLogOut = async () => {
-        await authService.logout()
-            .then(() => {
-                dispatch(logout());
-                // window.location.reload()
-                router.push('/')
-            })
-            .catch((error) => {
-                console.error("Logout failed:", error);
-            })
+
     }
 
 
@@ -155,3 +150,5 @@ export default function ProfileDropDown({ user }: ProfileDropDownProps) {
         </Menu >
     );
 }
+
+export default UserProfile;
