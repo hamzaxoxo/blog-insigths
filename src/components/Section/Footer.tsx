@@ -67,121 +67,51 @@ export default function Footer() {
       icon: FaDribbble,
     },
   ];
- 
+
   return (
-    <footer className="bg-primary relative">
-      <div className="w-full py-6 lg:py-8">
-        <div className="py-6 max-w-7xl mx-auto px-10 sm:px-0  md:flex md:justify-between gap-10">
-          <div className="text-white">
-            <a href="https://flowbite.com/" className="flex items-center">
-              <Image
-                src={logo}
-                className="h-16 w-16 me-3"
-                alt="FlowBite Logo"
-              />
-              <span className="self-center text-2xl font-semibold whitespace-nowrap">
-                Blog Insigths
-              </span>
-            </a>
-            <div className="mb-10 space-x-10 sm:ml-20 ml-0 sm:w-[28rem] w-full">
-              <p>Discover expert  insights and tutorials on programming, web development, and more at Blog Insights. Explore comprehensive articles to enhance your skills and stay updated with the latest in technology.</p>
-            </div>
-
-          </div>
-          <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Resources
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                {
-                  resourceLink.map((res, index) => {
-                    return (
-                      <Link
-                        key={index}
-                        href={res.path}
-                        className="hover:underline "
-                      >
-                        <li className="mb-4">
-                          {res.name}
-                        </li>
-                      </Link>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Follow us
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                {
-                  FootersocialLinks.map((link, index) => {
-                    return (
-                      <Link key={index} href={link.url} className="hover:underline">
-                        <li className="mb-4">
-                          {link.name}
-                        </li>
-                      </Link>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-white">
-                Legal
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                {
-                  legalLinks.map((link, index) => {
-                    return (
-                      <Link key={index} href={link.path} className="hover:underline">
-                        <li className="mb-4">
-                          {link.name}
-                        </li>
-                      </Link>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-          </div>
+    <div className="flex flex-col justify-center px-20 py-16 bg-gray-800 max-md:px-5 bg-[#232536]">
+      <div className="flex gap-5 justify-between w-full text-base leading-7 text-white max-md:flex-wrap max-md:max-w-full">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/aa8ac520fac5539627ac852492b5ec42f80a3dfd288f6b3ec7ccbec330ffbf29?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53"
+          className="shrink-0 max-w-full aspect-[5] w-[140px]"
+        />
+        <div className="flex gap-5 my-auto max-md:flex-wrap">
+          <div className="grow">Home</div>
+          <div>Blog</div>
+          <div>About us</div>
+          <div>Contact us</div>
+          <div className="flex-auto">Privacy Policy</div>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="max-w-7xl mx-auto sm:flex sm:items-center sm:justify-between">
-          <div className="flex w-full sm:flex-row flex-col justify-between items-center">
-            <span className="px-10 text-sm text-gray-500 text-center">
-              © {new Date().getFullYear()}{" "}
-              <a href="https://flowbite.com/" className="hover:underline">
-                Blog Insigths
-              </a>
-              . All Rights Reserved.
-            </span>
-            <div className="flex mt-4 sm:justify-center sm:mt-0">
-              {socialMediaLinks.map((link, index) => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={index}
-                    href={link.url}
-                    className={`text-gray-500 hover:text-gray-900 dark:hover:text-white ${index > 0 ? 'ms-5' : ''}`}
-                  >
-                    <Icon className="w-4 h-4 text-gray-500 hover:text-gray-50" />
-                    <span className="sr-only">{link.name} page</span>
-                  </a>
-                );
-              })}
-
+      </div>
+      <div className="px-16 py-20 mt-14 bg-white max-md:px-5 max-md:mt-10 max-md:max-w-full bg-[#2e3040]">
+        <div className="flex gap-5 max-md:flex-col">
+          <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+            <div className="self-stretch my-auto text-4xl font-bold tracking-tighter leading-10 text-white max-md:mt-10 max-md:max-w-full">
+              Subscribe to our news letter to get latest updates and news
+            </div>
+          </div>
+          <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+            <div className="flex gap-5 mt-1 max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+              <input className="grow px-6 py-2 text-base leading-7 border border-solid border-neutral-600 text-zinc-500 w-fit max-md:px-5" placeholder="Enter your Email" />
+              <div className="px-12 py-4 text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-amber-300 max-md:px-5">
+                Subscribe
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-     
-    </footer>
-
-
+      <div className="flex gap-5 justify-between mt-14 text-base leading-7 text-white max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
+        <div className="flex flex-col">
+          <div>Finstreet 118 2561 Fintown</div>
+          <div className="mt-4">Hello@finsweet.com 020 7993 2905</div>
+        </div>
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5da8ba649e34d02f1f6b7e87d148d73d343e368b1c38dfcf41835d4a6eb01ab5?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53"
+          className="shrink-0 self-start mt-1 w-36 max-w-full aspect-[9.09]"
+        />
+      </div>
+    </div>
   );
 }
