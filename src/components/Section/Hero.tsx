@@ -1,41 +1,37 @@
 import Image from "next/image";
 import React from "react";
-import hero from "../../../public/hero.svg";
+import hero from "../../../public/hero.png";
 
 export default function Hero() {
   return (
-    <div className="max-w-7xl mx-auto w-full">
-      <div className="flex flex-col items-center gap-6 md:flex-row">
-        <div className="max-w-2xl pt-12 md:w-1/2 lg:py-4 lg:pt-32">
-          <div className="text-center md:text-left">
-            <h1 className="font-display text-3xl font-extrabold text-primary lg:text-5xl xl:text-6xl">
-              Unlocking Blog Insights: A Journey Through Words
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg tracking-tight text-gray-500">
-              Learn how to create stunning landing pages and dashboards using
-              Tailwind with our fast-paced, easy-to-follow video collection.
-              Start building professional-quality websites today.
-            </p>
-          </div>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <button
-              className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-3 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
-            >
-              Browse now
-            </button>
-          </div>
+    <div className="flex relative flex-col justify-center text-base font-bold text-white min-h-[720px]">
+      <Image
+        alt="hero"
+        loading="lazy"
+        src={hero}
+        className="object-cover absolute inset-0 size-full"
+      />
+      <div className="flex relative flex-col items-start p-20 w-full md0:px-5 md0:max-w-full">
+        <div className="mt-14 font-semibold leading-5 uppercase tracking-[3px] md0:mt-10 md0:w-full">
+          <span className="font-medium">Posted on</span>{" "}
+          <span className="font-black">startup</span>
         </div>
-        <div className="max-w-4xl pt-12 md:mx-0 md:w-1/2 lg:pt-24">
-          <Image
-            alt="hero"
-            loading="lazy"
-            className="mx-auto w-full rounded-3xl"
-            // width={700}
-            // height={700}
-            src={hero}
-          />
+        <div className="mt-9 text-6xl tracking-tighter leading-[64px] w-[803px] md0:max-w-full md0:text-4xl md0:leading-[51px]">
+          Step-by-step guide to choosing great font pairs
         </div>
+        <div className="mt-7 leading-7 text-amber-300 md0:max-w-full">
+          By <span className="text-amber-300">James West</span> | May 23, 2022{" "}
+        </div>
+        <div className="mt-7 leading-7 w-[599px] md0:max-w-full">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident.
+        </div>
+        <button className="px-12 py-4 mt-14 mb-20 text-lg leading-6 text-gray-800 bg-amber-300 md0:px-5 md0:my-10">
+          Read More &gt;
+        </button>
       </div>
     </div>
   );
 }
+
