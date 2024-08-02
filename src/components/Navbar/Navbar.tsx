@@ -16,8 +16,6 @@ const Navbar = () => {
   ];
   return (
     <div className='bg-[#232536]'>
-
-
       <Container>
         <header>
           <nav className="flex h-[80px] items-center justify-between">
@@ -28,7 +26,7 @@ const Navbar = () => {
             >
               <Image src={logo} alt="AstroSaas" className="w-40" />
             </Link>
-            <ul className="flex justify-center items-center gap-10 max-lg:hidden">
+            <ul className="list-outside flex justify-center items-center gap-10 max-lg:hidden">
               {navLinks.map((item) => (
                 <li key={item.label}>
                   <Link
@@ -65,18 +63,18 @@ const Navbar = () => {
               >
                 <AiOutlineClose className="text-4xl" />
               </div>
-              <ul className=" lg:hidden flex flex-col items-center justify-center h-full ">
+              <ul className="list-outside lg:hidden flex flex-col items-center justify-center h-full">
                 {navLinks.map((item) => (
                   <li key={item.label}>
-                    <a
+                    <Link
                       href={item.href}
-                      className="font-montserrat leading-normal text-lg text-gray-50"
+                      className="text-[16px] text-gray-50 leading-10"
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
-                <button className="px-12 py-2 h-[46px] mt-5 text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-amber-300 max-md:px-5">
+                <button className="px-12 py-2 h-[46px] mt-5 text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-amber-300 hover:bg-amber-400 md:px-5">
                   Subscribe
                 </button>
               </ul>
