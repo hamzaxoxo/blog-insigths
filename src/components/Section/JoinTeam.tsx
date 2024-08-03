@@ -3,7 +3,7 @@ import Container from "../Container";
 
 export default function JoinTeam() {
     return (
-        <Container className="py-20 flex flex-col items-center font-bold text-gray-800 max-w-[407px]">
+        <Container className="py-20 px-5 flex flex-col items-center font-bold text-gray-800 max-w-[407px]">
             <div className="self-stretch w-full text-4xl tracking-tighter leading-10 text-center">
                 Join our team to be a part of our story
             </div>
