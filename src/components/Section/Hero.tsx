@@ -5,7 +5,7 @@ import Container from "../Container";
 
 export default function Hero() {
   return (
-    <div className="-z-10 relative text-base font-bold text-white min-h-[620px]">
+    <div className="mb-20 -z-10 relative text-base font-bold text-white min-h-[620px]">
       <Container>
         <Image
           alt="hero"

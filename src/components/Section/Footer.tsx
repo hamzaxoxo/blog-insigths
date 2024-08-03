@@ -1,83 +1,20 @@
-
-
+import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaDiscord, FaDribbble, FaFacebookF, FaGithub, FaTwitter } from 'react-icons/fa';
 import logo from '../../../public/logo.png';
 import Container from '../Container';
+import { NavbarProps } from '../defaultData/NavLinks';
+import { legalLinks, socialMediaLinks } from '../defaultData/SocialLinks';
 
 export default function Footer() {
 
-  const resourceLink = [
-    {
-      name: "Blogs",
-      path: "/blogs",
-    },
-    {
-      name: "Signup",
-      path: "/auth/signup",
-    },
-    {
-      name: "Login",
-      path: "/auth/login",
-    },
-  ]
-
-  const legalLinks = [
-    {
-      name: "Privacy Policy",
-      path: "/privacy-policy",
-    },
-    {
-      name: "Terms of Service",
-      path: "/terms-of-use",
-    },
-    {
-      name: "Disclaimer",
-      path: "/disclaimer",
-    },
-    {
-      name: "DMCA",
-      path: "/dmca",
-    },
-  ]
-
-  const socialMediaLinks = [
-    {
-      name: "Facebook",
-      url: "#",
-      icon: FaFacebookF,
-    },
-    {
-      name: "Discord",
-      url: "#",
-      icon: FaDiscord,
-    },
-    {
-      name: "Twitter",
-      url: "#",
-      icon: FaTwitter,
-    },
-    {
-      name: "GitHub",
-      url: "#",
-      icon: FaGithub,
-    },
-    {
-      name: "Dribbble",
-      url: "#",
-      icon: FaDribbble,
-    },
-  ];
-
-  const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about-us", label: "About Us" },
-    { href: "#products", label: "Products" },
-    { href: "#contact-us", label: "Contact Us" },
+  const navLinks: NavbarProps['navLinks'] = [
+    { href: "/", label: "Home" },
+    { href: "/blogs", label: "Blogs" },
+    { href: "/sitemap.xml", label: "Sitemap" },
   ];
   return (
-    <div className='bg-[#232536] py-10'>
+    <div className='bg-[#232536] px-5 py-10'>
       <Container>
         <div className="flex flex-col justify-center">
           <div className="flex md:flex-row flex-col gap-5 justify-between w-full text-base leading-7 text-white md:w-full">
@@ -87,14 +24,26 @@ export default function Footer() {
             <ul className="list-outside flex gap-5 my-auto flex-wrap">
               {navLinks.map((item) => (
                 <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="px-5 text-[16px] font-montserrat leading-normal text-gray-50"
-                  >
+                  <Link href={item.href} className="px-5 text-[16px] font-montserrat leading-normal text-gray-50">
                     {item.label}
                   </Link>
                 </li>
               ))}
+              <li className="relative group">
+                <div className="flex items-center gap-2  pb-2">
+                  <button className="text-[16px] leading-normal text-gray-50">
+                    Legal Links
+                  </button>
+                  <ChevronDown size={20} />
+                </div>
+                <div className="invisible absolute -sm:left-64 md:right-10 z-50 w-48 flex flex-col bg-amber-200 text-gray-800 group-hover:visible rounded-md">
+                  {legalLinks.map((link) => (
+                    <Link key={link.name} href={link.path} className="block py-2 pl-2 font-semibold text-gray-500 hover:bg-amber-100 rounded-md hover:text-seconday">
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </li>
             </ul>
           </div>
           <div className="px-6 py-20 mt-14 md:mt-10 bg-[#2e3040]">
@@ -104,7 +53,7 @@ export default function Footer() {
                 Subscribe to our newsletter to get the latest updates and news
               </div>
               <div className="flex xl:flex-row lg:flex-col md:flex-row flex-col items-center gap-4">
-                <input className="bg-transparent sm:w-[332px] w-full px-4 py-3 text-base leading-7 border border-neutral-600 text-zinc-500 md:px-5" placeholder="Enter your Email" />
+                <input className="bg-transparent sm:w-[300px] w-full px-4 py-3 text-base leading-7 border border-neutral-600 text-zinc-500 md:px-5" placeholder="Enter your Email" />
                 <button className="xl:w-[179px] lg:w-full w-full px-8 py-3 text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-amber-300 hover:bg-amber-400 md:px-5">
                   Subscribe
                 </button>

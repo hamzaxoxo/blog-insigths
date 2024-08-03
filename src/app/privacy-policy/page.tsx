@@ -12,8 +12,8 @@ export default function page() {
   return (
     <>
       <Banner title="Privacy Policy" />
-      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-20">
-        <section className="flex flex-col gap-6">
+      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-10">
+        <section className="flex flex-col gap-4">
           <p className="text-base font-medium leading-7 text-slate-600">
             Last updated on November 2, 2021,
           </p>
@@ -30,7 +30,7 @@ export default function page() {
             data.
           </div>
         </section>
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Information transfer and storage
           </h2>
@@ -47,7 +47,7 @@ export default function page() {
             Contact section.
           </div>
         </section>
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Google Analytics
           </h2>
@@ -69,28 +69,28 @@ export default function page() {
           </ul>
         </section>
 
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Disclosure Of Data
           </h2>
           <div className="text-slate-600 text-justify">We may disclose personal information that we collect, or you provide:</div>
         </section>
 
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Disclosure For Law Enforcement.
           </h2>
           <div className="text-slate-600 text-justify">Under certain circumstances, we may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities.</div>
         </section>
 
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Security Of Data
           </h2>
           <div className="text-slate-600 text-justify">The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</div>
         </section>
 
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <div className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             CI/CD Tools
           </div>
@@ -112,7 +112,7 @@ export default function page() {
           <p className="text-justify">For more information on what data GitLab CI/CD collects for what purpose and how the protection of the data is ensured, please visit <a className="font-medium text-blue-700 hover:opacity-80 underline" href="https://docs.github.com/en/articles/github-privacy-statement">GitLab CI/CD Privacy Policy</a> page.</p>
         </section>
 
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Links To Other Sites
           </h2>
@@ -120,20 +120,20 @@ export default function page() {
           <div className="text-slate-600 text-justify">We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</div>
         </section>
 
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Changes to this Privacy Policy
           </h2>
           <div className="text-slate-600 text-justify">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</div>
         </section>
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Acceptance
           </h2>
           <div className="text-slate-600 text-justify"> By continuing to use our website, you acknowledge that you have read and
             understood this Privacy Policy and agree to its terms.</div>
         </section>
-        <section className="flex flex-col gap-6">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             Have a question?
           </h2>

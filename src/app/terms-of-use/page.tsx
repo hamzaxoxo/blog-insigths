@@ -12,7 +12,7 @@ export default function TermsOfService() {
   return (
     <>
       <Banner title="Terms of Services" />
-      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-20">
+      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-10">
         <section className="flex flex-col gap-6">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             1. Terms

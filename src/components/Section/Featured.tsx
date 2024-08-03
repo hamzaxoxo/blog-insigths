@@ -19,7 +19,7 @@ const blogPosts: BlogPost[] = [
 
 export default function Featured() {
   return (
-    <Container className="py-20 flex flex-col">
+    <Container className="pb-20 flex flex-col">
 
       <div className="w-full p-8">
         <div className="flex gap-10 lg:flex-row flex-col">

@@ -13,7 +13,7 @@ export default function page() {
   return (
     <>
       <Banner title="DMCA Policy" />
-      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-12">
+      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-10">
         <div className="text-slate-600 text-justify">
           <p className="mb-5 text-base font-medium leading-7 text-slate-600">
             Last updated on November 2, 2021,

@@ -3,7 +3,7 @@ import Container from "../Container";
 
 export default function AboutUs() {
     return (
-        <Container className="p-10 flex flex-col justify-end w-full">
+        <Container className="pb-20 flex flex-col justify-end w-full">
             <div className="flex object-contain self-end lg:w-[1061px] w-full">
                 <div className="h-[20px] bg-[#FFD050] w-2/3" />
                 <div className="h-[20px] bg-[#592EA9] w-1/3" />

@@ -1,3 +1,7 @@
+import Featured from "@/components/FeaturedPost/Featured";
+import Post from "@/components/PostThumnail/Post";
+import ChooseCategory from "@/components/Section/ChooseCategory";
+import JoinTeam from "@/components/Section/JoinTeam";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,6 +11,11 @@ export const metadata: Metadata = {
 }
 export default function Page() {
   return (
-    <div>Blogs</div>
+    <>
+      <Featured />
+      <Post />
+      <ChooseCategory titile="All Categories" textAlign={false} />
+      <JoinTeam />
+    </>
   );
 }

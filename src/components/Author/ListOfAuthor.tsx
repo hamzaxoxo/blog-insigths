@@ -8,7 +8,7 @@ import Author4 from '../../../public/authors/4.png';
 
 export default function ListOfAuthor() {
     return (
-        <Container className="flex flex-col justify-center items-center p-10 !pt-0">
+        <Container className="flex flex-col justify-center items-center pb-20 !pt-0">
             <div className="self-center text-4xl font-bold tracking-tighter leading-10 text-gray-800">
                 List of Authors
             </div>

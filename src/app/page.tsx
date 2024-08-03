@@ -26,7 +26,7 @@ export default function Home() {
       </svg>
       <Hero />
       <Featured />
-      <ChooseCategory />
+      <ChooseCategory titile="Choose Categories" textAlign={true} />
       <AboutUs />
       <DiscoverOurStory />
       <ListOfAuthor />

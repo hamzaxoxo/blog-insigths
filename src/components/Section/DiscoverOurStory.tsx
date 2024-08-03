@@ -4,7 +4,7 @@ import Image from "next/image";
 import DiscoverPost from "../../../public/discover.png";
 export default function DiscoverOurStory() {
     return (
-        <Container className="pt-20 font-bold text-gray-800 p-5">
+        <Container className="font-bold text-gray-800 pb-20">
             <div className="relative h-screen w-full">
                 <div>
                     <Image

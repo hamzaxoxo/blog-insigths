@@ -10,7 +10,7 @@ export default function page() {
     return (
         <>
             <Banner title="Disclaimer" />
-            <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-12">
+            <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-10">
 
                 <section className="flex flex-col gap-6">
                     <div>

@@ -1,3 +1,5 @@
+import { IconType } from "react-icons";
+
 export interface Tag {
     id: string;
     name: string;
@@ -25,4 +27,16 @@ export interface Post {
         }
     }
 
+}
+
+
+export interface Link {
+    name: string;
+    path: string;
+}
+
+export interface SocialMediaLink {
+    name: string;
+    url: string;
+    icon: IconType;
 }

@@ -20,12 +20,12 @@ const categoryList: CategoryProps[] = [
     { name: "Technology", tagline: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", icon: TechIcon },
 ];
 
-export default function ChooseCategory() {
+export default function ChooseCategory({ titile, textAlign }: { titile: string, textAlign: boolean }) {
     return (
-        <Container className="pb-20 px-5 flex flex-col items-center">
-            <div className="text-4xl font-bold tracking-tighter leading-none text-gray-800">
-                Choose A Category
-            </div>
+        <Container className={`pb-20 px-5 flex flex-col ${textAlign ? "items-center" : "items-start"}`}>
+            <h1 className="text-4xl font-bold tracking-tighter leading-none text-gray-800">
+                {titile}
+            </h1>
             <div className="mt-12 w-full">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                     {

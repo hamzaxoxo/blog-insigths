@@ -6,14 +6,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from 'next/link';
 import Container from '../Container';
+import { navLinks } from '../defaultData/NavLinks';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#about-us", label: "About Us" },
-    { href: "#products", label: "Products" },
-    { href: "#contact-us", label: "Contact Us" },
-  ];
+  
   return (
     <div className='bg-[#232536]'>
       <Container>

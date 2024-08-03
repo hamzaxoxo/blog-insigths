@@ -4,7 +4,7 @@ import Avatar from '../../../public/user.png';
 import Container from "../Container";
 export default function Testimonials() {
     return (
-        <Container className="p-5">
+        <Container className="pb-20">
             <div className="bg-orange-50 md:px-40 md:py-20 p-10  flex md:flex-row sm:flex-col flex-col gap-5 justify-between w-full mx-auto">
                 <div className="flex flex-col items-start self-start mt-3 text-base text-gray-800">
                     <div className="font-semibold leading-none uppercase tracking-[3px]">

@@ -1,4 +1,6 @@
 
+import post from "../../../public/post.png";
+
 export interface Blog {
     id: number;
     title: string;
@@ -18,7 +20,7 @@ export const blogData: Blog[] = [
     {
         id: 1,
         title: "TypeScript: Best Practices & Tools for QA Engineer",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "TypeScript tools for QA",
         category: "testing tool",
         summary: "JavaScript is a popular programming language commonly used for web development. According to the StackOverflow Survey of 2023, it has been the top-used programming language for 10 years.",
@@ -32,7 +34,7 @@ export const blogData: Blog[] = [
     {
         id: 2,
         title: "Understanding Agile Methodologies in Software Testing",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "Agile Methodologies",
         category: "agile",
         summary: "Agile methodologies are crucial for modern software development. Learn the best practices for integrating agile into your QA processes.",
@@ -46,7 +48,7 @@ export const blogData: Blog[] = [
     {
         id: 3,
         title: "The Importance of Test Automation in Continuous Integration",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "Test Automation",
         category: "automation testing",
         summary: "Continuous Integration and Test Automation are a match made in heaven. Discover why test automation is essential for CI.",
@@ -60,7 +62,7 @@ export const blogData: Blog[] = [
     {
         id: 4,
         title: "API Testing: Tools and Best Practices",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "API Testing",
         category: "api testing",
         summary: "API testing ensures your backend is as reliable as your frontend. Learn about the best tools and practices for effective API testing.",
@@ -74,7 +76,7 @@ export const blogData: Blog[] = [
     {
         id: 5,
         title: "BDD with Cucumber: A Step-by-Step Guide",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "BDD with Cucumber",
         category: "bdd",
         summary: "Behavior Driven Development (BDD) with Cucumber is a powerful combination. This guide walks you through the basics and beyond.",
@@ -88,7 +90,7 @@ export const blogData: Blog[] = [
     {
         id: 6,
         title: "Cypress: The Future of Frontend Testing",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "Cypress Testing",
         category: "cypress",
         summary: "Cypress is quickly becoming the go-to tool for frontend testing. Learn why it's gaining popularity and how to use it effectively.",
@@ -102,7 +104,7 @@ export const blogData: Blog[] = [
     {
         id: 7,
         title: "Integrating JavaScript Testing Tools in Your Workflow",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "JavaScript Testing Tools",
         category: "javascript",
         summary: "JavaScript testing tools are essential for modern web development. This article covers how to integrate them into your workflow.",
@@ -116,7 +118,7 @@ export const blogData: Blog[] = [
     {
         id: 8,
         title: "Effective Mobile Testing Strategies",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "Mobile Testing",
         category: "mobile testing",
         summary: "Mobile testing is crucial as more users access services via mobile devices. Learn effective strategies for mobile testing.",
@@ -130,7 +132,7 @@ export const blogData: Blog[] = [
     {
         id: 9,
         title: "Test Management Insights: Tools and Best Practices",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "Test Management",
         category: "test management",
         summary: "Effective test management is key to successful software projects. Discover the best tools and practices for managing your tests.",
@@ -144,7 +146,7 @@ export const blogData: Blog[] = [
     {
         id: 10,
         title: "CI/CD Best Practices for QA Engineers",
-        imgSrc: "https://testomat.io/wp-content/uploads/2024/06/Typescript_best_tools-360x192.png",
+        imgSrc: post.src,
         imgAlt: "CI/CD Best Practices",
         category: "ci/cd",
         summary: "Continuous Integration and Continuous Deployment (CI/CD) are vital for modern development. Learn best practices for QA engineers.",
