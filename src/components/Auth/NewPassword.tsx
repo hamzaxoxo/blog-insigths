@@ -1,5 +1,4 @@
 'use client'
-// import authService from '@/appwrite/auth';
 import { ArrowRight } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -17,12 +16,6 @@ export default function NewPassword() {
 
     const userIdFromUrl = searchParams.get('userId');
     const secretFromUrl = searchParams.get('secret');
-
-    // React.useEffect(() => {
-    //     if (userIdFromUrl === "" || secretFromUrl === "") {
-    //         redirect('/');
-    //     }
-    // }, [router]);
 
     const handleChangePass = async (e: any) => {
         e.preventDefault();

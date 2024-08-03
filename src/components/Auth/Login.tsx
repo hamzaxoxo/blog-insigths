@@ -1,5 +1,5 @@
 'use client'
-// import authService from '@/appwrite/auth';
+// import import { clientPromise } from "@/lib/mongodb"; from '@/appwrite/auth';
 import { login } from '@/store/authSlice';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';

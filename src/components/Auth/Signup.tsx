@@ -1,5 +1,4 @@
 'use client'
-// import authService from '@/appwrite/auth';
 import CoverPage from '@/components/Auth/CoverPage';
 import axios from 'axios';
 import { ArrowRight } from 'lucide-react';
@@ -39,17 +38,6 @@ export default function Signup() {
             }
         }
     };
-    // const handleGoogleLogin = async () => {
-    //     setGoogleLoading(true);
-    //     await authService.googleLogin()
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    //         .finally(() => {
-    //             setGoogleLoading(false);
-    //         })
-    // }
-
     return (
         <section className='relative'>
             <div className="grid grid-cols-1 md:grid-cols-2">

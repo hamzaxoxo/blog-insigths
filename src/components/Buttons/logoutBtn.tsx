@@ -1,24 +1,11 @@
-import { useDispatch } from 'react-redux'
-// import authService from '@/appwrite/auth';
-import React from 'react'
-import { logout } from '@/store/authSlice';
+import React from 'react';
 import { ClipLoader } from 'react-spinners';
 
 function LogoutBtn() {
-    const dispath = useDispatch();
     const [loading, setLoading] = React.useState(false);
 
     const handleLogOut = async () => {
-        setLoading(true)
-        await authService.logout()
-            .then(() => {
-                dispath(logout());
-                // window.location.reload();
-            })
-            .catch((error) => {
-                console.error("Logout failed:", error);
-            })
-            .finally(() => setLoading(false))
+            
     }
     return (
         <button

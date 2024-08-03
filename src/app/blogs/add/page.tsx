@@ -1,7 +1,3 @@
-
-import AuthLayout from '@/components/Auth/AuthLayout';
-import BlogForm from '@/components/Blog/BlogForm';
-
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,8 +9,9 @@ export const metadata: Metadata = {
 export default function page() {
 
     return (
-        <AuthLayout>
-            <BlogForm />
-        </AuthLayout>
-    );
+        <div>
+            <h1>Add Blog Post</h1>
+            <p>Create and publish new blog posts to share your insights and stories with our community. Join our blogging platform and start writing today.</p>
+        </div>
+    )
 }

@@ -1,7 +1,6 @@
 'use client';
-// import authService from '@/appwrite/auth';
-import { toast } from 'react-hot-toast';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import { ClipLoader } from 'react-spinners';
 
 export default function Forget() {
@@ -18,7 +17,6 @@ export default function Forget() {
 
         try {
             setLoading(true);
-            // await authService.passRecovery({ email });
             setEmail('')
         } catch (err: any) {
             toast.error(err.message || "An error occurred");
