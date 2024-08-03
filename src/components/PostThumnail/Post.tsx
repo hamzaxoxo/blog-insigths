@@ -11,7 +11,7 @@ export default function Post() {
       </h1>
       <div className="space-y-16">
         {blogData.map((blog) => (
-          <div className="flex gap-5 max-md:flex-col">
+          <div key={blog.id} className="flex gap-5 max-md:flex-col">
             <div className="flex flex-col w-[44%] max-md:ml-0 max-md:w-full">
               <Image
                 alt={blog.imgAlt}

@@ -1,5 +1,6 @@
+import Image from "next/image";
 import * as React from "react";
-
+import featured from '../../../public/featured.png'
 export default function Featured() {
     return (
         <div className="flex flex-col">
@@ -28,9 +29,10 @@ export default function Featured() {
                         </div>
                     </div>
                     <div className="flex flex-col ml-5 w-[45%] max-md:ml-0 max-md:w-full">
-                        <img
+                        <Image
+                            alt="featured"
                             loading="lazy"
-                            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/3639433c0a3f901be72280cc2df10afb83c55ff3bf425571ab5c897aefc5fb73?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53"
+                            src={featured}
                             className="object-contain grow w-full aspect-[1.43] max-md:mt-10 max-md:max-w-full"
                         />
                     </div>
