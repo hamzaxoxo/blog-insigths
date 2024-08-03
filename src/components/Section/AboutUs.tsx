@@ -1,16 +1,16 @@
 import * as React from "react";
+import Container from "../Container";
 
-export function AboutUs() {
+export default function AboutUs() {
     return (
-        <div className="flex flex-col">
-            <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/627d2a9060a58e57743fd2ca77d9e603d46471484aa98c2d2cef6c1a7913d319?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53"
-                className="self-center ml-28 aspect-[50] max-w-[1061px] w-[1061px] md0:max-w-full"
-            />
-            <div className="p-20 w-full bg-gray-100 md0:px-5 md0:max-w-full">
-                <div className="flex gap-5 md0:flex-col">
-                    <div className="flex flex-col w-6/12 md0:ml-0 md0:w-full">
+        <Container className="p-10 flex flex-col justify-end w-full">
+            <div className="flex object-contain self-end lg:w-[1061px] w-full">
+                <div className="h-[20px] bg-[#FFD050] w-2/3" />
+                <div className="h-[20px] bg-[#592EA9] w-1/3" />
+            </div>
+            <div className="lg:px-10 p-5 w-full bg-[#F4F0F8] md0:px-5 md0:max-w-full">
+                <div className="flex gap-5 lg:flex-row flex-col">
+                    <div className="flex flex-col w-full">
                         <div className="flex flex-col self-stretch my-auto text-base font-bold text-gray-800 md0:mt-10 md0:max-w-full">
                             <div className="font-semibold uppercase tracking-[3px] md0:max-w-full">
                                 ABOUT US
@@ -27,10 +27,10 @@ export function AboutUs() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col ml-5 w-6/12 md0:ml-0 md0:w-full">
+                    <div className="flex flex-col w-full">
                         <div className="flex flex-col mt-6 text-base text-gray-800 md0:mt-10 md0:max-w-full">
                             <div className="font-semibold uppercase tracking-[3px] md0:max-w-full">
-                                Our mision
+                                Our mission
                             </div>
                             <div className="mt-9 text-3xl font-bold tracking-tighter leading-10 md0:max-w-full">
                                 Creating valuable content for creatives all around the world
@@ -45,6 +45,6 @@ export function AboutUs() {
                     </div>
                 </div>
             </div>
-        </div>
+        </Container>
     );
 }

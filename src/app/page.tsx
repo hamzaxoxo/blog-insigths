@@ -1,5 +1,6 @@
 import ListOfAuthor from "@/components/Author/ListOfAuthor";
-import { AboutUs } from "@/components/Section/AboutUs";
+import AboutUs from "@/components/Section/AboutUs";
+import ChooseCategory from "@/components/Section/ChooseCategory";
 import DiscoverOurStory from "@/components/Section/DiscoverOurStory";
 import Featured from "@/components/Section/Featured";
 import Hero from "@/components/Section/Hero";
@@ -26,15 +27,14 @@ export default function Home() {
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
       <Hero />
+      <Featured />
+      <ChooseCategory />
+      <AboutUs />
       <DiscoverOurStory />
       <ListOfAuthor />
       <LogoComponent />
       <Testimonials />
       <JoinTeam />
-      {/* <Featured /> */}
-      {/* <AboutUs /> */}
-      {/* <Newsletter /> */}
-      {/* <Testimonials /> */}
     </div>
 
   );
