@@ -1,15 +1,23 @@
 "use client";
+
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import logo from '../../../public/logo.png';
-import React, { useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { AiOutlineClose } from "react-icons/ai";
 import Link from 'next/link';
+import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { RxHamburgerMenu } from "react-icons/rx";
+import logo from '../../../public/logo.png';
 import Container from '../Container';
 import { navLinks } from '../defaultData/NavLinks';
+import UserProfile from './UserProfile';
+
+
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  let status;
+  let user;
+
   return (
     <div className='bg-[#232536]'>
       <Container>
@@ -33,29 +41,27 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              <button className="px-12 py-2 h-[46px] text-[16px] font-bold leading-6 text-gray-800 whitespace-nowrap bg-gray-50 max-md:px-5">
-                Subscribe
-              </button>
+              {status === "loading" ? (
+                <div className="animate-pulse rounded-full bg-slate-700 h-10 w-10" />
+              ) : (
+                user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
+              )}
             </ul>
 
-            <div
+            <button
               className="hidden max-lg:block cursor-pointer text-gray-50"
-              onClick={() => {
-                setIsMenuOpen(!isMenuOpen);
-              }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <RxHamburgerMenu className="text-xl" />
-            </div>
+            </button>
           </nav>
         </header>
         {isMenuOpen && (
           <div>
             <nav className="fixed top-0 right-0 left-0 bottom-0 lg:bottom-auto bg-[#2E3040]">
               <div
-                className="hidden max-lg:block fixed right-0  px-8 py-4 cursor-pointer text-gray-50"
-                onClick={() => {
-                  setIsMenuOpen(!isMenuOpen);
-                }}
+                className="hidden max-lg:block fixed right-0 px-8 py-4 cursor-pointer text-gray-50"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 <AiOutlineClose className="text-4xl" />
               </div>
@@ -70,9 +76,11 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
-                <button className="px-12 py-2 h-[46px] mt-5 text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-amber-300 hover:bg-amber-400 md:px-5">
-                  Subscribe
-                </button>
+                {status === "loading" ? (
+                  <div className="animate-pulse rounded-full bg-slate-700 h-10 w-10" />
+                ) : (
+                  user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
+                )}
               </ul>
             </nav>
           </div>
@@ -81,4 +89,11 @@ const Navbar = () => {
     </div>
   );
 };
+
+function SignInButton({ color }: any) {
+  return <Link href={'/auth/login'} className={`px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-[${color}] md:px-5`}>
+    Subscribe
+  </Link>;
+}
+
 export default Navbar;

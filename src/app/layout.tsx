@@ -74,7 +74,9 @@ export default function RootLayout({
           </ClientLayout>
           <GoTop />
           <Toaster />
-          <NextTopLoader />
+          <NextTopLoader
+            color="#FDD251"
+          />
         </StoreProvider>
       </body>
     </html>

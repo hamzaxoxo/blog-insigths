@@ -28,7 +28,7 @@ export default function Forget() {
     return (
         <section className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24 overflow-hidden">
             <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-                <h1 className="text-3xl font-bold leading-tight text-black sm:text-3xl">Resetting Your Password</h1>
+                <h1 className="text-3xl font-bold leading-tight text-black sm:text-3xl">Reset Your Password with Ease!</h1>
                 <p className="mt-2 text-sm text-gray-600">Please enter your email to reset access to your password.</p>
 
                 <form className="mt-8" onSubmit={handleRegister}>

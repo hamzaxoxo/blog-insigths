@@ -93,7 +93,7 @@ export default function Login() {
                                             Password
                                         </label>
                                         <Link
-                                            href="/auth/forget"
+                                            href="/auth/forget-password"
                                             title=""
                                             className="text-sm font-semibold text-black hover:underline"
                                         > Forgot password?
