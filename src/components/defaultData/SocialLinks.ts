@@ -1,4 +1,4 @@
-import { FaDiscord, FaDribbble, FaFacebookF, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaDribbble, FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { Link, SocialMediaLink } from '../Type/Types';
 
 
@@ -63,3 +63,28 @@ export const socialMediaLinks: SocialMediaLink[] = [
         icon: FaDribbble,
     },
 ];
+
+export const aboutSocialLinks: SocialMediaLink[] = [
+    {
+        name: "Facebook",
+        url: "#",
+        icon: FaFacebookF,
+    },
+    {
+        name: "Twitter",
+        url: "#",
+        icon: FaTwitter,
+    },
+    {
+        name: "Instagram",
+        url: "#",
+        icon: FaInstagram,
+    },
+    {
+        name: "LinkedIn",
+        url: "#",
+        icon: FaLinkedin,
+    },
+
+
+]

@@ -3,11 +3,11 @@ import * as React from "react";
 import Container from "../Container";
 import { blogData } from "../defaultData/blogData";
 import Pagination from "../Pagination/Pagination";
-export default function Post() {
+export default function Post({ title }: { title: string }) {
   return (
-    <Container className="lg:px-10 px-5">
+    <Container className="lg:px-10 px-5 mt-[127px]">
       <h1 className="self-stretch my-10 text-4xl font-bold tracking-tighter leading-10 ">
-        All Posts
+        {title}
       </h1>
       <div className="space-y-16">
         {blogData.map((blog) => (

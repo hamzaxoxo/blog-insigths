@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <>
       <Featured />
-      <Post />
+      <Post title="All Posts" />
       <ChooseCategory titile="All Categories" textAlign={false} />
       <JoinTeam />
     </>

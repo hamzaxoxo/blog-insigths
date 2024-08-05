@@ -49,7 +49,7 @@ const Navbar = () => {
             </ul>
 
             <button
-              className="hidden max-lg:block cursor-pointer text-gray-50"
+              className="px-5 hidden max-lg:block cursor-pointer text-gray-50"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <RxHamburgerMenu className="text-xl" />
