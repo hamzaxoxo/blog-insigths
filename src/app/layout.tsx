@@ -2,12 +2,12 @@ import ClientLayout from "@/components/Auth/ClientLayout";
 import GoTop from "@/components/GoTop";
 import StoreProvider from "@/store/StoreProvider";
 import type { Metadata } from "next";
-import { Poppins, Sen } from "next/font/google";
+import { Sen } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import React from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-
+export const dynamic = 'force-dynamic'
 
 const sen = Sen({
   subsets: ["latin"],

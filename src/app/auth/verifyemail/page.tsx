@@ -5,7 +5,7 @@ import check from '../../../../public/gifs/check.json'
 import error from '../../../../public/gifs/error.json'
 import Container from "@/components/Container";
 import Link from "next/link";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import axios from "axios";
 
 export default function Page() {
@@ -14,6 +14,7 @@ export default function Page() {
     const token = searchParams.get('token');
     const [invalid, setInvalid] = React.useState(false);
     const [loading, setLoading] = React.useState(true);
+    
     React.useEffect(() => {
         document.title = "Email Verified Successfully | Blog Insigths"
         if (!token) {

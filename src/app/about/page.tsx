@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 export default function page() {
   return (
     <>
-      <div className="bg-pinkish p-5">
+      <div className="bg-pinkish">
         <Container>
-          <div className="flex flex-col">
-            <div className="flex flex-col items-center md:pt-24 w-full md:max-w-full">
+          <div className="flex flex-col  px-5">
+            <div className="flex flex-col items-center w-full md:max-w-full">
               <div className="flex flex-col w-full max-w-screen-lg max-md:max-w-full">
                 <div className="max-w-full w-[952px]">
-                  <div className="flex gap-5 max-md:flex-col">
+                  <div className="flex gap-5 max-md:flex-col py-[104px]">
                     <div className="flex flex-col w-[27%] max-md:ml-0 max-md:w-full">
                       <Image
                         loading="lazy"
@@ -62,11 +62,10 @@ export default function page() {
                     </div>
                   </div>
                 </div>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/b867e5d612d763c6f98db68cee6b43283e705f4bcfc9712ad2f0ff8fbada17ef?apiKey=0262c9a8fe64483788a22fad731b4e53&&apiKey=0262c9a8fe64483788a22fad731b4e53"
-                  className="object-contain mt-28 w-full aspect-[43.48] max-md:mt-10 max-md:max-w-full"
-                />
+                <div className="flex object-contain self-end lg:w-[1061px] w-full">
+                  <div className="h-[20px] bg-[#FFD050] w-2/3" />
+                  <div className="h-[20px] bg-[#592EA9] w-1/3" />
+                </div>
               </div>
             </div>
           </div>

@@ -66,16 +66,16 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
     <div class="container">
         <header>
             <a href="#">
-                <img src="http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75O alt="Blog Insigths Logo">
+                <img src="${process.env.PRODUCTION_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75O alt="Blog Insigths Logo">
             </a>
-        </header>
+        </header>PRODUCTION_URL
 
         <main>
             <h2>Hi ${name},</h2>
             <p>
                 Alicia has invited you to join the team on <span class="font-semibold">Blog Insigths</span>.
             </p>
-            <a href="http://localhost:3000/auth/verifyemail?token=${token}" class="button">Verify Now</a>
+            <a href="${process.env.PRODUCTION_URL}/auth/verifyemail?token=${token}" class="button">Verify Now</a>
             <p>
                 Thanks, <br>
                 Blog Insigths team
