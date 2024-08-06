@@ -14,7 +14,6 @@ export default function Signup() {
     const [fullName, setFullName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const dispatch = useDispatch();
     const router = useRouter();
     const [googleLoading, setGoogleLoading] = React.useState(false);
 
@@ -22,12 +21,12 @@ export default function Signup() {
     const handleRegister = async (e: any) => {
         e.preventDefault();
 
-        if (fullName === "" || email === "" || password === "") {
+        if (email === "" || password === "") {
             toast.error("Fields Can't be Empty");
         } else {
             try {
                 setLoading(true);
-                const res = await axios.post('/api/auth/signup', { username: fullName, email, password });
+                const res = await axios.post('/api/auth/user/signup', { fullName, email, password });
                 toast.success(res?.data?.message);
                 router.push('/');
             } catch (err: any) {

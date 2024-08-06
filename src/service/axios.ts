@@ -7,7 +7,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(async function (config) {
-    const token = await localStorage.getItem("token");
+    const token = getCookie("token");
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -26,7 +26,7 @@ instance.interceptors.response.use(
             try {
                 // Get a new token
                 const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/refresh-token`);
-                localStorage.setItem("token", `Bearer ${res.data.token}`);
+                document.cookie = `token=${res.data.token}; path=/;`;
                 instance.defaults.headers["Authorization"] = `Bearer ${res.data.token}`;
 
                 return instance(originalRequest);
@@ -39,5 +39,17 @@ instance.interceptors.response.use(
         return Promise.reject(error);
     }
 );
+
+function getCookie(name: string) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        const cookieValue = parts.pop();
+        if (cookieValue !== undefined) {
+            return cookieValue.split(';').shift() || null;
+        }
+    }
+    return null;
+}
 
 export default instance;

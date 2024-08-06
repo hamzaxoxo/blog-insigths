@@ -1,32 +1,32 @@
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
-// let isConnected = false;
+let isConnected = false;
 
-// export async function connect() {
-//     console.log('Already connected to MongoDB');
+export async function connect() {
+    console.log('Already connected to MongoDB');
 
-//     if (isConnected) {
-//         console.log('Already connected to MongoDB');
-//         return;
-//     }
+    if (isConnected) {
+        console.log('Already connected to MongoDB');
+        return;
+    }
 
-//     try {
-//         await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI!);
-//         isConnected = true;
+    try {
+        await mongoose.connect(process.env.DATABASE_URL!);
+        isConnected = true;
 
-//         const connection = mongoose.connection;
+        const connection = mongoose.connection;
 
-//         connection.on('connected', () => {
-//             console.log('MongoDB connected successfully');
-//         });
+        connection.on('connected', () => {
+            console.log('MongoDB connected successfully');
+        });
 
-//         connection.on('error', (err) => {
-//             console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
-//             process.exit();
-//         });
+        connection.on('error', (err) => {
+            console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
+            process.exit();
+        });
 
-//     } catch (error) {
-//         console.log('Something went wrong!');
-//         console.log(error);
-//     }
-// }
+    } catch (error) {
+        console.log('Something went wrong!');
+        console.log(error);
+    }
+}
