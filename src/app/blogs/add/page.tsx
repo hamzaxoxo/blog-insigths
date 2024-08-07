@@ -1,3 +1,4 @@
+import Add from '@/components/Blog/Add';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,9 +10,6 @@ export const metadata: Metadata = {
 export default function page() {
 
     return (
-        <div>
-            <h1>Add Blog Post</h1>
-            <p>Create and publish new blog posts to share your insights and stories with our community. Join our blogging platform and start writing today.</p>
-        </div>
+        <Add />
     )
 }

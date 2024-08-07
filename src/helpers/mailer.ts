@@ -1,5 +1,4 @@
 import User from "@/models/User";
-import { render } from "@react-email/components";
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import { emailTemplate } from "../temeplete/emailTemplate";

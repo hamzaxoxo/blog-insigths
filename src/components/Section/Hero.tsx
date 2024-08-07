@@ -9,9 +9,11 @@ export default function Hero() {
       <Container>
         <Image
           alt="hero"
-          loading="lazy"
           src={hero}
-          className="object-cover absolute inset-0 size-full brightness-50"
+          layout="fill"
+          objectFit="cover"
+          priority={true}
+          className="absolute inset-0 brightness-50"
         />
         <div className="flex relative flex-col items-start p-5 w-full">
           <div className="text-xl mt-10 font-semibold leading-5 uppercase tracking-[3px] md:mt-14 w-full">
