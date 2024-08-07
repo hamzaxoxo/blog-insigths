@@ -1,9 +1,9 @@
 
-import User from "@/models/User";
-import { connect } from "@/lib/mongodb";
-import { NextRequest, NextResponse } from "next/server";
-import bcryptjs from "bcryptjs";
 import { sendEmail } from "@/helpers/mailer";
+import { connect } from "@/lib/mongodb";
+import User from "@/models/User";
+import bcryptjs from "bcryptjs";
+import { NextRequest, NextResponse } from "next/server";
 
 
 connect()
@@ -14,16 +14,12 @@ export async function POST(request: NextRequest) {
         const reqBody = await request.json()
         const { fullName, email, password } = reqBody
 
-        console.log(reqBody);
-
-        //check if user already exists
         const user = await User.findOne({ email })
 
         if (user) {
             return NextResponse.json({ error: "User already exists" }, { status: 400 })
         }
 
-        //hash password
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
 
@@ -34,14 +30,11 @@ export async function POST(request: NextRequest) {
         })
 
         const savedUser = await newUser.save()
-        console.log(savedUser);
-
-        //send verification email
-
         await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id, name: fullName })
 
         return NextResponse.json({
             message: "User Registeref Successfully",
+            verifyMessage: "Verification Email Sent",
             success: true,
             savedUser
         })

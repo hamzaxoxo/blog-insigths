@@ -66,14 +66,14 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
     <div class="container">
         <header>
             <a href="#">
-                <img src="${process.env.PRODUCTION_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75O alt="Blog Insigths Logo">
+                <img src="${process.env.PRODUCTION_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75" alt="Blog Insigths Logo">
             </a>
-        </header>PRODUCTION_URL
+        </header>
 
         <main>
             <h2>Hi ${name},</h2>
             <p>
-                Alicia has invited you to join the team on <span class="font-semibold">Blog Insigths</span>.
+                You're almost there! Just one more step to go. Click the button below to verify your email address and start using <span class="font-semibold">Blog Insigths</span>.
             </p>
             <a href="${process.env.PRODUCTION_URL}/auth/verifyemail?token=${token}" class="button">Verify Now</a>
             <p>

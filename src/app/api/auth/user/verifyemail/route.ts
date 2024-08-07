@@ -15,8 +15,6 @@ export async function POST(request: NextRequest) {
         if (!user) {
             return NextResponse.json({ error: "Invalid token" }, { status: 400 })
         }
-        console.log(user);
-
         user.isVerfied = true;
         user.verifyToken = undefined;
         user.verifyTokenExpiry = undefined;

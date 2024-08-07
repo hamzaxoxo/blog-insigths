@@ -1,7 +1,8 @@
 import User from "@/models/User";
-import { emailTemplate } from '@/temeplete/emailTemplate';
+import { render } from "@react-email/components";
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
+import { emailTemplate } from "../temeplete/emailTemplate";
 
 interface EmailProps {
     name: string;
@@ -24,25 +25,25 @@ export const sendEmail = async ({ email, emailType, userId, name }: EmailProps) 
                 { forgotPasswordToken: token, forgotPasswordTokenExpiry: Date.now() + 3600000 })
         }
 
-        var transport = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525,
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             auth: {
-                user: process.env.NEXT_PUBLIC_USERNAME,
-                pass: process.env.NEXT_PUBLIC_PASSWORD
-            }
+                user: process.env.NEXT_PUBLIC_GMAIL_EMAIL,
+                pass: process.env.NEXT_PUBLIC_GMAIL_PASS,
+            },
         });
 
-
-        const mailOptions = {
-            from: process.env.NEXT_PUBLIC_REPLY_EMAIL,
+        const options = {
+            from: 'no-reply@bloginsigths.com',
             to: email,
-            subject: emailType === "VERIFY" ? "Verify Your Email" : "Reset Your Password",
+            subject: emailType === "VERIFY"
+                ? "Verify Your Email Address" : "Reset Your Password",
             html: emailTemplate(token, emailType, name)
         };
-
-        const mailresponse = await transport.sendMail
-            (mailOptions);
+        const mailresponse = await transporter.sendMail
+            (options);
         return mailresponse;
 
     } catch (error: any) {

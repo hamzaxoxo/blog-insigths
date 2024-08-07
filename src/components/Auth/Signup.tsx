@@ -14,6 +14,7 @@ export default function Signup() {
     const [fullName, setFullName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [verifyPopUp, setVerifyPopUp] = React.useState(false);
     const router = useRouter();
     const [googleLoading, setGoogleLoading] = React.useState(false);
 
@@ -28,9 +29,13 @@ export default function Signup() {
                 setLoading(true);
                 const res = await axios.post('/api/auth/user/signup', { fullName, email, password });
                 toast.success(res?.data?.message);
-                router.push('/');
+                setVerifyPopUp(true);
+                setTimeout(() => {
+                    setVerifyPopUp(false);
+                }, 2000);
             } catch (err: any) {
-                const errorMessage = err?.response?.data?.message;
+                const errorMessage = err?.response?.data?.error;
+                // console.log(errorMessage);
                 toast.error(errorMessage)
             } finally {
                 setLoading(false);
@@ -56,7 +61,13 @@ export default function Signup() {
                                 Get into your account
                             </Link>
                         </p>
-                        <form className="mt-8">
+                        <form className="mt-4">
+                            {
+                                verifyPopUp &&
+                                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 my-2 rounded relative" role="alert">
+                                    <span className="text-xs font-bold">Verification Email Sent to your Email Address!</span>
+                                </div>
+                            }
                             <div className="space-y-5">
                                 {/* Full Name */}
                                 <div>

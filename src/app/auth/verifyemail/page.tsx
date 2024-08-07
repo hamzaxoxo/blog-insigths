@@ -1,6 +1,8 @@
 'use client'
 import React from "react";
 import Lottie from "lottie-react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import check from '../../../../public/gifs/check.json'
 import error from '../../../../public/gifs/error.json'
 import Container from "@/components/Container";
@@ -10,17 +12,17 @@ import axios from "axios";
 
 export default function Page() {
 
-    const searchParams = useSearchParams()
+    const searchParams = useSearchParams();
     const token = searchParams.get('token');
     const [invalid, setInvalid] = React.useState(false);
     const [loading, setLoading] = React.useState(true);
-    
+
     React.useEffect(() => {
-        document.title = "Email Verified Successfully | Blog Insigths"
+        document.title = "Email Verified Successfully | Blog Insights";
         if (!token) {
             redirect('/');
         }
-    }, [token])
+    }, [token]);
 
     React.useEffect(() => {
         const verifyEmail = async () => {
@@ -28,6 +30,9 @@ export default function Page() {
                 const res = await axios.post('/api/auth/user/verifyemail', { token });
                 console.log(res?.data?.message);
                 setLoading(false);
+                setTimeout(() => {
+                    redirect('/auth/login');
+                }, 60000);
             } catch (error: any) {
                 console.log(error?.response?.data);
                 setInvalid(true);
@@ -40,12 +45,11 @@ export default function Page() {
     }, [token]);
 
     return (
-
         <Container className="py-16 px-4 mx-auto max-w-screen-xl">
             <div className="flex gap-4 justify-center flex-col items-center text-center">
                 <div className="w-40">
                     {loading ? (
-                        <div className="animate-pulse rounded-full bg-slate-50 h-40 w-40" />
+                        <Skeleton circle={true} height={160} width={160} />
                     ) : invalid ? (
                         <Lottie animationData={error} loop={true} />
                     ) : (
@@ -53,15 +57,22 @@ export default function Page() {
                     )}
                 </div>
                 <h2 className="text-4xl tracking-tight font-extrabold leading-tight text-gray-900">
-                    {invalid ? "Email Verification Failed" : "Email Verified Successfully"}
+                    {loading ? <Skeleton width={300} /> : invalid ? "Email Verification Failed" : "Email Verified Successfully"}
                 </h2>
                 <p className="font-light text-gray-500 md:text-lg">
-                    {invalid ? "There was an error verifying your email. Please try again." : "Your email has been verified successfully. You can now login to your account."}
+                    {loading ? <Skeleton width={250} /> : invalid ? "There was an error verifying your email or the token is invalid. Please try again." : "Your email has been verified successfully. You can now login to your account.  You will be redirected to the login page in a minute. If not, click the button below."}
                 </p>
 
-                <Link href={'/auth/login'} className="px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 bg-amber-200 md:px-5">
-                    {invalid ? "Retry" : "Login now"}
-                </Link>
+
+
+                {loading ?
+                    (<Skeleton width={150} height={46} />) :
+                    (
+                        <Link href={'/auth/login'} className="px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 bg-amber-200 md:px-5">
+                            {invalid ? "Retry" : "Login now"}
+                        </Link>
+                    )
+                }
             </div>
         </Container>
     );

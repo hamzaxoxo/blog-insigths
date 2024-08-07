@@ -1,18 +1,14 @@
 'use client'
-// import import { clientPromise } from "@/lib/mongodb"; from '@/appwrite/auth';
-import { login } from '@/store/authSlice';
+import axios from 'axios';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
 import ClipLoader from "react-spinners/ClipLoader";
 import googleIcon from '../../../public/google-logo.png';
 import CoverPage from './CoverPage';
-import axios from 'axios';
-import { AppDispatch, RootState } from '@/store/store';
 
 export default function Login() {
 
@@ -20,10 +16,8 @@ export default function Login() {
     const [loading, setLoading] = React.useState(false);
     const [googleLoading, setGoogleLoading] = React.useState(false);
     const [password, setPassword] = React.useState('');
-
-    const dispatch: AppDispatch = useDispatch();
-    const { status, error } = useSelector((state: RootState) => state.login);
     const router = useRouter();
+
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
@@ -32,10 +26,11 @@ export default function Login() {
         } else {
             try {
                 setLoading(true);
-                dispatch(login({ email, password }));
+                const res = await axios.post('/api/auth/user/login', { email, password });
+                toast.success(res?.data?.message);
                 router.push('/');
             } catch (err: any) {
-                const errorMessage = err?.response?.data?.message;
+                const errorMessage = err?.response?.data?.error;
                 toast.error(errorMessage)
             } finally {
                 setLoading(false);
