@@ -8,7 +8,6 @@ function CoverPage() {
     return (
         <>
             <div className="hidden relative md:flex items-end px-4 pb-10 pt-60 sm:px-6 sm:pb-16 md:justify-center lg:px-8 lg:pb-24 min-h-screen">
-
                 <div className="absolute inset-0">
                     <Image
                         className="h-full w-full object-cover object-top"

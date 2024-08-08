@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
 
     return pages.map((page) => ({
-        url: `${process.env.NEXT_PUBLIC_URL}${page.path}`,
+        url: `${process.env.NEXT_PUBLIC_PRODUCTION_URL}${page.path}`,
         lastModified: "2024-07-06T18:41:18.531Z",
     }));
 }

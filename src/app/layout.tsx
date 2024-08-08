@@ -7,6 +7,8 @@ import NextTopLoader from "nextjs-toploader";
 import React from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import { cookies } from "next/headers";
+import Script from "next/script";
 export const dynamic = 'force-dynamic'
 
 const sen = Sen({
@@ -55,7 +57,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      {/* <head>
+      <head>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-626CD7NXNX"></Script>
         <Script id="google-analytics">
           {`
@@ -66,7 +68,7 @@ export default function RootLayout({
           `}
         </Script>
         <meta name="msvalidate.01" content="8D003752D10EFAB1C98FD841D4CA0657" />
-      </head> */}
+      </head>
       <body className={`relative ${sen.className}`}>
         <StoreProvider>
           <ClientLayout>

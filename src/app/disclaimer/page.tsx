@@ -23,7 +23,7 @@ export default function page() {
                     </div>
                     <p className="text-slate-600 text-justify">
                         The information provided on Blog Insights (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is for general informational purposes only. All information on the Site{' '}
-                        <a href={`${process.env.NEXT_PUBLIC_URL}`} target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
+                        <a href={`${process.env.NEXT_PUBLIC_PRODUCTION_URL}`} target="_blank" rel="nofollow noreferrer noopener" className="font-medium text-blue-700 hover:opacity-80 underline">
                             bloginsigths.com
                         </a>
                         {' '}is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.

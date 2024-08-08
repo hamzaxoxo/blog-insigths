@@ -1,18 +1,17 @@
 "use client";
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { RxHamburgerMenu } from "react-icons/rx";
-import logo from '../../../public/logo.png';
 import Container from '../Container';
 import { navLinks } from '../defaultData/NavLinks';
+import Logo from './Logo';
 import UserProfile from './UserProfile';
 
 
 
-const Navbar = () => {
+const Navbar = async () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   let status;
   let user;
@@ -22,13 +21,7 @@ const Navbar = () => {
       <Container>
         <header>
           <nav className="flex h-[80px] items-center justify-between">
-            <Link
-              className="inline-flex items-center gap-3 text-primary lg:pr-8 active"
-              href="/"
-              aria-current="page"
-            >
-              <Image src={logo} alt="AstroSaas" className="w-40" />
-            </Link>
+            <Logo />
             <ul className="list-outside flex justify-center items-center gap-10 max-lg:hidden">
               {navLinks.map((item) => (
                 <li key={item.label}>

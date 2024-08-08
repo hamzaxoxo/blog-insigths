@@ -17,18 +17,18 @@ export async function POST(request: NextRequest) {
         if (!user) {
             return NextResponse.json({ error: "User does not exist" }, { status: 400 })
         }
-        
+
         const validPassword = await bcryptjs.compare(password, user.password)
         if (!validPassword) {
             return NextResponse.json({ error: "Invalid password" }, { status: 400 })
         }
-        
+
         const tokenData = {
             id: user._id,
             username: user.username,
             email: user.email
         }
-        
+
         const token = jwt.sign(tokenData, process.env.NEXT_PUBLIC_JWT_SECRET!, { expiresIn: "1d" })
 
         const response = NextResponse.json({
@@ -39,7 +39,6 @@ export async function POST(request: NextRequest) {
             httpOnly: true,
             secure: true,
             sameSite: "strict",
-
         })
         return response;
 

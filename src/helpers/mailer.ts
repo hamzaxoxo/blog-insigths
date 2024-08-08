@@ -14,7 +14,7 @@ export const sendEmail = async ({ email, emailType, userId, name }: EmailProps) 
     try {
         const token = jwt.sign({ email, userId }, process.env.NEXT_PUBLIC_JWT_SECRET!, { expiresIn: "1m" });
 
-        if (emailType === "VERIFY") { // expire in 1 minute
+        if (emailType === "VERIFY") {
             await User.findByIdAndUpdate(userId,
                 { verifyToken: token, verifyTokenExpiry: Date.now() + 60000 })
         } else if (emailType === "RESET") {

@@ -12,7 +12,7 @@ export default function Hero() {
           src={hero}
           layout="fill"
           objectFit="cover"
-          priority={true}
+          priority
           className="absolute inset-0 brightness-50"
         />
         <div className="flex relative flex-col items-start p-5 w-full">

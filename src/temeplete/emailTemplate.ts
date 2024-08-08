@@ -70,7 +70,7 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
     <div class="container">
         <header>
             <a href="#">
-                <img src="${process.env.PRODUCTION_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75" alt="Blog Insigths Logo">
+                <img src="${process.env.NEXT_PUBLIC_PRODUCTION_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75" alt="Blog Insigths Logo">
             </a>
         </header>
 
@@ -79,7 +79,7 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
             <p>
                 You're almost there! Just one more step to go. Click the button below to verify your email address and start using <span class="font-semibold">Blog Insigths</span>.
             </p>
-            <a href="${process.env.PRODUCTION_URL}/auth/${emailType === "VERIFY" ? 'verifyemail' : 'resetpassword'}/?token=${token}" class="button">Verify Now</a>
+            <a href="${process.env.NEXT_PUBLIC_PRODUCTION_URL}/auth/${emailType === "VERIFY" ? 'verifyemail' : 'resetpassword'}/?token=${token}" class="button">Verify Now</a>
             <p class="note">
             Note: This link is valid for 5 minutes
             </p>

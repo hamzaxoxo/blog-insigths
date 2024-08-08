@@ -9,6 +9,8 @@ import toast from 'react-hot-toast';
 import ClipLoader from "react-spinners/ClipLoader";
 import googleIcon from '../../../public/google-logo.png';
 import CoverPage from './CoverPage';
+import ReCAPTCHA from "react-google-recaptcha";
+import Logo from '../Navbar/Logo';
 
 export default function Login() {
 
@@ -17,6 +19,8 @@ export default function Login() {
     const [googleLoading, setGoogleLoading] = React.useState(false);
     const [password, setPassword] = React.useState('');
     const router = useRouter();
+    const [captcha, setCaptcha] = React.useState(null);
+    const recaptchaRef = React.useRef<any>(null);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -37,6 +41,10 @@ export default function Login() {
             }
         }
     }
+
+    const handleCaptchaChange = (value: any) => {
+        setCaptcha(value);
+    }
     // const handleGoogleLogin = async () => {
     //     setGoogleLoading(true);
     //     console.log("Clicked");
@@ -52,7 +60,10 @@ export default function Login() {
         <section>
             <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* left side */}
-                <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24  h-screen overflow-hidden">
+                <div className="flex relative items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24  h-screen overflow-hidden">
+                    <div className="absolute top-10 left-20">
+                        <Logo />
+                    </div>
                     <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
                         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign In</h2>
                         <p className="mt-2 text-sm text-gray-600">
@@ -103,6 +114,13 @@ export default function Login() {
                                         ></input>
                                     </div>
                                 </div>
+                                <ReCAPTCHA
+                                    className='!w-[100%] mb-10'
+                                    ref={recaptchaRef}
+                                    sitekey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY!}
+                                    onChange={handleCaptchaChange}
+                                    size='normal'
+                                />
                                 <button
                                     type="submit"
                                     className="inline-flex w-full items-center justify-center rounded-md bg-primary px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
