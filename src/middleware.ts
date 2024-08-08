@@ -16,7 +16,7 @@ export function middleware(request: NextResponse) {
 }
 
 export const config = {
-    matcher: ['/dashboard']
+    matcher: ['/dashboard', '/auth/verifyemail']
     // not
 }
 

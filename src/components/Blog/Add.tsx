@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import EditorCompo from './Editor'
+// import EditorCompo from './Editor'
 import Container from '../Container'
 import TextareaAutosize from "react-textarea-autosize";
 import Editor from './BlackNote';

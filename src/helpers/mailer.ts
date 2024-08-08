@@ -8,20 +8,18 @@ interface EmailProps {
     email: string;
     emailType: string;
     userId: string;
-    token?: string;
 }
 
 export const sendEmail = async ({ email, emailType, userId, name }: EmailProps) => {
     try {
-        // create a hased token
-        const token = jwt.sign({ email, userId }, process.env.NEXT_PUBLIC_JWT_SECRET!, { expiresIn: "1min" });
+        const token = jwt.sign({ email, userId }, process.env.NEXT_PUBLIC_JWT_SECRET!, { expiresIn: "1m" });
 
-        if (emailType === "VERIFY") {
+        if (emailType === "VERIFY") { // expire in 1 minute
             await User.findByIdAndUpdate(userId,
-                { verifyToken: token, verifyTokenExpiry: Date.now() + 3600000 })
+                { verifyToken: token, verifyTokenExpiry: Date.now() + 60000 })
         } else if (emailType === "RESET") {
             await User.findByIdAndUpdate(userId,
-                { forgotPasswordToken: token, forgotPasswordTokenExpiry: Date.now() + 3600000 })
+                { forgotPasswordToken: token, forgotPasswordTokenExpiry: Date.now() + 60000 })
         }
 
         const transporter = nodemailer.createTransport({
@@ -41,8 +39,7 @@ export const sendEmail = async ({ email, emailType, userId, name }: EmailProps) 
                 ? "Verify Your Email Address" : "Reset Your Password",
             html: emailTemplate(token, emailType, name)
         };
-        const mailresponse = await transporter.sendMail
-            (options);
+        const mailresponse = await transporter.sendMail(options);
         return mailresponse;
 
     } catch (error: any) {

@@ -34,7 +34,6 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({
             message: "User Registeref Successfully",
-            verifyMessage: "Verification Email Sent",
             success: true,
             savedUser
         })

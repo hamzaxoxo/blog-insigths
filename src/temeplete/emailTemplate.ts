@@ -39,7 +39,7 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
             margin-top: 20px;
             font-size: 14px;
             font-weight: 500;
-            color: white;
+            color: white !important;
             background-color: #3182ce;
             border-radius: 6px;
             text-decoration: none;
@@ -60,6 +60,10 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
         footer a:hover {
             text-decoration: underline;
         }
+        .note{
+            color: #a0aec0;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -75,7 +79,10 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
             <p>
                 You're almost there! Just one more step to go. Click the button below to verify your email address and start using <span class="font-semibold">Blog Insigths</span>.
             </p>
-            <a href="${process.env.PRODUCTION_URL}/auth/verifyemail?token=${token}" class="button">Verify Now</a>
+            <a href="${process.env.PRODUCTION_URL}/auth/${emailType === "VERIFY" ? 'verifyemail' : 'resetpassword'}/?token=${token}" class="button">Verify Now</a>
+            <p class="note">
+            Note: This link is valid for 5 minutes
+            </p>
             <p>
                 Thanks, <br>
                 Blog Insigths team

@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { toast } from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 
 export default function Signup() {

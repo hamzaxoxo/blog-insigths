@@ -28,7 +28,6 @@ export default function Page() {
         const verifyEmail = async () => {
             try {
                 const res = await axios.post('/api/auth/user/verifyemail', { token });
-                console.log(res?.data?.message);
                 setLoading(false);
                 setTimeout(() => {
                     redirect('/auth/login');

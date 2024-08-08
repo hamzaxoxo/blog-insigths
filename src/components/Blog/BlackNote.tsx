@@ -33,7 +33,7 @@ const Editor: React.FC<EditorProps> = ({
                 editor={editor}
                 editable={editable}
                 theme="light"
-                onEditorChange={onChange}
+                // onEditorChange={onChange}
             />
         </div>
     );
