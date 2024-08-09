@@ -1,20 +1,26 @@
+import { NextRequest } from "next/server";
+import { authConfig } from "@/auth.config";
+import NextAuth from "next-auth";
 
-import { NextRequest, NextResponse } from "next/server";
+const { auth } = NextAuth(authConfig);
 
-export function middleware(request: NextRequest) {
+import { PUBLIC_ROUTES, LOGIN, ROOT, PROTECTED_SUB_ROUTES } from "@/lib/routes";
 
-    const currentPath = request.nextUrl.pathname;
+export async function middleware(request: NextRequest) {
+    const nextUrl = new URL(request.nextUrl);
+    const session = await auth();
+    const isAuthenticated = !!session?.user;
+    console.log(isAuthenticated, nextUrl.pathname);
 
-    const isPublic = currentPath === "/auth/login" || currentPath === "/auth/signup";
-    const token = request.cookies.get("token")?.value || "";
-    if (isPublic && token.length > 0) {
-        return NextResponse.redirect(new URL("/", request.nextUrl));
-    }
-    if (!isPublic && token.length === 0) {
-        return NextResponse.redirect(new URL("/auth/login", request.nextUrl));
-    }
+    const isPublicRoute = ((PUBLIC_ROUTES.find(route => nextUrl.pathname.startsWith(route))
+        || nextUrl.pathname === ROOT) && !PROTECTED_SUB_ROUTES.find(route => nextUrl.pathname.includes(route)));
+
+    console.log(isPublicRoute);
+
+    if (!isAuthenticated && !isPublicRoute)
+        return Response.redirect(new URL(LOGIN, nextUrl));
 }
 
 export const config = {
-    matcher: ["/", "/auth/login", "/auth/signup"],
+    matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"]
 };
