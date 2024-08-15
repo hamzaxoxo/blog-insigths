@@ -1,3 +1,4 @@
+import { verifyJWT } from '@/helpers/verifyJWT';
 import { connect } from '@/lib/mongodb';
 import Post from '@/models/Posts';
 import Tag from '@/models/Tags';
@@ -8,8 +9,13 @@ connect()
 
 export async function POST(request: NextRequest) {
     try {
+        const decoded = verifyJWT(request);
+        if (decoded instanceof NextResponse) {
+            return decoded;
+        }
         const reqBody = await request.json()
         const { title, content, excerpt, slug, tags, cover, publish, createdBy } = reqBody
+
 
         if (!title || !content || !slug || !createdBy) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 500 })
