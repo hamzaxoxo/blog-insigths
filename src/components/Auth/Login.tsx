@@ -1,24 +1,26 @@
 'use client'
-import axios from 'axios';
+import { login } from '@/store/loginSlice';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
 import toast from 'react-hot-toast';
 import ClipLoader from "react-spinners/ClipLoader";
 import googleIcon from '../../../public/google-logo.png';
-import CoverPage from './CoverPage';
-import ReCAPTCHA from "react-google-recaptcha";
 import Logo from '../Navbar/Logo';
+import CoverPage from './CoverPage';
 
 export default function Login() {
 
     const [email, setEmail] = React.useState('');
-    const [loading, setLoading] = React.useState(false);
+    const loading = useAppSelector((state) => state.login.loginLoader);
     const [googleLoading, setGoogleLoading] = React.useState(false);
     const [password, setPassword] = React.useState('');
     const router = useRouter();
+    const dispatch = useAppDispatch()
     const [captcha, setCaptcha] = React.useState(null);
     const recaptchaRef = React.useRef<any>(null);
 
@@ -29,15 +31,13 @@ export default function Login() {
             toast.error("Fields Can't be Empty");
         } else {
             try {
-                setLoading(true);
-                const res = await axios.post('/api/auth/user/login', { email, password });
-                toast.success(res?.data?.message);
-                router.push('/');
+                await dispatch(
+                    login({ email, password, router, isLoggedIn: true })
+                );
             } catch (err: any) {
                 const errorMessage = err?.response?.data?.error;
                 toast.error(errorMessage)
             } finally {
-                setLoading(false);
             }
         }
     }

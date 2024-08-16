@@ -1,20 +1,40 @@
 "use client";
 
 import Link from 'next/link';
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Container from '../Container';
 import { navLinks } from '../defaultData/NavLinks';
 import Logo from './Logo';
 import UserProfile from './UserProfile';
+import { User } from '@/store/usersSlice';
 
+const fetchUserData = async () => {
+  try {
+    const response = await fetch('/api/user');
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error('Failed to fetch user', error);
+    return null;
+  }
+};
 
-
-const Navbar = async () => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  let status;
-  let user;
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadUser = async () => {
+      const fetchedUser = await fetchUserData();
+      setUser(fetchedUser);
+      setLoading(false);
+    };
+
+    loadUser();
+  }, []);
 
   return (
     <div className='bg-[#232536]'>
@@ -33,7 +53,7 @@ const Navbar = async () => {
                   </Link>
                 </li>
               ))}
-              {status === "loading" ? (
+              {loading ? (
                 <div className="animate-pulse rounded-full bg-slate-700 h-10 w-10" />
               ) : (
                 user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
@@ -68,8 +88,8 @@ const Navbar = async () => {
                     </Link>
                   </li>
                 ))}
-                {status === "loading" ? (
-                  <div className="animate-pulse rounded-full bg-slate-700 h-10 w-10" />
+                {loading ? (
+                  <div className="animate-pulse rounded-full bg-slate-700 h-20 w-20" />
                 ) : (
                   user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
                 )}

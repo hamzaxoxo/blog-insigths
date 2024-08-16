@@ -1,54 +1,62 @@
-// src/features/auth/loginSlice.ts
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { User } from './usersSlice';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AppDispatch } from "./store";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import toast from "react-hot-toast";
+import axios from "axios";
+
+interface User {
+    email: string;
+    password: string;
+    router: Params;
+    isLoggedIn: Boolean;
+}
 
 interface LoginState {
-    user: User | null;
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
+    loggedInUser: User | null;
+    loginLoader: boolean;
 }
 
 const initialState: LoginState = {
-    user: null,
-    status: 'idle',
-    error: null,
+    loggedInUser: null,
+    loginLoader: false,
 };
 
-export const login = createAsyncThunk(
-    'auth/login',
-    async (credentials: { email: string; password: string }) => {
-        const response = await axios.post('/api/auth/login', credentials);
-        return response.data;
-    }
-);
-
 const loginSlice = createSlice({
-    name: 'login',
+    name: "login",
     initialState,
     reducers: {
-        logout(state) {
-            state.user = null;
-            state.status = 'idle';
-            state.error = null;
+        loginSuccess(state, action: PayloadAction<User>) {
+            state.loggedInUser = action.payload;
         },
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(login.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(login.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.user = action.payload;
-            })
-            .addCase(login.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || 'Failed to login';
-            });
+        loginLoaderFn(state, action: PayloadAction<boolean>) {
+            state.loginLoader = action.payload;
+        },
     },
 });
 
-export const { logout } = loginSlice.actions;
+export const { loginSuccess, loginLoaderFn } = loginSlice.actions;
 
 export default loginSlice.reducer;
+
+export const login = (userData: User) => async (dispatch: AppDispatch) => {
+    try {
+        dispatch(loginLoaderFn(true));
+        axios.post("/api/auth/user/login", userData)
+            .then((res: any) => {
+                const { router } = userData;
+                const loggedInUser: User = { ...userData, isLoggedIn: true };
+                toast.success(res?.data?.message);
+                dispatch(loginSuccess(loggedInUser));
+                router.push("/");
+                dispatch(loginLoaderFn(false));
+            })
+            .catch((error: any) => {
+                toast.error(error.response?.data?.error);
+                dispatch(loginLoaderFn(false));
+                console.error("Error:", error);
+            });
+    } catch (error) {
+        console.error("Error logging in:", error);
+        return { error };
+    }
+};

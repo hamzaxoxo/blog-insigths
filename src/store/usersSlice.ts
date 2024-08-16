@@ -1,52 +1,45 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchUserDetails } from "./userThunks";
 
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 export interface User {
-    $id: string;
-    username: string;
-    email: string;
-    isVerfied: boolean;
-    isAdmin: boolean;
-    last_login: string;
-    createdAt: string;
-    updatedAt: string;
+    $id: string,
+    fullName: string,
+    email: string,
+    bio: string,
+    profilePicture: string,
+    createdAt: string,
+    updatedAt: string,
+    isVerfied: boolean,
+    photo: string,
 }
 
-interface UsersState {
-    users: User[];
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
+interface UserState {
+    user: User | null;
 }
 
-const initialState: UsersState = {
-    users: [],
-    status: 'idle',
-    error: null,
+const initialState: UserState = {
+    user: null,
 };
 
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-    const response = await axios.get('/api/auth/users');
-    return response.data.data;
-});
 
-const usersSlice = createSlice({
-    name: 'users',
+const userSlice = createSlice({
+    name: "user",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchUsers.pending, (state) => {
-                state.status = 'loading';
+            .addCase(fetchUserDetails.pending, (state: any) => {
+                state.loading = true;
+                state.error = null;
             })
-            .addCase(fetchUsers.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.users = action.payload;
+            .addCase(fetchUserDetails.fulfilled, (state: any, action) => {
+                state.userInfo = action.payload;
+                state.loading = false;
             })
-            .addCase(fetchUsers.rejected, (state, action) => {
-                state.status = 'failed';
-                state.error = action.error.message || 'Failed to fetch users';
+            .addCase(fetchUserDetails.rejected, (state: any, action) => {
+                state.error = action.payload;
+                state.loading = false;
             });
     },
 });
-
-export default usersSlice.reducer;
+export default userSlice.reducer;

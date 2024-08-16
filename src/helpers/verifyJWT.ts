@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function verifyJWT(request: NextRequest) {
     try {
-        const token = request.cookies.get("token");
+        const token: any = request.cookies.get("token");
         if (token) {
-            const decoded = jwt.verify(token.value, process.env.NEXT_PUBLIC_JWT_SECRET!);
-            return decoded;
+            const decoded: any = jwt.verify(token.value, process.env.NEXT_PUBLIC_JWT_SECRET!);
+            return decoded?.id;
         } else {
             throw new Error('No token provided');
         }
