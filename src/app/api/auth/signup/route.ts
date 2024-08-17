@@ -12,7 +12,7 @@ connect()
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json()
-        const { fullName, email, password } = reqBody
+        const { username, email, password } = reqBody
 
         const user = await User.findOne({ email })
 
@@ -24,13 +24,13 @@ export async function POST(request: NextRequest) {
         const hashedPassword = await bcryptjs.hash(password, salt)
 
         const newUser = new User({
-            fullName,
+            username,
             email,
             password: hashedPassword
         })
 
         const savedUser = await newUser.save()
-        await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id, name: fullName })
+        await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id, name: username })
 
         return NextResponse.json({
             message: "User Registered Successfully",

@@ -12,11 +12,11 @@ import Logo from '../Navbar/Logo';
 export default function Signup() {
     const [loading, setLoading] = React.useState(false);
     const [fullName, setFullName] = React.useState('');
+    const [username, setUsername] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [verifyPopUp, setVerifyPopUp] = React.useState(false);
     const router = useRouter();
-    const [googleLoading, setGoogleLoading] = React.useState(false);
 
 
     const handleRegister = async (e: any) => {
@@ -27,14 +27,12 @@ export default function Signup() {
         } else {
             try {
                 setLoading(true);
-                const res = await axios.post('/api/auth/user/signup', { fullName, email, password });
+                const res = await axios.post('/api/auth/signup', { username, fullName, email, password });
                 toast.success(res?.data?.message);
                 setVerifyPopUp(true);
-                setFullName('');
-                setEmail('');
-                setPassword('');
                 setTimeout(() => {
                     setVerifyPopUp(false);
+                    router.push('/');
                 }, 5000);
             } catch (err: any) {
                 const errorMessage = err?.response?.data?.error;
@@ -75,18 +73,35 @@ export default function Signup() {
                                 </div>
                             }
                             <div className="space-y-5">
-                                {/* Full Name */}
-                                <div>
-                                    <label htmlFor="" className="text-base font-medium text-gray-900">
-                                        Full Name
-                                    </label>
-                                    <div className="mt-2">
-                                        <input
-                                            className="form-inputs"
-                                            type="text"
-                                            placeholder="Full Name"
-                                            onChange={(e) => setFullName(e.target.value)}
-                                        ></input>
+                                <div className='flex gap-4'>
+                                    {/* Full Name */}
+                                    <div className='w-full'>
+                                        <label htmlFor="" className="text-base font-medium text-gray-900">
+                                            Full Name
+                                        </label>
+                                        <div className="mt-2">
+                                            <input
+                                                name='fullName'
+                                                className="form-inputs"
+                                                type="text"
+                                                placeholder="Full Name"
+                                                onChange={(e) => setFullName(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className='w-full'>
+                                        <label htmlFor="" className="text-base font-medium text-gray-900">
+                                            Username
+                                        </label>
+                                        <div className="mt-2">
+                                            <input
+                                                name='username'
+                                                className="form-inputs"
+                                                type="text"
+                                                placeholder="Username"
+                                                onChange={(e) => setUsername(e.target.value)}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 {/* Email */}
@@ -96,6 +111,7 @@ export default function Signup() {
                                     </label>
                                     <div className="mt-2">
                                         <input
+                                            name='email'
                                             className="form-inputs"
                                             type="email"
                                             placeholder="Email"
@@ -112,6 +128,7 @@ export default function Signup() {
                                     </div>
                                     <div className="mt-2">
                                         <input
+                                            name='password'
                                             className="form-inputs"
                                             type="password"
                                             placeholder="Password"

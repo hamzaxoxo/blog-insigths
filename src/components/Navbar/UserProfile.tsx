@@ -20,7 +20,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
         setIsOpen(!isOpen)
 
         try {
-            const response = await axios.get('/api/auth/user/logout');
+            const response = await axios.get('/api/auth/logout');
             window.location.reload();
         } catch (error) {
             console.error('Failed to fetch user', error);

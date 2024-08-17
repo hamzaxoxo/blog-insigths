@@ -18,7 +18,7 @@ export default function Forget() {
 
         try {
             setLoading(true);
-            const res = await axios.post('/api/auth/user/request-password', { email });
+            const res = await axios.post('/api/auth/request-password', { email });
             toast.success(res?.data?.message);
             setEmail('')
         } catch (err: any) {

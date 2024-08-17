@@ -3,12 +3,11 @@ import GoTop from "@/components/GoTop";
 import StoreProvider from "@/store/StoreProvider";
 import type { Metadata } from "next";
 import { Sen } from "next/font/google";
+import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import React from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import { cookies } from "next/headers";
-import Script from "next/script";
 export const dynamic = 'force-dynamic'
 
 const sen = Sen({
@@ -54,7 +53,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <head>

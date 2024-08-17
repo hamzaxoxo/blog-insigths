@@ -26,9 +26,11 @@ export default function Login() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-
+        const captchaValue = recaptchaRef.current.getValue()
         if (email === "" || password === "") {
             toast.error("Fields Can't be Empty");
+        } else if (!captchaValue) {
+            toast.error("Please verify captcha");
         } else {
             try {
                 await dispatch(

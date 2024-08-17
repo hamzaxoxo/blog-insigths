@@ -1,5 +1,6 @@
 'use client'
 
+import axios from 'axios';
 import { ArrowRight } from 'lucide-react';
 import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -15,13 +16,13 @@ export default function NewPassword() {
     const router = useRouter();
     const searchParams = useSearchParams()
 
-    const userIdFromUrl = searchParams.get('token');
+    const passToken = searchParams.get('token');
 
     React.useEffect(() => {
-        if (!userIdFromUrl) {
-           redirect('/auth/login');
+        if (!passToken) {
+            redirect('/');
         }
-    }, [userIdFromUrl]);
+    }, [passToken]);
 
     const handleChangePass = async (e: any) => {
         e.preventDefault();
@@ -33,7 +34,12 @@ export default function NewPassword() {
         } else {
             setLoading(true);
             try {
-
+                const res = await axios.post('/api/auth/reset-password', {
+                    token: passToken,
+                    password: newPassword
+                });
+                toast.success(res?.data?.message);
+                router.push('/auth/login');
             }
             catch (err: any) {
                 const errorMessage = err?.code;

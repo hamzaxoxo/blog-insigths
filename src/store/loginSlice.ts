@@ -41,7 +41,7 @@ export default loginSlice.reducer;
 export const login = (userData: User) => async (dispatch: AppDispatch) => {
     try {
         dispatch(loginLoaderFn(true));
-        axios.post("/api/auth/user/login", userData)
+        axios.post("/api/auth/login", userData)
             .then((res: any) => {
                 const { router } = userData;
                 const loggedInUser: User = { ...userData, isLoggedIn: true };

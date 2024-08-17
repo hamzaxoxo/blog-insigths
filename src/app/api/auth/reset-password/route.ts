@@ -17,7 +17,10 @@ export async function POST(request: NextRequest) {
 
         const hashedPassword = await bcryptjs.hash(password, 10);
         user.password = hashedPassword;
+        user.forgotPasswordToken = undefined;
+        user.forgotPasswordTokenExpiry = undefined;
         await user.save();
+
 
         return NextResponse.json({ message: 'Password reset successful' }, { status: 200 });
     } catch (error: any) {

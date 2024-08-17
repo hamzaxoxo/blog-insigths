@@ -9,31 +9,31 @@ import { navLinks } from '../defaultData/NavLinks';
 import Logo from './Logo';
 import UserProfile from './UserProfile';
 import { User } from '@/store/usersSlice';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
-const fetchUserData = async () => {
-  try {
-    const response = await fetch('/api/user');
-    const data = await response.json();
-    return data?.data;
-  } catch (error) {
-    console.error('Failed to fetch user', error);
-    return null;
-  }
-};
+
 
 const Navbar = () => {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    const loadUser = async () => {
-      const fetchedUser = await fetchUserData();
-      setUser(fetchedUser);
-      setLoading(false);
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('/api/user');
+        console.log(response.data.data);
+        setUser(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch user', error);
+        setLoading(false);
+        return null;
+      }
     };
 
-    loadUser();
+    fetchUserData();
   }, []);
 
   return (

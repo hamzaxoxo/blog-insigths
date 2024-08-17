@@ -1,14 +1,14 @@
 'use client'
-import React from "react";
+import Container from "@/components/Container";
+import axios from "axios";
 import Lottie from "lottie-react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import check from '../../../../public/gifs/check.json'
-import error from '../../../../public/gifs/error.json'
-import Container from "@/components/Container";
-import Link from "next/link";
-import { redirect, useSearchParams } from "next/navigation";
-import axios from "axios";
+import check from '../../../../public/gifs/check.json';
+import error from '../../../../public/gifs/error.json';
 
 export default function Page() {
 
@@ -18,20 +18,10 @@ export default function Page() {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        document.title = "Email Verified Successfully | Blog Insights";
-        if (!token) {
-            redirect('/');
-        }
-    }, [token]);
-
-    React.useEffect(() => {
         const verifyEmail = async () => {
             try {
-                const res = await axios.post('/api/auth/user/verifyemail', { token });
+                const res = await axios.post('/api/auth/verifyemail', { token });
                 setLoading(false);
-                setTimeout(() => {
-                    redirect('/auth/login');
-                }, 60000);
             } catch (error: any) {
                 console.log(error?.response?.data);
                 setInvalid(true);

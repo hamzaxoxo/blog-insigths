@@ -60,7 +60,7 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
         footer a:hover {
             text-decoration: underline;
         }
-        .note{
+        .note {
             color: #a0aec0;
             font-size: 12px;
         }
@@ -70,30 +70,32 @@ export const emailTemplate = (token: string, emailType: string, name: string) =>
     <div class="container">
         <header>
             <a href="#">
-                <img src="${process.env.NEXT_PUBLIC_PRODUCTION_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75" alt="Blog Insigths Logo">
+                <img src="${process.env.NEXT_PUBLIC_PRODUCTION_URL}/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ac3552e7.png&w=640&q=75" alt="Blog Insights Logo">
             </a>
         </header>
 
         <main>
             <h2>Hi ${name},</h2>
             <p>
-                You're almost there! Just one more step to go. Click the button below to verify your email address and start using <span class="font-semibold">Blog Insigths</span>.
+            ${emailType === "VERIFY" ? "You're almost there! Just one more step to go. Click the button below to verify your email address and start using " : "We've received a request to reset your password. Click the button below to reset your password for your account"} 
+            <span class="font-semibold">Blog Insights</span>.
             </p>
-            <a href="${process.env.NEXT_PUBLIC_PRODUCTION_URL}/auth/${emailType === "VERIFY" ? 'verifyemail' : 'resetpassword'}/?token=${token}" class="button">Verify Now</a>
+            <a href="${process.env.NEXT_PUBLIC_PRODUCTION_URL}/auth/${emailType === "VERIFY" ? 'verifyemail' : 'new-password'}/?token=${token}" class="button">
+                ${emailType === "VERIFY" ? "Email Confirmation" : "Reset Password Request"}
+            </a>
             <p class="note">
-            Note: This link is valid for 5 minutes
+                Note: This link is valid for 5 minutes.
             </p>
             <p>
                 Thanks, <br>
-                Blog Insigths team
+                Blog Insights team
             </p>
         </main>
 
         <footer>
-            <p>© <script>document.write(new Date().getFullYear());</script> Blog Insigths. All Rights Reserved.</p>
+            <p>© <script>document.write(new Date().getFullYear());</script> Blog Insights. All Rights Reserved.</p>
         </footer>
     </div>
 </body>
 </html>
-
 `;
