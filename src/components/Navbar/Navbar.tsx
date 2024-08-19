@@ -1,40 +1,26 @@
-"use client";
-
+'use client';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Container from '../Container';
 import { navLinks } from '../defaultData/NavLinks';
 import Logo from './Logo';
 import UserProfile from './UserProfile';
-import { User } from '@/store/usersSlice';
-
-const fetchUserData = async () => {
-  try {
-    const response = await fetch('/api/user');
-    const data = await response.json();
-    return data?.data;
-  } catch (error) {
-    console.error('Failed to fetch user', error);
-    return null;
-  }
-};
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: session } = useSession();
+  const user = session?.user;
 
   useEffect(() => {
-    const loadUser = async () => {
-      const fetchedUser = await fetchUserData();
-      setUser(fetchedUser);
-      setLoading(false);
-    };
-
-    loadUser();
-  }, []);
+    if (session) {
+      console.log(session?.user);
+    } else {
+      console.log('No session found');
+    }
+  }, [session]);
 
   return (
     <div className='bg-[#232536]'>
@@ -53,11 +39,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              {loading ? (
-                <div className="animate-pulse rounded-full bg-slate-700 h-10 w-10" />
-              ) : (
-                user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
-              )}
+              {user ? <UserProfile user={user} /> : <SignInButton color="#fff" />}
             </ul>
 
             <button
@@ -88,11 +70,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
-                {loading ? (
-                  <div className="animate-pulse rounded-full bg-slate-700 h-20 w-20" />
-                ) : (
-                  user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
-                )}
+                {user ? <UserProfile user={user} /> : <SignInButton color="#fff" />}
               </ul>
             </nav>
           </div>
@@ -103,9 +81,9 @@ const Navbar = () => {
 };
 
 function SignInButton({ color }: any) {
-  return <Link href={'/auth/login'} className={`px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-[${color}] md:px-5`}>
+  return <button className={`px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-[${color}] md:px-5`}>
     Subscribe
-  </Link>;
+  </button>;
 }
 
 export default Navbar;

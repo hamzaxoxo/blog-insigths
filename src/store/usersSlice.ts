@@ -1,26 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchUserDetails } from "./userThunks";
 
-export interface User {
-    $id: string,
-    fullName: string,
-    email: string,
-    bio: string,
-    profilePicture: string,
-    createdAt: string,
-    updatedAt: string,
-    isVerfied: boolean,
-    photo: string,
-}
-
 interface UserState {
-    user: User | null;
+    user: any | null;
 }
 
 const initialState: UserState = {
     user: null,
 };
-
 
 const userSlice = createSlice({
     name: "user",

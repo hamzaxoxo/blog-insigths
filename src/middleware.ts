@@ -1,26 +1,25 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
 
-export function middleware(request: NextRequest) {
-    const path = request.nextUrl.pathname
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { auth } from "@/auth";
 
-    const isPublicPath = path === '/auth/login' || path === '/auth/signup' || path === '/auth/verifyemail' || path === '/blogs'
+const protectedRoutes = ["/middleware"];
 
-    const isSlugPath = path.startsWith('/blogs')
+export default async function middleware(request: NextRequest) {
+    const session = await auth();
 
-    const token = request.cookies.get('token')?.value || ''
+    const isProtected = protectedRoutes.some((route) =>
+        request.nextUrl.pathname.startsWith(route)
+    );
 
-    if (isPublicPath && token) {
-        return NextResponse.redirect(new URL('/', request.nextUrl))
+    if (!session && isProtected) {
+        const absoluteURL = new URL("/", request.nextUrl.origin);
+        return NextResponse.redirect(absoluteURL.toString());
     }
 
-    if (isSlugPath && !token) {
-        return NextResponse.redirect(new URL('/auth/login', request.nextUrl))
-    }
-
-    return NextResponse.next()
+    return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/auth/login', '/auth/signup', '/auth/verifyemail'],
-}
+    matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};

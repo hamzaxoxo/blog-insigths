@@ -9,6 +9,9 @@ import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { cookies } from "next/headers";
 import Script from "next/script";
+import Navbar from "@/components/Navbar/Navbar";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 export const dynamic = 'force-dynamic'
 
 const sen = Sen({
@@ -54,7 +57,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <head>
@@ -71,14 +73,16 @@ export default function RootLayout({
       </head>
       <body className={`relative ${sen.className}`}>
         <StoreProvider>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-          <GoTop />
-          <Toaster />
-          <NextTopLoader
-            color="#FDD251"
-          />
+          <SessionProvider>
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+            <GoTop />
+            <Toaster />
+            <NextTopLoader
+              color="#FDD251"
+            />
+          </SessionProvider>
         </StoreProvider>
       </body>
     </html>

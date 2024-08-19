@@ -4,29 +4,16 @@ import Link from 'next/link';
 import { useState } from 'react';
 import userDefaultImage from '../../../public/user.jpg';
 import axios from 'axios';
-import { User } from '@/store/usersSlice';
-
+import { logout } from '@/actions/auth';
 
 
 interface UserProfileProps {
-    user: User;
+    user: any;
 }
 
 const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const userName = user?.fullName?.toLowerCase() || 'default-username';
 
-    const handleLogOut = async () => {
-        setIsOpen(!isOpen)
-
-        try {
-            const response = await axios.get('/api/auth/user/logout');
-            window.location.reload();
-        } catch (error) {
-            console.error('Failed to fetch user', error);
-            return null;
-        }
-    };
 
     return (
         <div className="relative">
@@ -45,7 +32,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                 <div className='border-2 border-primary p-1 rounded-full'>
                     <Image
                         className="rounded-full"
-                        src={user?.photo || userDefaultImage}
+                        src={user?.photo || user?.image || userDefaultImage}
                         alt="User photo"
                         width={40}
                         height={40}
@@ -60,11 +47,11 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                         >
                             <Sparkles className="h-4 w-4 mr-2 inline" aria-hidden="true" />
                             <span>
-                                {user?.fullName || 'Username'}
+                                {user?.name || 'Username'}
                             </span>
                         </div>
                         <Link
-                            href={`/profile/${userName}`}
+                            href={`/profile/${user?.name}` || '/profile'}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             onClick={() => setIsOpen(!isOpen)}
                         >
@@ -73,7 +60,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                         </Link>
                         <button
                             type="button"
-                            onClick={handleLogOut}
+                            onClick={() => logout()}
                             className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                             <LogOut className="h-4 w-4 mr-2 inline" aria-hidden="true" />
