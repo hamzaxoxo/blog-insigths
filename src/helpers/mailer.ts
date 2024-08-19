@@ -1,7 +1,8 @@
 import User from "@/models/User";
-import jwt from 'jsonwebtoken';
+import bcryptjs from 'bcryptjs';
 import nodemailer from 'nodemailer';
 import { emailTemplate } from "../temeplete/emailTemplate";
+import { v4 as uuidv4 } from 'uuid';
 
 interface EmailProps {
     name: string;
@@ -12,14 +13,14 @@ interface EmailProps {
 
 export const sendEmail = async ({ email, emailType, userId, name }: EmailProps) => {
     try {
-        const token = jwt.sign({ userId }, process.env.NEXT_PUBLIC_JWT_SECRET!, { expiresIn: '1h' });
+        const hashedToken = uuidv4().toString();
 
         if (emailType === "VERIFY") {
             await User.findByIdAndUpdate(userId,
-                { verifyToken: token, verifyTokenExpiry: Date.now() + 3600000 })
+                { verifyToken: hashedToken, verifyTokenExpiry: Date.now() + 3600000 }, { new: true })
         } else if (emailType === "RESET") {
             await User.findByIdAndUpdate(userId,
-                { forgotPasswordToken: token, forgotPasswordTokenExpiry: Date.now() + 3600000 })
+                { forgotPasswordToken: hashedToken, forgotPasswordTokenExpiry: Date.now() + 3600000 }, { new: true })
         }
 
         const transporter = nodemailer.createTransport({
@@ -37,7 +38,7 @@ export const sendEmail = async ({ email, emailType, userId, name }: EmailProps) 
             to: email,
             subject: emailType === "VERIFY"
                 ? "Verify Your Email Address" : "Reset Your Password",
-            html: emailTemplate(token, emailType, name)
+            html: emailTemplate(hashedToken, emailType, name)
         };
         const mailresponse = await transporter.sendMail(options);
         return mailresponse;

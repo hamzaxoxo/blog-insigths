@@ -20,7 +20,7 @@ export default function Page() {
     React.useEffect(() => {
         const verifyEmail = async () => {
             try {
-                const res = await axios.post('/api/auth/verifyemail', { token });
+                const res = await axios.post('/api/auth/email/verify', { token });
                 setLoading(false);
             } catch (error: any) {
                 console.log(error?.response?.data);
@@ -34,7 +34,7 @@ export default function Page() {
     }, [token]);
 
     return (
-        <Container className="py-16 px-4 mx-auto max-w-screen-xl">
+        <Container className="px-20 py-16 px-4 mx-auto max-w-screen-xl">
             <div className="flex gap-4 justify-center flex-col items-center text-center">
                 <div className="w-40">
                     {loading ? (

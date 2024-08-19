@@ -1,26 +1,40 @@
 'use client'
-import React from 'react'
+import React from 'react';
 // import EditorCompo from './Editor'
-import Container from '../Container'
-import TextareaAutosize from "react-textarea-autosize";
-import Editor from './BlackNote';
+import { useAppDispatch } from '@/store/store';
 import { PartialBlock } from '@blocknote/core';
-import CoverImage from './CoverImage';
+import TextareaAutosize from "react-textarea-autosize";
+import Container from '../Container';
+import AddBlogNavbar from '../Navbar/AddBlogNavbar';
+import Editor from './BlackNote';
 const Add: React.FC = () => {
+    const dispatch = useAppDispatch();
+    // const { currentPost, status } = useAppSelector((state: RootState) => state.);
+    const [title, setTitle] = React.useState('');
+
+
+
     return (
         <>
-            <CoverImage url="https://images.inc.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg"/>
-            <Container className='py-20 px-5'>
-                <TextareaAutosize
-                    placeholder="Untitled"
-                    className="w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none"
-                />
+            <AddBlogNavbar />
+            <Container className='px-40'>
+                <div className="flex items-center">
+                    {
+                        title.length > 0 && (
+                            <label htmlFor="textarea" className="h-full text-gray-400 text-lg pr-4 mr-4 border-r-2">Title</label>
+                        )
+                    }
+                    <TextareaAutosize
+                        id="textarea"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="font-times w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-semibold focus:outline-none"
+                    />
+                </div>
 
-                <Editor
-                    onChange={(content: PartialBlock[]) => console.log(content)}
-                    editable={true}
-                />
-                {/* <EditorCompo /> */}
+
+                <Editor />
             </Container>
         </>
     )

@@ -1,43 +1,40 @@
 "use client";
 
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import AlertBox from '@/utils/AlertBox';
 import Link from 'next/link';
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Container from '../Container';
 import { navLinks } from '../defaultData/NavLinks';
+import { fetchUser } from '../user/getUser';
 import Logo from './Logo';
 import UserProfile from './UserProfile';
-import { User } from '@/store/usersSlice';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
 
 
 
 const Navbar = () => {
-  const router = useRouter();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get('/api/user');
-        console.log(response.data.data);
-        setUser(response.data.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Failed to fetch user', error);
-        setLoading(false);
-        return null;
-      }
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.users.user);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchUser());
+      setLoading(false);
     };
 
-    fetchUserData();
-  }, []);
+    fetchData();
+  }, [dispatch]);
+
 
   return (
     <div className='bg-[#232536]'>
+      {
+        user && !user.isVerified && <AlertBox />
+      }
       <Container>
         <header>
           <nav className="flex h-[80px] items-center justify-between">
@@ -56,7 +53,7 @@ const Navbar = () => {
               {loading ? (
                 <div className="animate-pulse rounded-full bg-slate-700 h-10 w-10" />
               ) : (
-                user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
+                user ? <UserProfile dispatch={dispatch} user={user} /> : <SignInButton color="#fff" />
               )}
             </ul>
 
@@ -91,7 +88,7 @@ const Navbar = () => {
                 {loading ? (
                   <div className="animate-pulse rounded-full bg-slate-700 h-20 w-20" />
                 ) : (
-                  user ? <UserProfile user={user} /> : <SignInButton color="#fff" />
+                  user ? <UserProfile dispatch={dispatch} user={user} /> : <SignInButton color="#fff" />
                 )}
               </ul>
             </nav>
