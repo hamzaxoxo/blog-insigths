@@ -1,20 +1,22 @@
 'use client';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { useEffect, useState } from "react";
+import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Container from '../Container';
 import { navLinks } from '../defaultData/NavLinks';
 import Logo from './Logo';
 import UserProfile from './UserProfile';
+import LoginModal from '../Auth/LoginModal';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { data: session } = useSession();
   const user = session?.user;
-
-  useEffect(() => {
+  const [open, setOpen] = React.useState(false);
+  const onCloseModal = () => setOpen(false);
+  React.useEffect(() => {
     if (session) {
       console.log(session?.user);
     } else {
@@ -39,7 +41,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              {user ? <UserProfile user={user} /> : <SignInButton color="#fff" />}
+              {user ? <UserProfile user={user} /> : <SignInButton color="#fff" setOpen={setOpen} />}
             </ul>
 
             <button
@@ -76,12 +78,15 @@ const Navbar = () => {
           </div>
         )}
       </Container>
+      {
+        open && <LoginModal open={open} onCloseModal={onCloseModal} />
+      }
     </div>
   );
 };
 
-function SignInButton({ color }: any) {
-  return <button className={`px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-[${color}] md:px-5`}>
+function SignInButton({ color, setOpen }: any) {
+  return <button onClick={() => setOpen(true)} className={`px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-[${color}] md:px-5`}>
     Subscribe
   </button>;
 }

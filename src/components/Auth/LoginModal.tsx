@@ -1,37 +1,99 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import React from 'react';
-import { Modal } from 'react-responsive-modal';
-import 'react-responsive-modal/styles.css';
+'use client'
 
-export default function Login() {
-    const [email, setEmail] = React.useState('');
-    const [loading, setLoading] = React.useState(false);
-    const [password, setPassword] = React.useState('');
-    const router = useRouter();
-    const [captcha, setCaptcha] = React.useState<string | null>(null);
-    const recaptchaRef = React.useRef<any>(null);
+import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
+import Image from 'next/image';
+import googleIcon from '../../../public/icons/google.svg';
+import appleIcon from '../../../public/icons/apple.svg';
+import microsoftIcon from '../../../public/icons/microsoft.svg';
+import twitterIcon from '../../../public/icons/twitter.svg';
+import facebookIcon from '../../../public/icons/facebook.svg';
+import { login } from '@/actions/auth';
 
+interface LoginModalProps {
+    open: boolean
+    onCloseModal: () => void
+}
+export default function LoginModal({
+    open,
+    onCloseModal
+}: LoginModalProps) {
 
-    const handleCaptchaChange = (value: string | null) => {
-        setCaptcha(value);
-    };
-    const [open, setOpen] = React.useState(false);
-
-    const onOpenModal = () => setOpen(true);
-    const onCloseModal = () => setOpen(false);
+    const socialButtons = [
+        {
+            name: "Google",
+            provider: "google",
+            icon: googleIcon
+        },
+        {
+            name: "Apple",
+            provider: "apple",
+            icon: appleIcon
+        },
+        {
+            name: "Facebook",
+            provider: "facebook",
+            icon: facebookIcon
+        },
+        {
+            name: "Microsoft",
+            provider: "microsoft",
+            icon: microsoftIcon
+        },
+        {
+            name: "Twitter",
+            provider: "twitter",
+            icon: twitterIcon
+        },
+    ];
 
     return (
-        <div>
-            <button onClick={onOpenModal}>Open modal</button>
-            <Modal open={open} onClose={onCloseModal} center>
-                <h2>Simple centered modal</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                    pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-                    hendrerit risus, sed porttitor quam.
-                </p>
-            </Modal>
-        </div>
-    );
+        <Dialog open={open} onClose={onCloseModal} className="relative z-10">
+            <DialogBackdrop
+                transition
+                className="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+            />
+
+            <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <DialogPanel
+                        transition
+                        className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
+                    >
+                        <div className="sm:w-96 mx-auto py-10 sm:px-0 px-5">
+                            <h2 className='mb-10'>Welcome back.</h2>
+                            <div className="space-y-4">
+                                {
+                                    socialButtons.map((button, index) => (
+                                        <div
+                                            key={index}
+                                            onClick={() => {
+                                                login(button.provider)
+                                                console.log("Clicked")
+                                            }}
+                                            className="cursor-pointer flex gap-2 w-full items-center justify-between rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+                                        >
+                                            <Image src={button.icon} alt={button.name} width={20} height={20} />
+                                            <span>Signin with {button.name}</span>
+                                            <span></span>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                            <p className='text-center text-sm mt-10'>
+                                By continuing, you agree to our{' '}
+                                <a href="#" className="text-blue-600">
+                                    Terms of Service
+                                </a>{' '}
+                                and{' '}
+                                <a href="#" className="text-blue-600">
+                                    Privacy Policy
+                                </a>
+                                .
+                            </p>
+                        </div>
+                    </DialogPanel>
+                </div>
+            </div>
+        </Dialog>
+    )
 }
