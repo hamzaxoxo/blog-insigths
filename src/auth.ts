@@ -1,9 +1,10 @@
+import Dribbble from "@auth/core/providers/dribbble";
+import Spotify from "@auth/core/providers/spotify";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
 import Facebook from "next-auth/providers/facebook";
+import Google from "next-auth/providers/google";
 import { db } from "./db";
-
 export const {
     handlers: { GET, POST },
     signIn,
@@ -14,12 +15,24 @@ export const {
     session: { strategy: "jwt" },
     providers: [
         Google({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
         }),
         Facebook({
-            clientId: process.env.AUTH_FACEBOOK_ID,
-            clientSecret: process.env.AUTH_FACEBOOK_SECRET,
+            clientId: process.env.AUTH_FACEBOOK_ID!,
+            clientSecret: process.env.AUTH_FACEBOOK_SECRET!,
+        }),
+        // Apple({
+        //     clientId: process.env.APPLE_CLIENT_ID!,
+        //     clientSecret: process.env.APPLE_CLIENT_SECRET!,
+        // }),
+        Dribbble({
+            clientId: process.env.DRIBBBLE_CLIENT_ID,
+            clientSecret: process.env.DRIBBBLE_CLIENT_SECRET,
+        }),
+        Spotify({
+            clientId: process.env.AUTH_SPOTIFY_ID,
+            clientSecret: process.env.AUTH_SPOTIFY_SECRET,
         }),
         // Credentials({
         //     name: "Credentials",
@@ -60,4 +73,5 @@ export const {
         //     },
         // }),
     ],
+    secret: process.env.NEXT_PUBLIC_SECRET
 });

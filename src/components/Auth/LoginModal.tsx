@@ -7,6 +7,10 @@ import appleIcon from '../../../public/icons/apple.svg';
 import microsoftIcon from '../../../public/icons/microsoft.svg';
 import twitterIcon from '../../../public/icons/twitter.svg';
 import facebookIcon from '../../../public/icons/facebook.svg';
+import dribbbleIcon from '../../../public/icons/dribbble.svg';
+import spotifyIcon from '../../../public/icons/spotify.svg';
+
+
 import { login } from '@/actions/auth';
 
 interface LoginModalProps {
@@ -25,9 +29,9 @@ export default function LoginModal({
             icon: googleIcon
         },
         {
-            name: "Apple",
-            provider: "apple",
-            icon: appleIcon
+            name: "Spotify",
+            provider: "spotify",
+            icon: spotifyIcon
         },
         {
             name: "Facebook",
@@ -43,6 +47,11 @@ export default function LoginModal({
             name: "Twitter",
             provider: "twitter",
             icon: twitterIcon
+        },
+        {
+            name: "Dribble",
+            provider: "dribbble",
+            icon: dribbbleIcon
         },
     ];
 
@@ -67,8 +76,7 @@ export default function LoginModal({
                                         <div
                                             key={index}
                                             onClick={() => {
-                                                login(button.provider)
-                                                console.log("Clicked")
+                                                login('spotify')
                                             }}
                                             className="cursor-pointer flex gap-2 w-full items-center justify-between rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                                         >

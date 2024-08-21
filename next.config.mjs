@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'images.inc.com',
+                hostname: 'platform-lookaside.fbsbx.com',
                 pathname: '**',
             },
         ],

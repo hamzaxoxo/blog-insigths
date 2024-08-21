@@ -4,7 +4,8 @@ import { signIn, signOut } from "@/auth";
 import { db } from "@/db";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
-
+import { useRouter } from "next/navigation";
+// const router = useRouter();
 const getUserByEmail = async (email: string) => {
     try {
         const user = await db.user.findUnique({
@@ -20,8 +21,10 @@ const getUserByEmail = async (email: string) => {
 };
 
 export const login = async (provider: string) => {
-    await signIn(provider, { redirectTo: "/" });
-    revalidatePath("/");
+    const res = await signIn(provider, { redirectTo: "/" });
+    // const existingUser = await getUserByEmail(res?.email);
+    // console.log(existingUser);
+    revalidatePath("/")
 };
 
 export const logout = async () => {
