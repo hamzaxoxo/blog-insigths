@@ -1,7 +1,7 @@
 'use client'
-import authService from '@/appwrite/auth';
+
 import { ArrowRight } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { redirect, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { ClipLoader } from 'react-spinners';
@@ -15,14 +15,13 @@ export default function NewPassword() {
     const router = useRouter();
     const searchParams = useSearchParams()
 
-    const userIdFromUrl = searchParams.get('userId');
-    const secretFromUrl = searchParams.get('secret');
+    const userIdFromUrl = searchParams.get('token');
 
-    // React.useEffect(() => {
-    //     if (userIdFromUrl === "" || secretFromUrl === "") {
-    //         redirect('/');
-    //     }
-    // }, [router]);
+    React.useEffect(() => {
+        if (!userIdFromUrl) {
+           redirect('/auth/login');
+        }
+    }, [userIdFromUrl]);
 
     const handleChangePass = async (e: any) => {
         e.preventDefault();
@@ -32,23 +31,17 @@ export default function NewPassword() {
         } else if (newPassword !== confirmPassword) {
             toast.error("Passwords do not match");
         } else {
+            setLoading(true);
             try {
-                setLoading(true);
-                if (userIdFromUrl && secretFromUrl) {
-                    const res = await authService.updatePassword(
-                        userIdFromUrl,
-                        secretFromUrl,
-                        newPassword
-                    );
-                }
-                router.push('/')
 
-            } catch (err: any) {
+            }
+            catch (err: any) {
                 const errorMessage = err?.code;
                 console.log(errorMessage)
             } finally {
                 setLoading(false);
             }
+
         }
     };
 

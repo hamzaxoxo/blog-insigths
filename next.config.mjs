@@ -1,7 +1,19 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['media.graphassets.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com',
+                pathname: '**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'platform-lookaside.fbsbx.com',
+                pathname: '**',
+            },
+        ],
     },
 };
 

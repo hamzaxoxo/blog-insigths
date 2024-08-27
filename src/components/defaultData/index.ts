@@ -3,6 +3,7 @@ import {
     FaFacebookF,
     FaLinkedinIn,
     FaMediumM,
+    FaInstagram,
     FaQuora,
 } from "react-icons/fa";
 import { IconType } from "react-icons";
@@ -41,6 +42,11 @@ export const FootersocialLinks: socialLinks[]
             url: "https://www.facebook.com/username",
             icon: FaFacebookF
         }, {
+            name: "Medium",
+            url: "https://www.medium.com/username",
+            icon: FaInstagram
+        },
+        {
             name: "Twitter",
             url: "https://www.twitter.com/username",
             icon: FaXTwitter
@@ -49,4 +55,5 @@ export const FootersocialLinks: socialLinks[]
             url: "https://www.linkedin.com/username",
             icon: FaLinkedinIn
         },
+
     ]

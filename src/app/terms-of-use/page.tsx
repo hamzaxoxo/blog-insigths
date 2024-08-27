@@ -12,14 +12,14 @@ export default function TermsOfService() {
   return (
     <>
       <Banner title="Terms of Services" />
-      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-20">
+      <div className="flex max-w-4xl mx-auto py-20 p-10 sm:px-0 flex-col gap-10">
         <section className="flex flex-col gap-6">
           <h2 className="text-2xl sm:text-4xl font-black leading-10 text-primary">
             1. Terms
           </h2>
           <p className="text-slate-600 text-justify">
             By accessing this Website, accessible from{' '}
-            <a href={`${process.env.NEXT_PUBLIC_URL}`} className="font-medium text-blue-700 hover:opacity-80 underline">
+            <a href={`${process.env.NEXT_PUBLIC_PRODUCTION_URL}`} className="font-medium text-blue-700 hover:opacity-80 underline">
               www.bloginsigths.com
             </a>, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trademark law.
           </p>

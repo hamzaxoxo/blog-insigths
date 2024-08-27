@@ -27,10 +27,10 @@ const GoTop = () => {
     }, []);
 
     return (
-        <div className="fixed bottom-20 right-20">
+        <div className="fixed bottom-10 right-10">
             {isVisible && (
-                <button onClick={scrollToTop} className="border-2 border-gray-50 rounded-full bg-primary h-14 w-14 flex justify-center items-center">
-                    <ChevronUp color="white" size={23} />
+                <button onClick={scrollToTop} className="rounded-full bg-amber-300 hover:bg-amber-400 h-14 w-14 flex justify-center items-center">
+                    <ChevronUp color="#111827" size={23} />
                 </button>
             )}
         </div>

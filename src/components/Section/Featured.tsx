@@ -1,68 +1,79 @@
 import Image from "next/image";
+import featuredImage from "../../../public/featuredImage.png";
+import Container from "../Container";
 import Link from "next/link";
-import blog1 from "../../../public/blog2.png";
 
-import Author from "../Author/Author";
-import ThumbRight from "../PostThumnail/ThumbRight";
+interface BlogPost {
+  title: string;
+  author: string;
+  date: string;
+  slug: string;
+}
+
+const blogPosts: BlogPost[] = [
+  { title: "8 Figma design systems that you can download for free today.", author: "Jane Smith", date: "Mar 15, 2023", slug: "hi" },
+  { title: "How to Create Engaging UI Animations in Figma", author: "David Lee", date: "Jun 10, 2022", slug: "hi" },
+  { title: "The Ultimate Guide to Figma Plugins for Designers", author: "Emily Johnson", date: "Sep 5, 2023", slug: "hi" },
+  { title: "Design Systems vs. Style Guides: What’s the Difference?", author: "Michael Brown", date: "Dec 1, 2021", slug: "hi" },
+];
 
 export default function Featured() {
   return (
-    <section className="max-w-6xl mx-auto relative overflow-hidden">
-      <div className="relative">
-        <div className="mx-auto">
-          <div className="mx-auto mb-14 max-w-4xl text-center">
-            <span className="mb-4 inline-block rounded-full bg-gray-300 px-3 py-1 text-xs font-semibold text-primary">
-              OUR BLOG
-            </span>
-            <h1 className="leading-10 font-display text-3xl font-extrabold text-primary lg:text-5xl xl:text-6xl">
-              Discover Fresh Insights with Our Featured Blog Posts
-            </h1>
-            <p className="mt-4 text-lg tracking-tight text-gray-500">
-              Discover valuable blogging insights on our blog page, where we
-              share expert tips, strategies, and trends to help you succeed in
-              the world of blogging
-            </p>
-          </div>
-          <div className="my-18 -mx-4 flex flex-wrap">
-            <div className="mb-12 w-full px-4 lg:mb-0 lg:w-1/2">
-              <div className="group block w-full">
-                <Image
-                  className="block w-full rounded-lg object-cover"
-                  src={blog1}
-                  alt="blog1"
-                />
-                <div className="flex flex-col gap-2 mt-2">
-                  <Link
-                    href="/"
-                    className="w-fit bg-primary hover:bg-gray-900 text-xs rounded text-gray-50 font-medium px-2 py-0.5 inline-block"
-                  >
-                    #playwright
-                  </Link>
-                  <h4 className="sm:text-3xl text-xl font-semibold text-gray-900">
-                    Unlocking Success: Essential Blogging Insights for Aspiring
-                    Bloggers
-                  </h4>
-                  <Author />
-                </div>
-              </div>
+    <Container className="pb-20 flex flex-col">
+
+      <div className="w-full p-8">
+        <div className="flex gap-10 lg:flex-row flex-col">
+
+          <div className="flex flex-col gap-5 grow font-bold text-gray-800">
+            <p className="text-xl sm:text-4xl font-bold leading-5 text-gray-800">Featured Post</p>
+            <Image
+              alt="featured image"
+              loading="lazy"
+              src={featuredImage}
+              className="w-full aspect-[1.89] object-cover md0:max-w-full"
+            />
+            <div className="text-sm font-medium leading-5 text-violet-800 md0:max-w-full">
+              By <span className="text-violet-800">John Doe</span> l May 23,
+              2022
             </div>
-            <div className="w-full px-4 lg:w-1/2">
-              <ThumbRight />
-              <ThumbRight />
-              <ThumbRight />
+            <div className="text-3xl tracking-tighter leading-10 -md0:max-w-full">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor.
+            </div>
+            <div className="text-base leading-7 text-zinc-500 md0:max-w-full">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident.
+            </div>
+            <div className="self-start px-12 py-4 text-lg leading-6 bg-amber-300 max-md0:px-5">
+              Read More &gt;
             </div>
           </div>
-          <div className="mt-14 text-center">
-            <button
-              type="button"
-              className="inline-flex w-full items-center justify-center rounded-xl border-2 border-primary bg-primary px-6 py-3 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary lg:w-auto"
-            >
-              View All Posts
-            </button>
+
+          <div className="flex justify-between flex-col gap-5">
+            <div className="flex justify-between">
+              <p className="text-xl sm:text-4xl font-bold leading-5 text-gray-800">All Post</p>
+              <Link href='/' className="text-base leading-7 font-bold underline text-violet-800">
+                View All
+              </Link>
+            </div>
+            <div className="flex flex-col grow ">
+              {blogPosts.map((post, index) => (
+                <Link href={`/${post.title}`} key={index} className={`flex flex-col items-start bg-white hover:bg-orange-50 p-4`}>
+                  <div className="text-sm font-medium leading-5 text-violet-800">
+                    By <span className="text-violet-800">{post.author}</span> | {post.date}
+                  </div>
+                  <div className="mt-4 text-2xl font-bold leading-10 text-gray-800">
+                    {post.title}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
+
         </div>
       </div>
-    </section>
+    </Container>
   );
 }
 

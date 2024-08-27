@@ -2,15 +2,19 @@ import ClientLayout from "@/components/Auth/ClientLayout";
 import GoTop from "@/components/GoTop";
 import StoreProvider from "@/store/StoreProvider";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import Script from "next/script";
+import { Sen } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import React, { Suspense } from "react";
+import React from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import { cookies } from "next/headers";
+import Script from "next/script";
+import Navbar from "@/components/Navbar/Navbar";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
+export const dynamic = 'force-dynamic'
 
-
-const poppins = Poppins({
+const sen = Sen({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -53,10 +57,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
-      {/* <head>
+      <head>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-626CD7NXNX"></Script>
         <Script id="google-analytics">
           {`
@@ -67,17 +70,19 @@ export default function RootLayout({
           `}
         </Script>
         <meta name="msvalidate.01" content="8D003752D10EFAB1C98FD841D4CA0657" />
-      </head> */}
-      <body className={`relative ${poppins.className}`}>
+      </head>
+      <body className={`relative ${sen.className}`}>
         <StoreProvider>
-          <Suspense>
+          <SessionProvider>
             <ClientLayout>
               {children}
             </ClientLayout>
             <GoTop />
-          </Suspense>
-          <Toaster />
-          <NextTopLoader />
+            <Toaster />
+            <NextTopLoader
+              color="#FDD251"
+            />
+          </SessionProvider>
         </StoreProvider>
       </body>
     </html>

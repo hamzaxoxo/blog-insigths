@@ -1,7 +1,4 @@
-
-import AuthLayout from '@/components/Auth/AuthLayout';
-import BlogForm from '@/components/Blog/BlogForm';
-
+import Add from '@/components/Blog/Add';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -13,8 +10,6 @@ export const metadata: Metadata = {
 export default function page() {
 
     return (
-        <AuthLayout>
-            <BlogForm />
-        </AuthLayout>
-    );
+        <Add />
+    )
 }

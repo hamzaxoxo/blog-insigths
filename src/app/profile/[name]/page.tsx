@@ -1,4 +1,4 @@
-import AuthLayout from '@/components/Auth/AuthLayout';
+
 import Profile from '@/components/Profile/Profile';
 import { Metadata } from 'next';
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'User Profile | MyApp',
         description: 'View and update your profile information including your full name and email address.',
-        url: `${process.env.NEXT_PUBLIC_URL}/profile`,
+        url: `${process.env.NEXT_PUBLIC_PRODUCTION_URL}/profile`,
         siteName: 'Blog Insigths',
         images: [
             {
@@ -32,8 +32,6 @@ export const metadata: Metadata = {
 export default function page() {
 
     return (
-        <AuthLayout>
-            <Profile />
-        </AuthLayout>
+        <Profile />
     )
 }
