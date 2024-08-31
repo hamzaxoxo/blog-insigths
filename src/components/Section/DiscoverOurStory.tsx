@@ -2,10 +2,11 @@ import * as React from "react";
 import Container from "../Container";
 import Image from "next/image";
 import DiscoverPost from "../../../public/discover.png";
+import Button from "../Buttons/Button";
 export default function DiscoverOurStory() {
     return (
-        <Container className="font-bold text-gray-800 pb-20">
-            <div className="relative h-screen w-full">
+        <Container className="font-bold text-gray-800">
+            <div className="relative h-[30rem] sm:h-[44rem] w-fit">
                 <div>
                     <Image
                         alt="DiscoverPost"
@@ -14,7 +15,7 @@ export default function DiscoverOurStory() {
                         className="object-cover lg:w-[849px] lg:h-[607px] w-full h-full"
                     />
                 </div>
-                <div className="p-5 w-[calc(100%-2rem)] lg:w-[45rem] absolute top-1/2 lg:left-64 lg:-bottom-40 left-1/2 transform lg:translate-x-28 -translate-x-1/2 lg:-translate-y-1/2 -translate-y-1/2 flex flex-col gap-4 justify-center bg-white">
+                <div className="shadow-xl p-5 w-[calc(100%-2rem)] lg:w-[45rem] absolute top-1/2 lg:left-64 lg:-bottom-40 left-1/2 transform lg:translate-x-28 -translate-x-1/2 lg:-translate-y-1/2 -translate-y-1/2 flex flex-col lg:items-start items-center gap-4 justify-center bg-white">
                     <div className="font-semibold leading-none text-gray-800 uppercase tracking-[3px]">
                         Why we started
                     </div>
@@ -27,9 +28,9 @@ export default function DiscoverOurStory() {
                         ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         aliquip.
                     </div>
-                    <div className="gap-3 self-start px-12 py-4 text-md leading-none bg-amber-300 md:px-5">
+                    <Button variant="secondary" className="">
                         Discover our story &gt;
-                    </div>
+                    </Button>
                 </div>
             </div>
 

@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image';
-import logo from '../../../public/logo.png';
+import logo from '../../../public/logos/main_logo.webp';
 export default function Logo() {
     return (
         <Link

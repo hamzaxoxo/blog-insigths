@@ -1,4 +1,3 @@
-'use client'
 
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import Image from 'next/image';
@@ -26,40 +25,46 @@ export default function LoginModal({
         {
             name: "Google",
             provider: "google",
-            icon: googleIcon
+            icon: googleIcon,
+            active: true
         },
         {
             name: "Spotify",
             provider: "spotify",
-            icon: spotifyIcon
+            icon: spotifyIcon,
+            active: false
         },
         {
             name: "Facebook",
             provider: "facebook",
-            icon: facebookIcon
+            icon: facebookIcon,
+            active: true
         },
         {
             name: "Microsoft",
             provider: "microsoft",
-            icon: microsoftIcon
+            icon: microsoftIcon,
+            active: false
         },
         {
             name: "Twitter",
             provider: "twitter",
-            icon: twitterIcon
+            icon: twitterIcon,
+            active: false
         },
         {
             name: "Dribble",
             provider: "dribbble",
-            icon: dribbbleIcon
+            icon: dribbbleIcon,
+            active: false
         },
     ];
 
     return (
-        <Dialog open={open} onClose={onCloseModal} className="relative z-10">
+        <Dialog open={open} onClose={onCloseModal} className="dela relative z-10">
             <DialogBackdrop
                 transition
-                className="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+                className="fixed inset-0 bg-gray-500 bg-opacity-80 transition-opacity data-[closed]:opacity-0 data-[enter] duration-900 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
             />
 
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -69,19 +74,30 @@ export default function LoginModal({
                         className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-lg data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
                     >
                         <div className="sm:w-96 mx-auto py-10 sm:px-0 px-5">
-                            <h2 className='mb-10'>Welcome back.</h2>
+                            <h2 className=''>Welcome back.</h2>
+                            <h2 className='mb-10 text-zinc-600 text-sm'>
+                                Sign in with social media
+                            </h2>
                             <div className="space-y-4">
                                 {
                                     socialButtons.map((button, index) => (
                                         <div
                                             key={index}
-                                            onClick={() => {
-                                                login('spotify')
+                                            onClick={async () => {
+                                                await login(button.provider)
                                             }}
-                                            className="cursor-pointer flex gap-2 w-full items-center justify-between rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+                                            className={`${!button.active ? 'hidden' : 'flex'} cursor-pointer gap-2 w-full items-center justify-between rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none`}
                                         >
-                                            <Image src={button.icon} alt={button.name} width={20} height={20} />
-                                            <span>Signin with {button.name}</span>
+
+                                            <Image
+                                                src={button.icon}
+                                                alt={button.name}
+                                                width={20}
+                                                height={20}
+                                                placeholder='blur'
+                                                blurDataURL="data:image/png;base64,...your-base64-data..."
+                                            />
+                                            <span>Sign in with {button.name}</span>
                                             <span></span>
                                         </div>
                                     ))

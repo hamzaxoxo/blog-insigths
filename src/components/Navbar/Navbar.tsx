@@ -4,18 +4,19 @@ import Link from 'next/link';
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { RxHamburgerMenu } from "react-icons/rx";
+import LoginModal from '../Auth/LoginModal';
+import Button from '../Buttons/Button';
 import Container from '../Container';
 import { navLinks } from '../defaultData/NavLinks';
 import Logo from './Logo';
 import UserProfile from './UserProfile';
-import LoginModal from '../Auth/LoginModal';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { data: session } = useSession();
   const user = session?.user;
   const [open, setOpen] = React.useState(false);
-  const onCloseModal = () => setOpen(false);
+  const onCloseModal = () => setOpen(false);  
   React.useEffect(() => {
     if (session) {
       console.log(session?.user);
@@ -25,7 +26,7 @@ const Navbar = () => {
   }, [session]);
 
   return (
-    <div className='bg-[#232536]'>
+    <div className='bg-[#232536] sticky top-0 z-10'>
       <Container>
         <header>
           <nav className="flex h-[80px] items-center justify-between">
@@ -52,8 +53,7 @@ const Navbar = () => {
             </button>
           </nav>
         </header>
-        {isMenuOpen && (
-          <div>
+          {isMenuOpen && (
             <nav className="fixed top-0 right-0 left-0 bottom-0 lg:bottom-auto bg-[#2E3040]">
               <div
                 className="hidden max-lg:block fixed right-0 px-8 py-4 cursor-pointer text-gray-50"
@@ -72,11 +72,10 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
-                {user ? <UserProfile user={user} /> : <SignInButton color="#fff" />}
+                {user ? <UserProfile user={user} /> : <SignInButton />}
               </ul>
             </nav>
-          </div>
-        )}
+          )}
       </Container>
       {
         open && <LoginModal open={open} onCloseModal={onCloseModal} />
@@ -85,10 +84,12 @@ const Navbar = () => {
   );
 };
 
-function SignInButton({ color, setOpen }: any) {
-  return <button onClick={() => setOpen(true)} className={`px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-[${color}] md:px-5`}>
-    Subscribe
-  </button>;
+function SignInButton({ setOpen }: any) {
+  return (
+    <Button variant="primary" className='!px-[45px]' onClick={() => setOpen(true)}>
+      Subscribe
+    </Button>
+  );
 }
 
 export default Navbar;

@@ -1,5 +1,6 @@
-import Dribbble from "@auth/core/providers/dribbble";
-import Spotify from "@auth/core/providers/spotify";
+import Dribbble from "next-auth/providers/dribbble"
+import Spotify from "next-auth/providers/spotify";
+import Apple from "next-auth/providers/Apple";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import Facebook from "next-auth/providers/facebook";
@@ -22,13 +23,13 @@ export const {
             clientId: process.env.AUTH_FACEBOOK_ID!,
             clientSecret: process.env.AUTH_FACEBOOK_SECRET!,
         }),
-        // Apple({
-        //     clientId: process.env.APPLE_CLIENT_ID!,
-        //     clientSecret: process.env.APPLE_CLIENT_SECRET!,
-        // }),
+        Apple({
+            clientId: process.env.APPLE_CLIENT_ID!,
+            clientSecret: process.env.APPLE_CLIENT_SECRET!,
+        }),
         Dribbble({
-            clientId: process.env.DRIBBBLE_CLIENT_ID,
-            clientSecret: process.env.DRIBBBLE_CLIENT_SECRET,
+            clientId: process.env.DRIBBBLE_CLIENT_ID!,
+            clientSecret: process.env.AUTH_DRIBBBLE_SECRET!,
         }),
         Spotify({
             clientId: process.env.AUTH_SPOTIFY_ID,

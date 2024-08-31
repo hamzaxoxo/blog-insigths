@@ -2,6 +2,7 @@ import Image from "next/image";
 import featuredImage from "../../../public/featuredImage.png";
 import Container from "../Container";
 import Link from "next/link";
+import Button from "../Buttons/Button";
 
 interface BlogPost {
   title: string;
@@ -21,7 +22,7 @@ export default function Featured() {
   return (
     <Container className="pb-20 flex flex-col">
 
-      <div className="w-full p-8">
+      <div className="w-full ">
         <div className="flex gap-10 lg:flex-row flex-col">
 
           <div className="flex flex-col gap-5 grow font-bold text-gray-800">
@@ -45,9 +46,9 @@ export default function Featured() {
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident.
             </div>
-            <div className="self-start px-12 py-4 text-lg leading-6 bg-amber-300 max-md0:px-5">
+            <Button variant="secondary" className="!px-[48px]">
               Read More &gt;
-            </div>
+            </Button>
           </div>
 
           <div className="flex justify-between flex-col gap-5">

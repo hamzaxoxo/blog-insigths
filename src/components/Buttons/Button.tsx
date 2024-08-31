@@ -1,16 +1,30 @@
-import React from 'react'
-interface buttonProps {
-    children: React.ReactNode
-    type?: 'button' | 'submit' | 'reset' | undefined
+import React from 'react';
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary'
+  className?: string;
 }
-export default function Button({ children, type = 'button', ...props }: buttonProps) {
-    return (
-        <button
-            type={type}
-            className="w-full items-center justify-center rounded-md border-2 border-primary bg-primary px-6 py-1 text-center font-medium text-white duration-200 hover:border-primary hover:bg-transparent hover:text-primary focus:outline-none focus-visible:outline-primary focus-visible:ring-primary lg:w-auto"
-            {...props}
-        >
-            {children}
-        </button>
-    )
-}
+
+const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
+  className = '',
+  type = 'button',
+  children,
+  ...rest
+}) => {
+
+  const variantStyles = {
+    primary: 'px-12 py-3 h-[46px] text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-white md:px-5',
+    secondary: 'px-12 py-3 h-[46px] w-fit text-[18px] font-bold leading-6 text-gray-800 whitespace-nowrap bg-amber-300 md:px-5',
+  };
+
+  const combinedClassName = `${variantStyles[variant]} ${className}`;
+
+  return (
+    <button type={type} className={combinedClassName} {...rest}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;

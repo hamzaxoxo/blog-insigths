@@ -1,5 +1,6 @@
 
 /** @type {import('next').NextConfig} */
+import withPlaiceholder from "@plaiceholder/next";
 const nextConfig = {
     images: {
         remotePatterns: [
@@ -13,8 +14,13 @@ const nextConfig = {
                 hostname: 'platform-lookaside.fbsbx.com',
                 pathname: '**',
             },
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+                pathname: '**',
+            }
         ],
     },
 };
 
-export default nextConfig;
+export default withPlaiceholder(nextConfig);

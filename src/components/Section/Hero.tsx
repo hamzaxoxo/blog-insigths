@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import hero from "../../../public/hero.png";
 import Container from "../Container";
+import DynamicImage from "../DynamicImage";
+import Button from "../Buttons/Button";
 
 export default function Hero() {
   return (
@@ -14,8 +16,15 @@ export default function Hero() {
           objectFit="cover"
           priority
           className="absolute inset-0 brightness-50"
+        // placeholder='blur'
+        // blurDataURL="https://res.cloudinary.com/daeapkeh9/image/upload/v1725122679/HomePage/oyp7z2czvhjvtlzxc0br.png"
         />
-        <div className="flex relative flex-col items-start p-5 w-full">
+        {/* <DynamicImage
+          url="https://res.cloudinary.com/daeapkeh9/image/upload/v1725122679/HomePage/oyp7z2czvhjvtlzxc0br.png"
+          alt="hero"
+          containerClass="absolute inset-0"
+        /> */}
+        <div className="flex relative flex-col items-start w-full">
           <div className="text-xl mt-10 font-semibold leading-5 uppercase tracking-[3px] md:mt-14 w-full">
             <span className="font-medium">Posted on</span>{" "}
             <span className="font-black">startup</span>
@@ -31,9 +40,9 @@ export default function Hero() {
             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
             proident.
           </div>
-          <button className="px-12 py-4 mt-14 mb-20 text-lg leading-6 text-gray-800 bg-amber-300 md:px-5 md:my-10 sm:px-4 sm:py-2 sm:text-base">
+          <Button variant="secondary" className="mt-10 !px-[48px]">
             Read More &gt;
-          </button>
+          </Button>
         </div>
       </Container>
     </div>

@@ -5,6 +5,8 @@ import logo from '../../../public/logo.png';
 import Container from '../Container';
 import { NavbarProps } from '../defaultData/NavLinks';
 import { legalLinks, socialMediaLinks } from '../defaultData/SocialLinks';
+import Button from '../Buttons/Button';
+import Logo from '../Navbar/Logo';
 
 export default function Footer() {
 
@@ -18,9 +20,7 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="flex md:flex-row flex-col gap-5 justify-between w-full text-base leading-7 text-white md:w-full">
-            <Link href="/" >
-              <Image src={logo} alt="logo" className="w-40" />
-            </Link>
+            <Logo />
             <ul className="list-outside flex gap-5 my-auto flex-wrap">
               {navLinks.map((item) => (
                 <li key={item.label}>
@@ -54,9 +54,9 @@ export default function Footer() {
               </div>
               <div className="flex xl:flex-row lg:flex-col md:flex-row flex-col items-center gap-4">
                 <input className="bg-transparent sm:w-[300px] w-full px-4 py-3 text-base leading-7 border border-neutral-600 text-zinc-500 md:px-5" placeholder="Enter your Email" />
-                <button className="xl:w-[179px] lg:w-full w-full px-8 py-3 text-lg font-bold leading-6 text-gray-800 whitespace-nowrap bg-amber-300 hover:bg-amber-400 md:px-5">
+                <Button variant="secondary" className="!px-[48px]">
                   Subscribe
-                </button>
+                </Button>
               </div>
             </div>
           </div>
