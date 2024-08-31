@@ -1,10 +1,6 @@
 
 /** @type {import('next').NextConfig} */
-import withPlaiceholder from "@plaiceholder/next";
 const nextConfig = {
-    eslint: {
-       ignoreDuringBuilds: true,
-    },
     images: {
         remotePatterns: [
             {
@@ -26,4 +22,4 @@ const nextConfig = {
     },
 };
 
-export default withPlaiceholder(nextConfig);
+export default nextConfig
