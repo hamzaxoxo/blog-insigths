@@ -17,13 +17,6 @@ const Navbar = () => {
   const user = session?.user;
   const [open, setOpen] = React.useState(false);
   const onCloseModal = () => setOpen(false);  
-  React.useEffect(() => {
-    if (session) {
-      console.log(session?.user);
-    } else {
-      console.log('No session found');
-    }
-  }, [session]);
 
   return (
     <div className='bg-[#232536] sticky top-0 z-10'>
