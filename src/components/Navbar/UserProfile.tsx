@@ -24,9 +24,9 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                 {
                     !user ? (
                         <Skeleton
-                           circle
-                           height="100%"
-                           containerClassName='rounded-full'
+                            circle
+                            height="100%"
+                            containerClassName='rounded-full'
                         />) : (
                         <Image
                             className="rounded-full"
@@ -62,6 +62,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                             onClick={() => {
                                 logout()
                                 setIsOpen(!isOpen)
+                                window.location.reload()
                             }
                             }
                             className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
