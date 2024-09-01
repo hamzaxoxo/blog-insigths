@@ -13,17 +13,10 @@ import UserProfile from './UserProfile';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { data: session } = useSession();
-  const user = session?.user;
+  const session = useSession();
+  const user = session?.data?.user;
   const [open, setOpen] = React.useState(false);
-  const onCloseModal = () => setOpen(false);  
-  React.useEffect(() => {
-    if (session) {
-      console.log(session?.user);
-    } else {
-      console.log('No session found');
-    }
-  }, [session]);
+  const onCloseModal = () => setOpen(false);
 
   return (
     <div className='bg-[#232536] sticky top-0 z-10'>
@@ -53,29 +46,29 @@ const Navbar = () => {
             </button>
           </nav>
         </header>
-          {isMenuOpen && (
-            <nav className="fixed top-0 right-0 left-0 bottom-0 lg:bottom-auto bg-[#2E3040]">
-              <div
-                className="hidden max-lg:block fixed right-0 px-8 py-4 cursor-pointer text-gray-50"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                <AiOutlineClose className="text-4xl" />
-              </div>
-              <ul className="list-outside lg:hidden flex flex-col items-center justify-center h-full">
-                {navLinks.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="text-[16px] text-gray-50 leading-10"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-                {user ? <UserProfile user={user} /> : <SignInButton />}
-              </ul>
-            </nav>
-          )}
+        {isMenuOpen && (
+          <nav className="fixed top-0 right-0 left-0 bottom-0 lg:bottom-auto bg-[#2E3040]">
+            <div
+              className="hidden max-lg:block fixed right-0 px-8 py-4 cursor-pointer text-gray-50"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <AiOutlineClose className="text-4xl" />
+            </div>
+            <ul className="list-outside lg:hidden flex flex-col items-center justify-center h-full">
+              {navLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-[16px] text-gray-50 leading-10"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              {user ? <UserProfile user={user} /> : <SignInButton />}
+            </ul>
+          </nav>
+        )}
       </Container>
       {
         open && <LoginModal open={open} onCloseModal={onCloseModal} />
