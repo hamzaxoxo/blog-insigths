@@ -2,16 +2,13 @@ import ClientLayout from "@/components/Auth/ClientLayout";
 import GoTop from "@/components/GoTop";
 import StoreProvider from "@/store/StoreProvider";
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import { Sen } from "next/font/google";
+import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import React from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import { cookies } from "next/headers";
-import Script from "next/script";
-import Navbar from "@/components/Navbar/Navbar";
-import { SessionProvider } from "next-auth/react";
-import { auth } from "@/auth";
 export const dynamic = 'force-dynamic'
 
 const sen = Sen({
@@ -73,16 +70,16 @@ export default function RootLayout({
       </head>
       <body className={`relative ${sen.className}`}>
         <StoreProvider>
-          <SessionProvider>
-            <ClientLayout>
+          <ClientLayout>
+            <SessionProvider>
               {children}
-            </ClientLayout>
-            <GoTop />
-            <Toaster />
-            <NextTopLoader
-              color="#FDD251"
-            />
-          </SessionProvider>
+              <GoTop />
+              <Toaster />
+              <NextTopLoader
+                color="#FDD251"
+              />
+            </SessionProvider>
+          </ClientLayout>
         </StoreProvider>
       </body>
     </html>
