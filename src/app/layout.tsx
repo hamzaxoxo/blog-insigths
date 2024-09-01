@@ -70,16 +70,16 @@ export default function RootLayout({
       </head>
       <body className={`relative ${sen.className}`}>
         <StoreProvider>
-          <SessionProvider>
-            <ClientLayout>
+          <ClientLayout>
+            <SessionProvider>
               {children}
               <GoTop />
               <Toaster />
               <NextTopLoader
                 color="#FDD251"
               />
-            </ClientLayout>
-          </SessionProvider>
+            </SessionProvider>
+          </ClientLayout>
         </StoreProvider>
       </body>
     </html>

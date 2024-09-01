@@ -1,10 +1,11 @@
-import { logout } from '@/actions/auth';
 import { LogOut, Sparkles, UserIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import Skeleton from 'react-loading-skeleton';
 import userDefaultImage from '../../../public/user.jpg';
+import axios from 'axios';
+import { logout } from '@/actions/auth';
+import Skeleton from 'react-loading-skeleton';
 
 interface UserProfileProps {
     user: any;
@@ -58,10 +59,10 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                         </Link>
                         <button
                             type="button"
-                            onClick={async () => {
-                                await logout();
+                            onClick={() => {
+                                logout()
                                 setIsOpen(!isOpen)
-                                window.location.reload();
+                                window.location.reload()
                             }
                             }
                             className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
